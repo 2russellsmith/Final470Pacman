@@ -1,0 +1,8 @@
+prefix=/home/zeta/catkin_ws/install
+
+Name: bb8_driver
+Description: Description of bb8_driver
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/zeta/catkin_ws/install/lib 
+Requires: 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -frounding-math -O3 -DNDEBUG   -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o  -L/home/zeta/catkin_ws/build/gtest/src -lpthread -Wl,-rpath,/home/zeta/catkin_ws/build/gtest/src 

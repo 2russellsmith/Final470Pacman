@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "sphero_teleop")
+set(sphero_teleop_MAINTAINER "Daqing Yi <daqing.yi@byu.edu>")
+set(sphero_teleop_DEPRECATED "")
+set(sphero_teleop_VERSION "0.0.1")
+set(sphero_teleop_BUILD_DEPENDS "std_msgs")
+set(sphero_teleop_RUN_DEPENDS "std_msgs" "rospy")
+set(sphero_teleop_BUILDTOOL_DEPENDS "catkin")

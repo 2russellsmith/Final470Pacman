@@ -1,0 +1,8 @@
+prefix=/home/zeta/catkin_ws/devel
+
+Name: sphero_swarm_bringup
+Description: Description of sphero_swarm_bringup
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/zeta/catkin_ws/devel/lib 
+Requires: 

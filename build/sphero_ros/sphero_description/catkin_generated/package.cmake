@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "sphero_description")
+set(sphero_description_MAINTAINER "Melonee Wise <melonee@meloneewise.com>")
+set(sphero_description_DEPRECATED "")
+set(sphero_description_VERSION "0.1.2")
+set(sphero_description_BUILD_DEPENDS )
+set(sphero_description_RUN_DEPENDS "urdf")
+set(sphero_description_BUILDTOOL_DEPENDS "catkin")

@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "bb8_bringup")
+set(bb8_bringup_MAINTAINER "Melonee Wise <melonee@meloneewise.com>")
+set(bb8_bringup_DEPRECATED "")
+set(bb8_bringup_VERSION "0.1.0")
+set(bb8_bringup_BUILD_DEPENDS )
+set(bb8_bringup_RUN_DEPENDS "urdf" "robot_state_publisher" "bb8_node" "sphero_description")
+set(bb8_bringup_BUILDTOOL_DEPENDS "catkin")
