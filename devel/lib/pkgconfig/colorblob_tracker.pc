@@ -1,8 +1,0 @@
-prefix=/home/zeta/catkin_ws/devel
-
-Name: colorblob_tracker
-Description: Description of colorblob_tracker
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/zeta/catkin_ws/devel/lib 
-Requires: 

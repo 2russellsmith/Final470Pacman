@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "sphero_swarm_node")
-set(sphero_swarm_node_MAINTAINER "Daqing Yi <daqing.yi@byu.edu>")
-set(sphero_swarm_node_DEPRECATED "")
-set(sphero_swarm_node_VERSION "0.0.5")
-set(sphero_swarm_node_BUILD_DEPENDS "geometry_msgs" "message_generation" "dynamic_reconfigure" "std_msgs")
-set(sphero_swarm_node_RUN_DEPENDS "geometry_msgs" "message_runtime" "sphero_driver" "sphero_description" "dynamic_reconfigure" "sensor_msgs" "nav_msgs" "std_msgs" "tf" "python_orocos_kdl" "rospy")
-set(sphero_swarm_node_BUILDTOOL_DEPENDS "catkin")

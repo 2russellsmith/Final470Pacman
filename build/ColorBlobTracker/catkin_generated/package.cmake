@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "colorblob_tracker")
-set(colorblob_tracker_MAINTAINER "Walter <daqing.yi@byu.edu>")
-set(colorblob_tracker_DEPRECATED "")
-set(colorblob_tracker_VERSION "0.0.0")
-set(colorblob_tracker_BUILD_DEPENDS "cv_bridge" "image_transport" "image_geometry" "roscpp")
-set(colorblob_tracker_RUN_DEPENDS "cv_bridge" "image_transport" "image_geometry" "roscpp")
-set(colorblob_tracker_BUILDTOOL_DEPENDS "catkin")
