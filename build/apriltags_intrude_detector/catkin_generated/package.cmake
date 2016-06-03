@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "apriltags_intrude_detector")
+set(apriltags_intrude_detector_MAINTAINER "Walter <daqing.yi@byu.edu>")
+set(apriltags_intrude_detector_DEPRECATED "")
+set(apriltags_intrude_detector_VERSION "0.0.0")
+set(apriltags_intrude_detector_BUILD_DEPENDS "cv_bridge" "image_transport" "image_geometry" "roscpp" "message_generation")
+set(apriltags_intrude_detector_RUN_DEPENDS "cv_bridge" "image_transport" "image_geometry" "roscpp" "message_runtime")
+set(apriltags_intrude_detector_BUILDTOOL_DEPENDS "catkin")

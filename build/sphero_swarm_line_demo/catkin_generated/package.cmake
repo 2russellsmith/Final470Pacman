@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "sphero_swarm_line_demo")
+set(sphero_swarm_line_demo_MAINTAINER "Darin Costello <darin.costello@gmail.com>")
+set(sphero_swarm_line_demo_DEPRECATED "")
+set(sphero_swarm_line_demo_VERSION "0.0.1")
+set(sphero_swarm_line_demo_BUILD_DEPENDS "std_msgs")
+set(sphero_swarm_line_demo_RUN_DEPENDS "std_msgs" "rospy")
+set(sphero_swarm_line_demo_BUILDTOOL_DEPENDS "catkin")

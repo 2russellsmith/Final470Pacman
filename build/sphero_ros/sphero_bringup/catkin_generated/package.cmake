@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "sphero_bringup")
+set(sphero_bringup_MAINTAINER "Melonee Wise <melonee@meloneewise.com>")
+set(sphero_bringup_DEPRECATED "")
+set(sphero_bringup_VERSION "0.1.2")
+set(sphero_bringup_BUILD_DEPENDS )
+set(sphero_bringup_RUN_DEPENDS "urdf" "robot_state_publisher" "sphero_node" "sphero_description")
+set(sphero_bringup_BUILDTOOL_DEPENDS "catkin")

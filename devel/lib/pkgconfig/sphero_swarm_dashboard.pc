@@ -1,0 +1,8 @@
+prefix=/home/zeta/catkin_ws/devel
+
+Name: sphero_swarm_dashboard
+Description: Description of sphero_swarm_dashboard
+Version: 0.0.5
+Cflags: 
+Libs: -L/home/zeta/catkin_ws/devel/lib 
+Requires: 

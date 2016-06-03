@@ -1,0 +1,18 @@
+<package>
+  <name>sphero_swarm_line_demo</name>
+  <version>0.0.1</version>
+  <description>
+    sphero_swarm_teleop provides teleoperation for Sphero.
+  </description>
+  <author>Darin C</author>
+  <maintainer email="darin.costello@gmail.com">Darin Costello</maintainer>
+  <license>BSD</license>
+  <url>TODO</url>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>std_msgs</build_depend>
+
+  <run_depend>std_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+</package>

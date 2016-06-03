@@ -1,0 +1,8 @@
+prefix=/home/zeta/catkin_ws/install
+
+Name: sphero_swarm_teleop
+Description: Description of sphero_swarm_teleop
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/zeta/catkin_ws/install/lib 
+Requires: 

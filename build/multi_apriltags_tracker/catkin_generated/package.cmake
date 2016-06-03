@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "multi_apriltags_tracker")
+set(multi_apriltags_tracker_MAINTAINER "Walter <daqing.yi@byu.edu>")
+set(multi_apriltags_tracker_DEPRECATED "")
+set(multi_apriltags_tracker_VERSION "0.0.0")
+set(multi_apriltags_tracker_BUILD_DEPENDS "cv_bridge" "image_transport" "image_geometry" "roscpp" "april_tag_pos_msg" "message_generation")
+set(multi_apriltags_tracker_RUN_DEPENDS "cv_bridge" "image_transport" "image_geometry" "roscpp" "april_tag_pos_msg" "message_runtime")
+set(multi_apriltags_tracker_BUILDTOOL_DEPENDS "catkin")
