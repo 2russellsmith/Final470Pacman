@@ -7,57 +7,95 @@ from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 from multi_apriltags_tracker.msg import april_tag_pos
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
+
 STEP_LENGTH = 100
 FOLLOW_SPEED = 75
 RADIUS = 150
+BOARD_WIDTH = 800
+BOARD_HEIGHT = 600
+BOX_X_COUNT = 19
+BOX_Y_COUNT = 9
+
 
 class SpheroSwarmLineForm(QtGui.QWidget):
-    
     def __init__(self):
         super(QtGui.QWidget, self).__init__()
-        self.resize(600, 480) 
+        self.resize(600, 480)
         self.sphero_dict = {}
         self.initUI()
         self.initialized = False
-        self.bridge = CvBridge()
         '''The Sphero bluetooth controller maps string names to addresses, The camera maps num to locations numToSphero
         and spheroToNum are dictoinaries that will map back and forth'''
         self.numToSphero = {}
         self.spheroToNum = {}
-        self.order = [] #used to keep a follow the leadrer order
-        self.location = {} #dictionary that maps sphero id nums to last known location
+        self.order = []  # used to keep a follow the leadrer order
+        self.location = {}  # dictionary that maps sphero id nums to last known location
 
         rospy.init_node('sphero_swarm_line_gui', anonymous=True)
 
-        self.cmdVelPub = rospy.Publisher('cmd_vel', SpheroTwist, queue_size=1) #self.cmdVelPub is who we tell about to move sphero
+        self.cmdVelPub = rospy.Publisher('cmd_vel', SpheroTwist,
+                                         queue_size=1)  # self.cmdVelPub is who we tell about to move sphero
         self.cmdVelSub = rospy.Subscriber("cmd_vel", SpheroTwist, self.cmdVelCallback)
 
-	print 'subscribing to image'
-	self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.cameraImageCallback, queue_size=1)
-	self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
+        # How to get camera feed, draw on it and publish it to a feed that the camera program can display
+        self.bridge = CvBridge()
+        self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.cameraImageCallback, queue_size=1)
+        self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
 
-        self.colorPub = rospy.Publisher('set_color', SpheroColor, queue_size=1) #who we tell if we want to update the color
+        # Other camera related variables # initialize all food to 1
+        self.food = [[1 for i in range(BOX_X_COUNT)] for j in range(BOX_Y_COUNT)]
+
+        self.colorPub = rospy.Publisher('set_color', SpheroColor,
+                                        queue_size=1)  # who we tell if we want to update the color
         self.aprtSub = rospy.Subscriber('april_tag_pos', april_tag_pos, self.aprtCallback)
-        #aprtSub tells us when april tags are updated. When this happens the callback function is called.
+        # aprtSub tells us when april tags are updated. When this happens the callback function is called.
 
     def cameraImageCallback(self, ros_data):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
-            boardWidth = 800
-            boardHeight = 600
-            numBoxWidth = 19
-            numBoxHeight = 9
-            for i in range(0,20):
-                for j in range(0,15):
-                    cv2.rectangle(cv_image,(boardWidth/numBoxWidth*i, boardHeight/numBoxHeight*j),(boardWidth/numBoxWidth*(i+1), boardHeight/numBoxHeight*(j+1)),(0,0,255), 1, 8, 0)
+
+            self.drawGrid(cv_image)
+            self.drawFood(cv_image)
 
             self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
             print 'drawn'
         except CvBridgeError as e:
             print(e)
 
-    def initUI(self):   
-        
+    def drawGrid(self, image, topLeftPoint, bottomRightPoint):
+        # calculate the height and width of the board according to tag corner positions
+        if topLeftPoint is not None and bottomRightPoint is not None:
+            boardWidth = bottomRightPoint.x - topLeftPoint.x
+            boardHeight = bottomRightPoint.y - topLeftPoint.y
+        else:
+            boardWidth = BOARD_WIDTH
+            boardHeight = BOARD_HEIGHT
+
+        # calculate the height and width of the boxes to be drawn
+        boxWidth = boardWidth / BOX_X_COUNT
+        boxHeight = boardHeight / BOX_Y_COUNT
+
+        # draw the grid
+        for i in range(0, BOX_X_COUNT):
+            for j in range(0, BOX_Y_COUNT):
+                pt1 = cv2.Point2f(boxWidth * i, boxHeight * j)
+                pt2 = cv2.Point2f(boxWidth * (i + 1), boxHeight * (j + 1))
+                color = cv2.Scalar(0, 0, 255)
+                thickness = 1
+                lineType = 8
+                shift = 0
+                cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
+                if self.food[i][j] == 1:
+                    x = pt2.x - pt1.x
+                    y = pt2.y - pt2.y
+                    radius = 5
+                    cv2.circle(image, (x, y), radius, color, thickness, lineType, shift)
+                    ''' cv2.rectangle(image, (boxWidth * i, boxHeight * j), (boxWidth * (i + 1), boxHeight * (j + 1)),
+                    (0, 0, 255), 1, 8, 0)'''
+                    # http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html
+
+    def initUI(self):
+
         key_instruct_label = """
     Control Your Sphero!
     ---------------------------
@@ -69,7 +107,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.keyInstructLabel = QtGui.QLabel(key_instruct_label)
         self.cmdVelLabel = QtGui.QLabel("cmd_vel")
         self.cmdVelTextbox = QtGui.QTextEdit()
-        self.cmdVelTextbox.setReadOnly(True)  
+        self.cmdVelTextbox.setReadOnly(True)
         self.connect(self, QtCore.SIGNAL("sendCmdVelText(PyQt_PyObject)"), self.updateCmdVelTextbox)
 
         self.spheroLabel = QtGui.QLabel("Spheros:")
@@ -79,7 +117,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         btnGridLayout = QtGui.QGridLayout()
         btnGridLayout.addWidget(self.refreshBtn, 0, 4)
 
-        layout =  QtGui.QVBoxLayout()
+        layout = QtGui.QVBoxLayout()
         layout.addWidget(self.keyInstructLabel)
         layout.addWidget(self.cmdVelLabel)
         layout.addWidget(self.cmdVelTextbox)
@@ -91,52 +129,88 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.setWindowTitle("Sphero Swarm Teleop")
         self.show()
 
-    def keyPressEvent(self, e): 
-        twist = None 
+    def keyPressEvent(self, e):
+        twist = None
 
-        print "key pressed"   
+        print "key pressed"
         selected_items = self.spheroListWidget.selectedItems()
         if len(selected_items) == 0:
             return
 
         print "selected"
-           
+
         if e.key() == QtCore.Qt.Key_U:
-            twist = SpheroTwist() 
-            twist.linear.x = -STEP_LENGTH; twist.linear.y = STEP_LENGTH; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist = SpheroTwist()
+            twist.linear.x = -STEP_LENGTH;
+            twist.linear.y = STEP_LENGTH;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_I:
-            twist = SpheroTwist()  
-            twist.linear.x = 0; twist.linear.y = STEP_LENGTH; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0     
+            twist = SpheroTwist()
+            twist.linear.x = 0;
+            twist.linear.y = STEP_LENGTH;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_O:
             twist = SpheroTwist()
-            twist.linear.x = STEP_LENGTH; twist.linear.y = STEP_LENGTH; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist.linear.x = STEP_LENGTH;
+            twist.linear.y = STEP_LENGTH;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_J:
             twist = SpheroTwist()
-            twist.linear.x = -STEP_LENGTH; twist.linear.y = 0; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist.linear.x = -STEP_LENGTH;
+            twist.linear.y = 0;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_K:
             twist = SpheroTwist()
-            twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist.linear.x = 0;
+            twist.linear.y = 0;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_L:
             twist = SpheroTwist()
-            twist.linear.x = STEP_LENGTH; twist.linear.y = 0; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist.linear.x = STEP_LENGTH;
+            twist.linear.y = 0;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_M:
             twist = SpheroTwist()
-            twist.linear.x = -STEP_LENGTH; twist.linear.y = -STEP_LENGTH; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist.linear.x = -STEP_LENGTH;
+            twist.linear.y = -STEP_LENGTH;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_Comma:
             twist = SpheroTwist()
-            twist.linear.x = 0; twist.linear.y = -STEP_LENGTH; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
+            twist.linear.x = 0;
+            twist.linear.y = -STEP_LENGTH;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_Period:
             twist = SpheroTwist()
-            twist.linear.x = STEP_LENGTH; twist.linear.y = -STEP_LENGTH; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0 
+            twist.linear.x = STEP_LENGTH;
+            twist.linear.y = -STEP_LENGTH;
+            twist.linear.z = 0
+            twist.angular.x = 0;
+            twist.angular.y = 0;
+            twist.angular.z = 0
 
         if twist != None:
             twist.name = str(selected_items[0].text())
@@ -144,7 +218,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
 
     def cmdVelCallback(self, msg):
         cmd_vel_text = "(" + str(msg.name) + "),x=" + str(msg.linear.x) + " y=" + str(msg.linear.y)
-        self.emit(QtCore.SIGNAL("sendCmdVelText(PyQt_PyObject)"), cmd_vel_text) 
+        self.emit(QtCore.SIGNAL("sendCmdVelText(PyQt_PyObject)"), cmd_vel_text)
 
     def updateCmdVelTextbox(self, value):
         self.cmdVelTextbox.moveCursor(QtGui.QTextCursor.End)
@@ -168,7 +242,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
             self.numToSphero[num] = name
             self.spheroToNum[name] = name
             self.order[len(self.order):] = [num]
-            self.location[num] = (-1,-1)
+            self.location[num] = (-1, -1)
             self.spheroListWidget.addItem(name)
         self.spheroListWidget.setCurrentRow(0)
         self.initialized = True
@@ -177,13 +251,13 @@ class SpheroSwarmLineForm(QtGui.QWidget):
     ### main body of algorithm should go here. MSG contains an id, x,y and orientation deta members
     def aprtCallback(self, msg):
         print('april tag call back' + str(msg))
-        if not self.initialized: #still initializing
+        if not self.initialized:  # still initializing
             return
 
         for key in self.location:
-            self.location[key] = (-1,-1)
+            self.location[key] = (-1, -1)
 
-        for i in range(0,len(msg.id)):
+        for i in range(0, len(msg.id)):
             self.location[msg.id[i]] = (msg.pose[i].x, msg.pose[i].y)
 
         for key in msg.id:
@@ -221,16 +295,11 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 twist.angular.x = 0;
                 twist.angular.y = 0;
                 twist.angular.z = 0
-            self.cmdVelPub.publish(twist) # how to tell sphero to move. all fields in twist must be explicitly set.
-
-
+            self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
 
 
 if __name__ == '__main__':
-
     app = QtGui.QApplication(sys.argv)
     w = SpheroSwarmLineForm()
     w.show()
     sys.exit(app.exec_())
-  
-        
