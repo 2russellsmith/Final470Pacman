@@ -22,6 +22,7 @@ class PacmanAgent(Agent):
 class GhostAgent(Agent):
     def __init__(self, index):
         Agent.__init__(self, index)
+        self.chaseMode = False
 
     def takeAction(self, gameState):
         return Directions.SOUTH
@@ -30,3 +31,4 @@ class GhostAgent(Agent):
 class AgentState:
     def __init__(self, location):
         self.location = location
+        self.color = (255, 255, 255)
