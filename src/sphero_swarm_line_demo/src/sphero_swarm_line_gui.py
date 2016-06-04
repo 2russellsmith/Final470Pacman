@@ -55,7 +55,6 @@ class SpheroSwarmLineForm(QtGui.QWidget):
             cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
 
             self.drawGrid(cv_image)
-            self.drawFood(cv_image)
 
             self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
             print 'drawn'
