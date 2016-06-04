@@ -21,6 +21,8 @@ class Directions:
 
 
 class Location:
+    """Discretized point"""
+
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -37,16 +39,33 @@ class Location:
 
 class GameBoard:
     def __init__(self):
-        self._board = {}
+        self._board = self.initializeBoard()
 
     def initializeBoard(self):
-        return
+        board = []
+        with open('layout.txt', 'r') as f:
+            lines = f.read().split('\n')
+            for line in lines:
+                board.append(list(line))
+        return board
+
+    def getValueAt(self, x, y):
+        return self._board[x][y]
+
+    def updateAt(self, x, y, newValue):
+        self._board[x][y] = newValue
+
+    def isTraversable(self, x, y):
+        return self.hasFood(x, y) or self._board[x][y] == ' '
+
+    def hasFood(self, x, y):
+        return self._board[x][y] == '.'
 
 
 class GameState:
-    def __init__(self, agents, gameBoard):
+    def __init__(self, agents):
         self.agents = agents
-        self.gameBoard = gameBoard
+        self.gameBoard = GameBoard()
 
     def containsPacman(self, location):
         for agent in self.agents:
@@ -56,9 +75,19 @@ class GameState:
         return False
 
     def containsGhost(self, location):
-
         for agent in self.agents:
             if not agent.isPacman:
                 if agent.location == location:
                     return True
         return False
+
+    def getPacmanLocation(self):
+        for agent in self.agents:
+            if agent.isPacman:
+                return agent.location
+
+    def getGhostLocations(self):
+        locations = {}
+        for agent in self.agents:
+            if not agent.isPacman:
+                locations[agent] = agent.location
