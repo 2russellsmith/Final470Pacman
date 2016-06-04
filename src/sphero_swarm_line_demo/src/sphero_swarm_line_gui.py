@@ -29,10 +29,22 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.cmdVelPub = rospy.Publisher('cmd_vel', SpheroTwist, queue_size=1) #self.cmdVelPub is who we tell about to move sphero
         self.cmdVelSub = rospy.Subscriber("cmd_vel", SpheroTwist, self.cmdVelCallback)
 
+	print 'subscribing to image'
+	self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.callback, queue_size=1)
+	self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
+
         self.colorPub = rospy.Publisher('set_color', SpheroColor, queue_size=1) #who we tell if we want to update the color
         self.aprtSub = rospy.Subscriber('april_tag_pos', april_tag_pos, self.aprtCallback)
         #aprtSub tells us when april tags are updated. When this happens the callback function is called.
-       
+   
+def callback(self, ros_data):
+        try:
+            cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
+            cv2.circle(cv_image, (50,50), 10, 255)
+            self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
+        except CvBridgeError as e:
+            print(e)
+
     def initUI(self):   
         
         key_instruct_label = """

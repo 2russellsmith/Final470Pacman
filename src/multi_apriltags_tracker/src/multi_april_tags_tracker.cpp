@@ -82,7 +82,7 @@ MultiAprilTagsTracker::MultiAprilTagsTracker( AprilTags::TagCodes codes  ) : m_i
   cv::namedWindow(MULTI_APRIL_TAGS_TRACKER_VIEW);
   cv::startWindowThread();
   
-  m_sub = m_it.subscribe("/camera/image_raw", 1, &MultiAprilTagsTracker::imageCallback, this);
+  m_sub = m_it.subscribe("/output/image_raw", 1, &MultiAprilTagsTracker::imageCallback, this);
   mp_tag_detector = new AprilTags::TagDetector( m_tag_codes ); 
 
   m_pos_pub = m_nh.advertise<multi_apriltags_tracker::april_tag_pos>( APRIL_TAG_POS_MSG_NAME, 1000 );
