@@ -43,6 +43,8 @@ class GameBoard:
         return
 
 
+
+
 class GameState:
     def __init__(self, agents, gameBoard):
         self.agents = agents
@@ -62,3 +64,14 @@ class GameState:
                 if agent.location == location:
                     return True
         return False
+
+    def getPacmanLocations(self):
+        for agent in self.agents:
+            if agent.isPacman:
+                return agent.location
+
+    def getGhostLocations(self):
+        locations = {}
+        for agent in self.agents:
+            if not agent.isPacman:
+                locations[agent] = agent.location
