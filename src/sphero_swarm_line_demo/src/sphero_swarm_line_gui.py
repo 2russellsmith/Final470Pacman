@@ -19,6 +19,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.sphero_dict = {}
         self.initUI()
         self.initialized = False
+        self.bridge = CvBridge()
         '''The Sphero bluetooth controller maps string names to addresses, The camera maps num to locations numToSphero
         and spheroToNum are dictoinaries that will map back and forth'''
         self.numToSphero = {}
@@ -39,7 +40,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.aprtSub = rospy.Subscriber('april_tag_pos', april_tag_pos, self.aprtCallback)
         #aprtSub tells us when april tags are updated. When this happens the callback function is called.
    
-def callback(self, ros_data):
+    def callback(self, ros_data):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
             cv2.circle(cv_image, (50,50), 10, 255)
