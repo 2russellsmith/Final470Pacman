@@ -89,12 +89,6 @@ apriltags_intrude_detector/CMakeFiles/apriltags_intrude_detector.dir/src/aprilta
  /usr/include/x86_64-linux-gnu/sys/time.h
  /usr/include/x86_64-linux-gnu/sys/timeb.h
 apriltags_intrude_detector/CMakeFiles/apriltags_intrude_detector.dir/src/apriltags_intrude_detector_demo.cpp.o
- /home/zeta/catkin_ws/devel/include/apriltags_intrude_detector/apriltags_info.h
- /home/zeta/catkin_ws/devel/include/apriltags_intrude_detector/apriltags_infoRequest.h
- /home/zeta/catkin_ws/devel/include/apriltags_intrude_detector/apriltags_infoResponse.h
- /home/zeta/catkin_ws/devel/include/apriltags_intrude_detector/apriltags_intrude.h
- /home/zeta/catkin_ws/devel/include/apriltags_intrude_detector/apriltags_intrudeRequest.h
- /home/zeta/catkin_ws/devel/include/apriltags_intrude_detector/apriltags_intrudeResponse.h
  /home/zeta/catkin_ws/src/apriltags_intrude_detector/include/apriltags_intrude_detector.h
  /home/zeta/catkin_ws/src/apriltags_intrude_detector/include/geo_datatype.h
  /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/apriltags_intrude_detector_demo.cpp

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, rospy, math
+import sys, rospy, math, cv2
 from PyQt4 import QtGui, QtCore
 
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
@@ -33,18 +33,26 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.cmdVelSub = rospy.Subscriber("cmd_vel", SpheroTwist, self.cmdVelCallback)
 
 	print 'subscribing to image'
-	self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.callback, queue_size=1)
+	self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.cameraImageCallback, queue_size=1)
 	self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
 
         self.colorPub = rospy.Publisher('set_color', SpheroColor, queue_size=1) #who we tell if we want to update the color
         self.aprtSub = rospy.Subscriber('april_tag_pos', april_tag_pos, self.aprtCallback)
         #aprtSub tells us when april tags are updated. When this happens the callback function is called.
-   
-    def callback(self, ros_data):
+
+    def cameraImageCallback(self, ros_data):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
-            cv2.circle(cv_image, (50,50), 10, 255)
+            boardWidth = 800
+            boardHeight = 600
+            numBoxWidth = 19
+            numBoxHeight = 9
+            for i in range(0,20):
+                for j in range(0,15):
+                    cv2.rectangle(cv_image,(boardWidth/numBoxWidth*i, boardHeight/numBoxHeight*j),(boardWidth/numBoxWidth*(i+1), boardHeight/numBoxHeight*(j+1)),(0,0,255), 1, 8, 0)
+
             self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
+            print 'drawn'
         except CvBridgeError as e:
             print(e)
 

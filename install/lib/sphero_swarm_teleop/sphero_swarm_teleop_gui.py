@@ -5,7 +5,7 @@ from PyQt4 import QtGui, QtCore
 
 from sphero_swarm_node.msg import SpheroTwist
 
-STEP_LENGTH = 50
+STEP_LENGTH = 100
 
 class SpheroSwarmTeleopForm(QtGui.QWidget):
     
