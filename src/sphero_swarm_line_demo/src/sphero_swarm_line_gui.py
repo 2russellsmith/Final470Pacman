@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, rospy, math
+import sys, rospy, math, cv2
 from PyQt4 import QtGui, QtCore
 
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
