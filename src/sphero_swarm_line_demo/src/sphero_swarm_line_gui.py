@@ -5,6 +5,8 @@ from PyQt4 import QtGui, QtCore
 
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 from multi_apriltags_tracker.msg import april_tag_pos
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge, CvBridgeError
 STEP_LENGTH = 100
 FOLLOW_SPEED = 75
 RADIUS = 150
