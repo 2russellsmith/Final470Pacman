@@ -113,7 +113,7 @@ class AController:
                     for y in range(int(min(p.y for p in poly.points)/self.scale), int(max(p.y for p in poly.points)/self.scale)):
                         self.maze[x][y].wall = True
         print "Building Maze...."
-	print xSize
+        print xSize
         print ySize
         for x in range(xSize):
             for y in range(ySize):
@@ -147,7 +147,7 @@ class AController:
             for n in openSet:
                 if n.currentCost + n.heuristic < current.currentCost + current.heuristic:
                     current = n 
-            if current.goal == True:
+            if current.goal == True:  # TODO
                 return self.constructPath(current) 
             openSet.remove(current)
             current.visited = True
