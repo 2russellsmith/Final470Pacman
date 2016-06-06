@@ -58,7 +58,7 @@ class GameBoard:
 
                 children = []
                 for row, col in neighborLocations:
-                    children.append(self.board[row][col])
+                    children.append(self._board[row][col])
                 node.children = children
 
         return board
