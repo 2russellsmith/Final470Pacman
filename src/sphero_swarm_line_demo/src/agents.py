@@ -10,7 +10,10 @@ class Agent:
         self.nextLocation = (-1, -1)
 
     def getMove(self, gameState):
-        return
+        pass
+
+    def getDirectionOfMove(self, location):
+        if location[0] - self.location[0]
 
 
 class PacmanAgent(Agent):
