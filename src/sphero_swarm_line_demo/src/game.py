@@ -58,7 +58,7 @@ class GameBoard:
 
                 children = []
                 for row, col in neighborLocations:
-                    children.append(self.board[row][col])
+                    children.append(self._board[row][col])
                 node.children = children
 
         return board
@@ -100,6 +100,10 @@ class GameBoard:
 
     def hasFood(self, row, col):
         return self._board[row][col] == '.'
+
+    def processPacmanMove(self, row, col):
+        if self.hasFood(row, col):
+            self._board[row][col] = " "
 
 
 class GameState:

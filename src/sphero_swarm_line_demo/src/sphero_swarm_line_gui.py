@@ -7,6 +7,10 @@ from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 from multi_apriltags_tracker.msg import april_tag_pos
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
+from game import GameState
+from agents import *
+from PinkGhost import PinkGhost
+from RedGhost import RedGhost
 
 STEP_LENGTH = 100
 FOLLOW_SPEED = 75
@@ -18,6 +22,14 @@ BOX_Y_COUNT = 9
 
 
 class SpheroSwarmLineForm(QtGui.QWidget):
+    PACMAN_ID = 0
+    RED_GHOST_ID = 1
+    PINK_GHOST_ID = 2
+    pacman = PacmanAgent(PACMAN_ID)
+    redGhost = RedGhost(RED_GHOST_ID)
+    pinkGhost = PinkGhost(PINK_GHOST_ID)
+    agents = [pacman, redGhost, pinkGhost]
+    gameState = GameState(agents)
     def __init__(self):
         super(QtGui.QWidget, self).__init__()
         self.resize(600, 480)
@@ -28,8 +40,8 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         and spheroToNum are dictoinaries that will map back and forth'''
         self.numToSphero = {}
         self.spheroToNum = {}
-        self.order = []  # used to keep a follow the leadrer order
-        self.location = {}  # dictionary that maps sphero id nums to last known location
+        self.order = []  # used to keep a follow the leader order
+        self.location = {}  # dictionary that maps sphero id nums to last known locatio
 
         rospy.init_node('sphero_swarm_line_gui', anonymous=True)
 
@@ -140,75 +152,75 @@ class SpheroSwarmLineForm(QtGui.QWidget):
 
         if e.key() == QtCore.Qt.Key_U:
             twist = SpheroTwist()
-            twist.linear.x = -STEP_LENGTH;
-            twist.linear.y = STEP_LENGTH;
+            twist.linear.x = -STEP_LENGTH
+            twist.linear.y = STEP_LENGTH
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_I:
             twist = SpheroTwist()
-            twist.linear.x = 0;
-            twist.linear.y = STEP_LENGTH;
+            twist.linear.x = 0
+            twist.linear.y = STEP_LENGTH
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_O:
             twist = SpheroTwist()
-            twist.linear.x = STEP_LENGTH;
-            twist.linear.y = STEP_LENGTH;
+            twist.linear.x = STEP_LENGTH
+            twist.linear.y = STEP_LENGTH
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_J:
             twist = SpheroTwist()
-            twist.linear.x = -STEP_LENGTH;
-            twist.linear.y = 0;
+            twist.linear.x = -STEP_LENGTH
+            twist.linear.y = 0
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_K:
             twist = SpheroTwist()
-            twist.linear.x = 0;
-            twist.linear.y = 0;
+            twist.linear.x = 0
+            twist.linear.y = 0
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_L:
             twist = SpheroTwist()
-            twist.linear.x = STEP_LENGTH;
-            twist.linear.y = 0;
+            twist.linear.x = STEP_LENGTH
+            twist.linear.y = 0
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_M:
             twist = SpheroTwist()
-            twist.linear.x = -STEP_LENGTH;
-            twist.linear.y = -STEP_LENGTH;
+            twist.linear.x = -STEP_LENGTH
+            twist.linear.y = -STEP_LENGTH
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_Comma:
             twist = SpheroTwist()
-            twist.linear.x = 0;
-            twist.linear.y = -STEP_LENGTH;
+            twist.linear.x = 0
+            twist.linear.y = -STEP_LENGTH
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_Period:
             twist = SpheroTwist()
-            twist.linear.x = STEP_LENGTH;
-            twist.linear.y = -STEP_LENGTH;
+            twist.linear.x = STEP_LENGTH
+            twist.linear.y = -STEP_LENGTH
             twist.linear.z = 0
-            twist.angular.x = 0;
-            twist.angular.y = 0;
+            twist.angular.x = 0
+            twist.angular.y = 0
             twist.angular.z = 0
 
         if twist != None:
@@ -247,7 +259,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.initialized = True
         self.update()
 
-    ### main body of algorithm should go here. MSG contains an id, x,y and orientation deta members
+    # main body of algorithm should go here. MSG contains an id, x,y and orientation data members
     def aprtCallback(self, msg):
         print('april tag call back' + str(msg))
         if not self.initialized:  # still initializing
@@ -256,33 +268,37 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         for key in self.location:
             self.location[key] = (-1, -1)
 
+        # iterate through array of april-tag ids
         for i in range(0, len(msg.id)):
             self.location[msg.id[i]] = (msg.pose[i].x, msg.pose[i].y)
 
         for key in msg.id:
+            if key == self.PACMAN_ID:
+                self.pacman
+            twist = SpheroTwist()
+            """
             toHere = self.location[key]
             if toHere[0] == -1:
                 continue
-            nextIndx = self.order.index(key) + 1
-            if nextIndx >= len(self.order):
+            nextIndex = self.order.index(key) + 1
+            if nextIndex >= len(self.order):
                 continue
-            nextSpher = self.order[nextIndx]
-            fromHere = self.location[nextSpher]
+            nextSphero = self.order[nextIndex]
+            fromHere = self.location[nextSphero]
             if fromHere[0] == -1:
                 continue
             diffX = toHere[0] - fromHere[0]
             diffY = toHere[1] - fromHere[1]
-
             distance = math.sqrt((diffX * diffX) + (diffY * diffY))
             twist = SpheroTwist()
-            twist.name = self.numToSphero[nextSpher]
+            twist.name = self.numToSphero[nextSphero]
             print distance
             if distance < RADIUS:
-                twist.linear.x = 0;
-                twist.linear.y = 0;
+                twist.linear.x = 0
+                twist.linear.y = 0
                 twist.linear.z = 0
-                twist.angular.x = 0;
-                twist.angular.y = 0;
+                twist.angular.x = 0
+                twist.angular.y = 0
                 twist.angular.z = 0
             else:
                 omega = math.atan2(diffY, diffX)
@@ -291,9 +307,10 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 twist.linear.x = deltaX
                 twist.linear.y = deltaY
                 twist.linear.z = 0
-                twist.angular.x = 0;
-                twist.angular.y = 0;
+                twist.angular.x = 0
+                twist.angular.y = 0
                 twist.angular.z = 0
+            """
             self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
 
 

@@ -10,7 +10,23 @@ class Agent:
         self.nextLocation = (-1, -1)
 
     def getMove(self, gameState):
-        return
+        pass
+
+    def getDirectionOfMove(self, location):
+        if location[0] > self.location[0]:
+            return Directions.EAST
+        elif location[0] < self.location[0]:
+            return Directions.WEST
+        elif location[1] > self.location[1]:
+            return Directions.NORTH
+        elif location[1] < self.location[1]:
+            return Directions.SOUTH
+        else:
+            return Directions.STOP
+
+    def setLocation(self, location):
+        self.prevLocation = self.location
+        self.location = location
 
 
 class PacmanAgent(Agent):
@@ -22,8 +38,8 @@ class PacmanAgent(Agent):
 
 
 class GhostAgent(Agent):
-
     chaseMode = False
+
     def __init__(self, index):
         Agent.__init__(self, index)
 
@@ -31,16 +47,14 @@ class GhostAgent(Agent):
     def getGoal(self, gameState):
         pass
 
-
     # returns the sequence of (row,column) grid locations on the path to the destination
     def getMove(self, gameState):
         destination = self.getGoal(gameState)
         startNode = gameState.gameBoard.getNode(self.location)
 
-
         # setup cost matrix
         assistantMatrix = {}
-        for row in xrange (0, len(gameState.gameBoard.getBoardHeight())):
+        for row in xrange(0, len(gameState.gameBoard.getBoardHeight())):
             for column in xrange(0, len(gameState.gameBoard.getBoardWidth())):
                 assistantMatrix[(row, column)] = (10000, False, None)
         assistantMatrix[self.location] = 0, False, None
@@ -53,8 +67,8 @@ class GhostAgent(Agent):
             current = openSet[0]
             for n in openSet:
                 if assistantMatrix[n.location][0] + self.manhattan(n.location, destination.location) < \
-                    assistantMatrix[current.location][0] + self.manhattan(current.location, destination.location):
-
+                                assistantMatrix[current.location][0] + self.manhattan(current.location,
+                                                                                      destination.location):
                     current = n
 
             if current.location == destination.location:
@@ -79,13 +93,13 @@ class GhostAgent(Agent):
     def manhattan(self, location1, location2):
         return abs(location1[0] - location2[0]) + abs(location1[1] - location2[1])
 
-
     def getNextMove(self, nodeLocation, assistantMatrix):
         prevLocation = None
         while assistantMatrix[nodeLocation][2]:
             prevLocation = nodeLocation
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation
+
 
 class AgentState:
     def __init__(self, location):
