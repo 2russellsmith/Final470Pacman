@@ -31,7 +31,7 @@ class Agent:
 
 class PacmanAgent(Agent):
     def __init__(self, index):
-        Agent.__init__(self, index)
+        Agent.__init__(self, index, True)
 
     def getMove(self, gameState):
         pass
@@ -57,6 +57,7 @@ class GhostAgent(Agent):
         for row in xrange(0, len(gameState.gameBoard.getBoardHeight())):
             for column in xrange(0, len(gameState.gameBoard.getBoardWidth())):
                 assistantMatrix[(row, column)] = (10000, False, None)
+
         assistantMatrix[self.location] = 0, False, None
         assistantMatrix[(self.prevLocation)] = 10000, True, None
 

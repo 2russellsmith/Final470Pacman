@@ -1,5 +1,3 @@
-from Lab2.AController import Node
-
 class Directions:
     NORTH = 'North'
     SOUTH = 'South'
@@ -21,6 +19,7 @@ class Directions:
                WEST: EAST,
                STOP: STOP}
 
+
 class GameNode:
     def __init__(self, isWall=False, hasFood=False):
         self.children = []
@@ -31,15 +30,15 @@ class GameNode:
 
 class GameBoard:
     def __init__(self):
-        self._board = self.initializeBoard()
+        self._board = None
+        self.initializeBoard()
 
     def initializeBoard(self):
-        lines = []
         with open('layout.txt', 'r') as f:
             lines = f.read().split('\n')
 
         # setup the board
-        board = []
+        self._board = []
         for line in lines:
             row = []
             for character in line:
@@ -49,10 +48,10 @@ class GameBoard:
                     row.append(GameNode())
                 elif character == '%':
                     row.append(GameNode(isWall=True))
-            board.append(row)
+            self._board.append(row)
 
         # initialize node children
-        for rowIndex, line in enumerate(board):
+        for rowIndex, line in enumerate(self._board):
             for colIndex, node in enumerate(line):
                 neighborLocations = self.getNeighborCoordinates(rowIndex, colIndex)
 
@@ -60,8 +59,6 @@ class GameBoard:
                 for row, col in neighborLocations:
                     children.append(self._board[row][col])
                 node.children = children
-
-        return board
 
     def getNode(self, location):
         return self._board[location[0]][location[1]]
@@ -72,22 +69,12 @@ class GameBoard:
     def getBoardWidth(self):
         return len(self._board[0])
 
+    def isInBoard(self, location):
+        return 0 < location[0] < self.getBoardHeight() and 0 < location[1] < self.getBoardWidth()
+
     def getNeighborCoordinates(self, row, col):
-        result = []
-
-        if row > 0:
-            result.append((row - 1, col))
-
-        if row < self.getBoardWidth() - 1:
-            result.append((row + 1, col))
-
-        if col > 0:
-            result.append((row, col - 1))
-
-        if col < self.getBoardHeight() - 1:
-            result.append((row, col + 1))
-
-        return result
+        possibleMoves = [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]
+        return [(row, col) for (row, col) in possibleMoves if self.isInBoard((row, col)) and self.isTraversable(row, col)]
 
     def getValueAt(self, row, col):
         return self._board[row][col]
@@ -96,10 +83,10 @@ class GameBoard:
         self._board[row][col] = newValue
 
     def isTraversable(self, row, col):
-        return self.hasFood(row, col) or self._board[row][col] == ' '
+        return not self._board[row][col].isWall
 
     def hasFood(self, row, col):
-        return self._board[row][col] == '.'
+        return self._board[row][col].hasFood
 
     def processPacmanMove(self, row, col):
         if self.hasFood(row, col):
