@@ -101,6 +101,10 @@ class GameBoard:
     def hasFood(self, row, col):
         return self._board[row][col] == '.'
 
+    def processPacmanMove(self, row, col):
+        if self.hasFood(row, col):
+            self._board[row][col] = " "
+
 
 class GameState:
     def __init__(self, agents):
