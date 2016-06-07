@@ -8,5 +8,5 @@ class RedGhost(GhostAgent):
     def getGoal(self, gameState):
         if GhostAgent.chaseMode:
             return gameState.gameBoard.getNode((0, 18))
-        return gameState.gameBoard.getNode(gameState.getPacmanLocation())
+        return gameState.gameBoard.getNode(gameState.getPacman().location)
 

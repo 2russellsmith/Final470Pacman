@@ -9,5 +9,5 @@ class PinkGhost(GhostAgent):
         if GhostAgent.chaseMode:
             return gameState.gameBoard.getNode((0, 0))
         #Todo Set Goal to 3 spaces in front of where pac-man is facing
-        return gameState.gameBoard.getNode(gameState.getPacmanLocation())
+        return gameState.gameBoard.getNode(gameState.getPacman().location)
 
