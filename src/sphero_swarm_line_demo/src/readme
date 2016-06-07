@@ -7,6 +7,17 @@ https://github.com/darin-costello/sphero_swarm_line_demo.git
 
 To change spheros edit
 catkin_ws/src/sphero_ros/sphero_swarm_bringup/launch/param/swarm.yaml
+Sphero Names and MAC addresses
+'Sphero-BGP':'68:86:E7:07:4F:F0'
+'Sphero-GRO':'68:86:E7:07:25:8A'
+'Sphero-OBR':'68:86:E7:07:2D:E1'
+'Sphero-RRG':'68:86:E7:07:59:14'
+'Sphero-YWY':'68:86:E7:07:59:71'
+'Sphero-RYG':'68:86:E7:07:5E:CF'
+'Sphero-OPR':'68:86:E7:07:60:9E'
+'Sphero-GOP':'68:86:E7:07:15:D2'
+'Sphero-YRG':'68:86:E7:07:51:C2'
+'Sphero-YRW':'68:86:E7:07:32:5F'
 Then run:
 
 to connect all spheros
