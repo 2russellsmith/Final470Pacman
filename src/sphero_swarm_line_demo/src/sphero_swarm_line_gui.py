@@ -15,10 +15,12 @@ from RedGhost import RedGhost
 STEP_LENGTH = 100
 FOLLOW_SPEED = 75
 RADIUS = 150
-BOARD_WIDTH = 800
-BOARD_HEIGHT = 600
+BOARD_WIDTH = 0
+BOARD_HEIGHT = 0
 BOX_X_COUNT = 19
 BOX_Y_COUNT = 9
+BOX_WIDTH = 0
+BOX_HEIGHT = 0
 
 
 class SpheroSwarmLineForm(QtGui.QWidget):
@@ -30,18 +32,19 @@ class SpheroSwarmLineForm(QtGui.QWidget):
     pinkGhost = PinkGhost(PINK_GHOST_ID)
     agents = [pacman, redGhost, pinkGhost]
     gameState = GameState(agents)
+
     def __init__(self):
         super(QtGui.QWidget, self).__init__()
         self.resize(600, 480)
         self.sphero_dict = {}
         self.initUI()
         self.initialized = False
-        '''The Sphero bluetooth controller maps string names to addresses, The camera maps num to locations numToSphero
-        and spheroToNum are dictoinaries that will map back and forth'''
+        '''The Sphero blue-tooth controller maps string names to addresses, The camera maps num to locations numToSphero
+        and spheroToNum are dictionaries that will map back and forth'''
         self.numToSphero = {}
         self.spheroToNum = {}
         self.order = []  # used to keep a follow the leader order
-        self.location = {}  # dictionary that maps sphero id nums to last known locatio
+        self.location = {}  # dictionary that maps sphero id nums to last known location
 
         rospy.init_node('sphero_swarm_line_gui', anonymous=True)
 
@@ -76,21 +79,21 @@ class SpheroSwarmLineForm(QtGui.QWidget):
     def drawGrid(self, image, topLeftPoint, bottomRightPoint):
         # calculate the height and width of the board according to tag corner positions
         if topLeftPoint is not None and bottomRightPoint is not None:
-            boardWidth = bottomRightPoint.x - topLeftPoint.x
-            boardHeight = bottomRightPoint.y - topLeftPoint.y
+            BOARD_WIDTH = bottomRightPoint[0] - topLeftPoint[0]
+            BOARD_HEIGHT = bottomRightPoint[1] - topLeftPoint[1]
         else:
-            boardWidth = BOARD_WIDTH
-            boardHeight = BOARD_HEIGHT
+            BOARD_WIDTH = 800
+            BOARD_HEIGHT = 600
 
         # calculate the height and width of the boxes to be drawn
-        boxWidth = boardWidth / BOX_X_COUNT
-        boxHeight = boardHeight / BOX_Y_COUNT
+        BOX_WIDTH = BOARD_WIDTH / BOX_X_COUNT
+        BOX_HEIGHT = BOARD_HEIGHT / BOX_Y_COUNT
 
         # draw the grid
         for i in range(0, BOX_X_COUNT):
             for j in range(0, BOX_Y_COUNT):
-                pt1 = cv2.Point2f(boxWidth * i, boxHeight * j)
-                pt2 = cv2.Point2f(boxWidth * (i + 1), boxHeight * (j + 1))
+                pt1 = cv2.Point2f(BOX_WIDTH * i, BOX_HEIGHT * j)
+                pt2 = cv2.Point2f(BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1))
                 color = cv2.Scalar(0, 0, 255)
                 thickness = 1
                 lineType = 8
@@ -101,7 +104,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                     y = pt2.y - pt2.y
                     radius = 5
                     cv2.circle(image, (x, y), radius, color, thickness, lineType, shift)
-                    ''' cv2.rectangle(image, (boxWidth * i, boxHeight * j), (boxWidth * (i + 1), boxHeight * (j + 1)),
+                    ''' cv2.rectangle(image, (BOX_WIDTH * i, BOX_HEIGHT * j), (BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1)),
                     (0, 0, 255), 1, 8, 0)'''
                     # http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html
 
@@ -265,53 +268,73 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         if not self.initialized:  # still initializing
             return
 
-        for key in self.location:
-            self.location[key] = (-1, -1)
+        for location in self.location:
+            self.location[location] = (-1, -1)
 
         # iterate through array of april-tag ids
         for i in range(0, len(msg.id)):
             self.location[msg.id[i]] = (msg.pose[i].x, msg.pose[i].y)
 
-        for key in msg.id:
-            if key == self.PACMAN_ID:
-                self.pacman
-            twist = SpheroTwist()
-            """
-            toHere = self.location[key]
+        for spheroId in msg.id:
+            agent = self.getAgent(spheroId)
+            if agent is None:
+                continue
+            agent.setLocation(self.toDiscretized(self.location[spheroId]))
+
+            toHere = self.location[spheroId]
             if toHere[0] == -1:
                 continue
-            nextIndex = self.order.index(key) + 1
+            nextIndex = self.order.index(spheroId) + 1
             if nextIndex >= len(self.order):
                 continue
             nextSphero = self.order[nextIndex]
             fromHere = self.location[nextSphero]
             if fromHere[0] == -1:
                 continue
-            diffX = toHere[0] - fromHere[0]
-            diffY = toHere[1] - fromHere[1]
-            distance = math.sqrt((diffX * diffX) + (diffY * diffY))
-            twist = SpheroTwist()
+            twist = self.getTwistFromDirection(agent.getMove(self.gameState))
+
             twist.name = self.numToSphero[nextSphero]
-            print distance
-            if distance < RADIUS:
-                twist.linear.x = 0
-                twist.linear.y = 0
-                twist.linear.z = 0
-                twist.angular.x = 0
-                twist.angular.y = 0
-                twist.angular.z = 0
-            else:
-                omega = math.atan2(diffY, diffX)
-                deltaX = FOLLOW_SPEED * math.cos(omega)
-                deltaY = -FOLLOW_SPEED * math.sin(omega)
-                twist.linear.x = deltaX
-                twist.linear.y = deltaY
-                twist.linear.z = 0
-                twist.angular.x = 0
-                twist.angular.y = 0
-                twist.angular.z = 0
-            """
             self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
+
+    def getAgent(self, key):
+        agent = None
+        if key == self.PACMAN_ID:
+            agent = self.pacman
+        elif key == self.RED_GHOST_ID:
+            agent = self.redGhost
+        elif key == self.PINK_GHOST_ID:
+            agent == self.pinkGhost
+        return agent
+
+    def toDiscretized(self, location):
+        x = math.ceil(location[0] / BOX_WIDTH)
+        y = math.ceil(location[1] / BOX_HEIGHT)
+        discretizedLocation = (x, y)
+        return discretizedLocation
+
+    def fromDiscretized(self, location):
+        x = location[0] * BOX_WIDTH + (BOX_WIDTH / 2)
+        y = location[1] * BOX_HEIGHT + (BOX_HEIGHT / 2)
+        normalizedLocation = (x, y)
+        return normalizedLocation
+
+    def getTwistFromDirection(self, direction):
+        twist = SpheroTwist()
+        twist.linear.x = 0
+        twist.linear.y = 0
+        twist.linear.z = 0
+        twist.angular.x = 0
+        twist.angular.y = 0
+        twist.angular.z = 0
+        if direction == Directions.NORTH:
+            twist.linear.y = FOLLOW_SPEED
+        elif direction == Directions.EAST:
+            twist.linear.x = FOLLOW_SPEED
+        elif direction == Directions.SOUTH:
+            twist.linear.y = -FOLLOW_SPEED
+        elif direction == Directions.WEST:
+            twist.linear.x = -FOLLOW_SPEED
+        return twist
 
 
 if __name__ == '__main__':
