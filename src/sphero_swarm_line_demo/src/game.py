@@ -27,6 +27,13 @@ class GameNode:
         self.hasFood = hasFood
         self.location = (-1,-1)
 
+    def __str__(self):
+        if self.hasFood:
+            return "."
+        elif self.isWall:
+            return "%"
+        return " "
+
 
 class GameBoard:
     def __init__(self):
@@ -112,3 +119,6 @@ class GameState:
 
     def getGhosts(self):
         return [x for x in self.agents if not x.isPacman]
+
+    def hasFood(self, row, column):
+        return self.gameBoard.hasFood(row, column)
