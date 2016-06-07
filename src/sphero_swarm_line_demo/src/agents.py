@@ -72,7 +72,7 @@ class GhostAgent(Agent):
                     current = n
 
             if current.location == destination.location:
-                return self.getNextMove(current.location, assistantMatrix)  # todo
+                return self.getNextMove(current.location, assistantMatrix)
 
             openSet.remove(current)
             assistantMatrix[current.location][1] = True

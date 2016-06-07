@@ -113,26 +113,15 @@ class GameState:
         self.score = 0
 
     def containsPacman(self, location):
-        for agent in self.agents:
-            if agent.isPacman:
-                if agent.location == location:
-                    return True
-        return False
+        return self.getPacman().location == location
 
     def containsGhost(self, location):
-        for agent in self.agents:
-            if not agent.isPacman:
-                if agent.location == location:
-                    return True
-        return False
+        return sum([1 for x in self.agents if x.location == location and not x.isPacman]) > 0
 
-    def getPacmanLocation(self):
+    def getPacman(self):
         for agent in self.agents:
             if agent.isPacman:
-                return agent.location
+                return agent
 
-    def getGhostLocations(self):
-        locations = {}
-        for agent in self.agents:
-            if not agent.isPacman:
-                locations[agent] = agent.location
+    def getGhosts(self):
+        return [x for x in self.agents if not x.isPacman]
