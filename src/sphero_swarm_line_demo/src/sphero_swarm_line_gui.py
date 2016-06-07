@@ -57,9 +57,6 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.cameraImageCallback, queue_size=1)
         self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
 
-        # Other camera related variables # initialize all food to 1
-        self.food = [[1 for i in range(BOX_X_COUNT)] for j in range(BOX_Y_COUNT)]
-
         self.colorPub = rospy.Publisher('set_color', SpheroColor,
                                         queue_size=1)  # who we tell if we want to update the color
         self.aprtSub = rospy.Subscriber('april_tag_pos', april_tag_pos, self.aprtCallback)
@@ -99,7 +96,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 lineType = 8
                 shift = 0
                 cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
-                if self.food[i][j] == 1:
+                if self.gameState.hasFood(i, j):
                     x = pt2.x - pt1.x
                     y = pt2.y - pt2.y
                     radius = 5
@@ -144,89 +141,42 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         self.show()
 
     def keyPressEvent(self, e):
-        twist = None
-
         print "key pressed"
         selected_items = self.spheroListWidget.selectedItems()
         if len(selected_items) == 0:
             return
 
         print "selected"
-
+        twist = SpheroTwist()
+        twist.angular.x = 0
+        twist.angular.y = 0
+        twist.angular.z = 0
+        twist.linear.x = 0
+        twist.linear.y = 0
+        twist.linear.z = 0
         if e.key() == QtCore.Qt.Key_U:
-            twist = SpheroTwist()
             twist.linear.x = -STEP_LENGTH
             twist.linear.y = STEP_LENGTH
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_I:
-            twist = SpheroTwist()
-            twist.linear.x = 0
             twist.linear.y = STEP_LENGTH
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_O:
-            twist = SpheroTwist()
             twist.linear.x = STEP_LENGTH
             twist.linear.y = STEP_LENGTH
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_J:
-            twist = SpheroTwist()
             twist.linear.x = -STEP_LENGTH
-            twist.linear.y = 0
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
-        elif e.key() == QtCore.Qt.Key_K:
-            twist = SpheroTwist()
-            twist.linear.x = 0
-            twist.linear.y = 0
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
+        # elif e.key() == QtCore.Qt.Key_K:
         elif e.key() == QtCore.Qt.Key_L:
-            twist = SpheroTwist()
             twist.linear.x = STEP_LENGTH
-            twist.linear.y = 0
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_M:
-            twist = SpheroTwist()
             twist.linear.x = -STEP_LENGTH
             twist.linear.y = -STEP_LENGTH
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_Comma:
-            twist = SpheroTwist()
-            twist.linear.x = 0
             twist.linear.y = -STEP_LENGTH
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
         elif e.key() == QtCore.Qt.Key_Period:
-            twist = SpheroTwist()
             twist.linear.x = STEP_LENGTH
             twist.linear.y = -STEP_LENGTH
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
 
-        if twist != None:
+        if twist.linear.x != 0 or twist.linear.y != 0:
             twist.name = str(selected_items[0].text())
             self.cmdVelPub.publish(twist)
 
@@ -277,24 +227,25 @@ class SpheroSwarmLineForm(QtGui.QWidget):
 
         for spheroId in msg.id:
             agent = self.getAgent(spheroId)
-            if agent is None:
-                continue
-            agent.setLocation(self.toDiscretized(self.location[spheroId]))
+            if agent is not None:
+                agent.setLocation(self.toDiscretized(self.location[spheroId]))
 
-            toHere = self.location[spheroId]
-            if toHere[0] == -1:
-                continue
-            nextIndex = self.order.index(spheroId) + 1
-            if nextIndex >= len(self.order):
-                continue
-            nextSphero = self.order[nextIndex]
-            fromHere = self.location[nextSphero]
-            if fromHere[0] == -1:
-                continue
-            twist = self.getTwistFromDirection(agent.getMove(self.gameState))
+                toHere = self.location[spheroId]
+                if toHere[0] == -1:
+                    continue
+                nextIndex = self.order.index(spheroId) + 1
+                if nextIndex >= len(self.order):
+                    continue
+                nextSphero = self.order[nextIndex]
+                fromHere = self.location[nextSphero]
+                if fromHere[0] == -1:
+                    continue
+                twist = self.getTwistFromDirection(agent.getMove(self.gameState))
 
-            twist.name = self.numToSphero[nextSphero]
-            self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
+                twist.name = self.numToSphero[nextSphero]
+                self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
+            else:
+
 
     def getAgent(self, key):
         agent = None

@@ -125,3 +125,6 @@ class GameState:
 
     def getGhosts(self):
         return [x for x in self.agents if not x.isPacman]
+
+    def hasFood(self, row, column):
+        return self.gameBoard.hasFood(row, column)
