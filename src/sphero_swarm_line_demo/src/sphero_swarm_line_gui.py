@@ -73,19 +73,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         except CvBridgeError as e:
             print(e)
 
-    def drawGrid(self, image, topLeftPoint, bottomRightPoint):
-        # calculate the height and width of the board according to tag corner positions
-        if topLeftPoint is not None and bottomRightPoint is not None:
-            BOARD_WIDTH = bottomRightPoint[0] - topLeftPoint[0]
-            BOARD_HEIGHT = bottomRightPoint[1] - topLeftPoint[1]
-        else:
-            BOARD_WIDTH = 800
-            BOARD_HEIGHT = 600
-
-        # calculate the height and width of the boxes to be drawn
-        BOX_WIDTH = BOARD_WIDTH / BOX_X_COUNT
-        BOX_HEIGHT = BOARD_HEIGHT / BOX_Y_COUNT
-
+    def drawGrid(self, image):
         # draw the grid
         for i in range(0, BOX_X_COUNT):
             for j in range(0, BOX_Y_COUNT):
@@ -225,6 +213,11 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         for i in range(0, len(msg.id)):
             self.location[msg.id[i]] = (msg.pose[i].x, msg.pose[i].y)
 
+        minX = -1
+        minY = -1
+        maxX = -1
+        maxY = -1
+
         for spheroId in msg.id:
             agent = self.getAgent(spheroId)
             if agent is not None:
@@ -245,51 +238,70 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 twist.name = self.numToSphero[nextSphero]
                 self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
             else:
+                location = self.location[spheroId]
+                if minX == -1:
+                    minX = location[0]
+                    minY = location[1]
+                    maxX = location[0]
+                    maxY = location[1]
+                if (location[0] < minX):
+                    minX = location[0]
+                if (location[1] < minY):
+                    minY = location[1]
+                if (location[0] > maxX):
+                    maxX = location[0]
+                if (location[1] < maxY):
+                    maxY = location[1]
 
+        # calculate the height and width of the board according to tag corner positions
+        BOARD_WIDTH = maxX - minX
+        BOARD_HEIGHT = maxY - minY
+        # calculate the height and width of the boxes to be drawn
+        BOX_WIDTH = BOARD_WIDTH / BOX_X_COUNT
+        BOX_HEIGHT = BOARD_HEIGHT / BOX_Y_COUNT
 
-    def getAgent(self, key):
-        agent = None
-        if key == self.PACMAN_ID:
-            agent = self.pacman
-        elif key == self.RED_GHOST_ID:
-            agent = self.redGhost
-        elif key == self.PINK_GHOST_ID:
-            agent == self.pinkGhost
-        return agent
+        def getAgent(self, key):
+            agent = None
+            if key == self.PACMAN_ID:
+                agent = self.pacman
+            elif key == self.RED_GHOST_ID:
+                agent = self.redGhost
+            elif key == self.PINK_GHOST_ID:
+                agent == self.pinkGhost
+            return agent
 
-    def toDiscretized(self, location):
-        x = math.ceil(location[0] / BOX_WIDTH)
-        y = math.ceil(location[1] / BOX_HEIGHT)
-        discretizedLocation = (x, y)
-        return discretizedLocation
+        def toDiscretized(self, location):
+            x = math.ceil(location[0] / BOX_WIDTH)
+            y = math.ceil(location[1] / BOX_HEIGHT)
+            discretizedLocation = (x, y)
+            return discretizedLocation
 
-    def fromDiscretized(self, location):
-        x = location[0] * BOX_WIDTH + (BOX_WIDTH / 2)
-        y = location[1] * BOX_HEIGHT + (BOX_HEIGHT / 2)
-        normalizedLocation = (x, y)
-        return normalizedLocation
+        def fromDiscretized(self, location):
+            x = location[0] * BOX_WIDTH + (BOX_WIDTH / 2)
+            y = location[1] * BOX_HEIGHT + (BOX_HEIGHT / 2)
+            normalizedLocation = (x, y)
+            return normalizedLocation
 
-    def getTwistFromDirection(self, direction):
-        twist = SpheroTwist()
-        twist.linear.x = 0
-        twist.linear.y = 0
-        twist.linear.z = 0
-        twist.angular.x = 0
-        twist.angular.y = 0
-        twist.angular.z = 0
-        if direction == Directions.NORTH:
-            twist.linear.y = FOLLOW_SPEED
-        elif direction == Directions.EAST:
-            twist.linear.x = FOLLOW_SPEED
-        elif direction == Directions.SOUTH:
-            twist.linear.y = -FOLLOW_SPEED
-        elif direction == Directions.WEST:
-            twist.linear.x = -FOLLOW_SPEED
-        return twist
+        def getTwistFromDirection(self, direction):
+            twist = SpheroTwist()
+            twist.linear.x = 0
+            twist.linear.y = 0
+            twist.linear.z = 0
+            twist.angular.x = 0
+            twist.angular.y = 0
+            twist.angular.z = 0
+            if direction == Directions.NORTH:
+                twist.linear.y = FOLLOW_SPEED
+            elif direction == Directions.EAST:
+                twist.linear.x = FOLLOW_SPEED
+            elif direction == Directions.SOUTH:
+                twist.linear.y = -FOLLOW_SPEED
+            elif direction == Directions.WEST:
+                twist.linear.x = -FOLLOW_SPEED
+            return twist
 
-
-if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
-    w = SpheroSwarmLineForm()
-    w.show()
-    sys.exit(app.exec_())
+    if __name__ == '__main__':
+        app = QtGui.QApplication(sys.argv)
+        w = SpheroSwarmLineForm()
+        w.show()
+        sys.exit(app.exec_())
