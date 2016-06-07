@@ -1,4 +1,5 @@
-from Lab2.AController import Node
+# from Lab2.AController import Node
+import os
 
 class Directions:
     NORTH = 'North'
@@ -28,14 +29,22 @@ class GameNode:
         self.hasFood = hasFood
         self.location = (-1,-1)
 
+    def __str__(self):
+        if self.hasFood:
+            return "."
+        elif self.isWall:
+            return "%"
+        return " "
+
 
 class GameBoard:
     def __init__(self):
         self._board = self.initializeBoard()
+        self.initializeNodeChildren()
 
     def initializeBoard(self):
         lines = []
-        with open('layout.txt', 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__),'layout.txt'), 'r') as f:
             lines = f.read().split('\n')
 
         # setup the board
@@ -50,18 +59,20 @@ class GameBoard:
                 elif character == '%':
                     row.append(GameNode(isWall=True))
             board.append(row)
+        return board
 
+    def initializeNodeChildren(self):
         # initialize node children
-        for rowIndex, line in enumerate(board):
-            for colIndex, node in enumerate(line):
+        for rowIndex in range(0, len(self._board)):
+            for colIndex in range(0, len(self._board[0])):
                 neighborLocations = self.getNeighborCoordinates(rowIndex, colIndex)
 
                 children = []
                 for row, col in neighborLocations:
                     children.append(self._board[row][col])
-                node.children = children
+                # print "row index: %d col index: %d" % (rowIndex, colIndex)
 
-        return board
+                self._board[rowIndex][colIndex].children = children
 
     def getNode(self, location):
         return self._board[location[0]][location[1]]
@@ -78,15 +89,14 @@ class GameBoard:
         if row > 0:
             result.append((row - 1, col))
 
-        if row < self.getBoardWidth() - 1:
+        if row < self.getBoardHeight() - 1:
             result.append((row + 1, col))
 
         if col > 0:
             result.append((row, col - 1))
 
-        if col < self.getBoardHeight() - 1:
+        if col < self.getBoardWidth() - 1:
             result.append((row, col + 1))
-
         return result
 
     def getValueAt(self, row, col):

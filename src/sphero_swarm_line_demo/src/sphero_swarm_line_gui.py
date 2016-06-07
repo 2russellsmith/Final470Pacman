@@ -2,7 +2,6 @@
 
 import sys, rospy, math, cv2
 from PyQt4 import QtGui, QtCore
-
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 from multi_apriltags_tracker.msg import april_tag_pos
 from sensor_msgs.msg import Image
@@ -75,18 +74,18 @@ class SpheroSwarmLineForm(QtGui.QWidget):
 
     def drawGrid(self, image):
         # draw the grid
-        for i in range(0, BOX_X_COUNT):
-            for j in range(0, BOX_Y_COUNT):
-                pt1 = cv2.Point2f(BOX_WIDTH * i, BOX_HEIGHT * j)
-                pt2 = cv2.Point2f(BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1))
-                color = cv2.Scalar(0, 0, 255)
+        for i in range(0, BOX_Y_COUNT-1):
+            for j in range(0, BOX_X_COUNT-1):
+                pt1 = (BOX_WIDTH * i, BOX_HEIGHT * j)
+                pt2 = (BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1))
+                color = (0, 0, 255)
                 thickness = 1
                 lineType = 8
                 shift = 0
                 cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
                 if self.gameState.hasFood(i, j):
-                    x = pt2.x - pt1.x
-                    y = pt2.y - pt2.y
+                    x = pt2[0] - pt1[0]
+                    y = pt2[1] - pt2[1]
                     radius = 5
                     cv2.circle(image, (x, y), radius, color, thickness, lineType, shift)
                     ''' cv2.rectangle(image, (BOX_WIDTH * i, BOX_HEIGHT * j), (BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1)),
@@ -300,8 +299,8 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 twist.linear.x = -FOLLOW_SPEED
             return twist
 
-    if __name__ == '__main__':
-        app = QtGui.QApplication(sys.argv)
-        w = SpheroSwarmLineForm()
-        w.show()
-        sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QtGui.QApplication(sys.argv)
+    w = SpheroSwarmLineForm()
+    w.show()
+    sys.exit(app.exec_())
