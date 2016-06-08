@@ -21,7 +21,7 @@ class PacmanController:
         self.stop = True
         self.paused = False
         # Create the specific implementation of pacman needed
-        self.pacman = ZetaPacman(PacmanController.PACMAN_ID) if pacmanAgentType == "Zeta Pacman" else NuPacman(PacmanController.PACMAN_ID)
+        self.pacman = ZetaPacman() if pacmanAgentType == "Zeta Pacman" else NuPacman()
         self.redGhost = RedGhost(PacmanController.RED_GHOST_ID)
         self.pinkGhost = PinkGhost(PacmanController.PINK_GHOST_ID)
         self.agents = [self.pacman, self.redGhost, self.pinkGhost]

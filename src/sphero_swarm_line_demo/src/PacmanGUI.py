@@ -55,6 +55,9 @@ class PacmanGui(QtGui.QWidget):
         self.running = False
         self.controller = None
         self.paused = False
+        self.guiInitialized = False
+
+        self.gameStatus = None
 
         #############
         # LISTENERS #
@@ -160,7 +163,7 @@ class PacmanGui(QtGui.QWidget):
         :param image: the image to draw to. this uses cv2 extensively. See http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
         """
         # still loading
-        if not self.running:
+        if not self.running or not self.guiInitialized:
             return
 
         # get the GUI data
@@ -182,6 +185,13 @@ class PacmanGui(QtGui.QWidget):
                 if (row, column) in controllerData['pellet_locations']:
                     cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
 
+        cv2.putText(image, "Score: " + controllerData["score"], (100, 100), cv2.FONT_HERSHEY_COMPLEX, 15, color)
+
+        if self.gameStatus == GameConditions.WIN:
+            cv2.putText(image, "Pacman Wins! Because Awesome", (500, 100), cv2.FONT_HERSHEY_COMPLEX, 50, color)
+        elif self.gameStatus == GameConditions.LOSE:
+            cv2.putText(image, "Pacman Loses! Assert ~Awesome", (500, 100), cv2.FONT_HERSHEY_COMPLEX, 50, color)
+
     def aprtCallback(self, msg):
         """
         This is called continually with information about all of the april tags.
@@ -194,26 +204,14 @@ class PacmanGui(QtGui.QWidget):
         # update the controller with the new tag locations
         discretizedLocations = [toDiscretized(x) for x in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.ids, discretizedLocations))}
-        PacmanGui.calculateBoardSpace(tagLocations)
-
-        # calculate the height and width of the board according to tag corner positions
-        PacmanGui.boardWidth = int(math.ceil(PacmanGui.maxX - PacmanGui.minX))
-        PacmanGui.boardHeight = int(math.ceil(PacmanGui.maxY - PacmanGui.minY))
-
-        # calculate the height and width of the boxes to be drawn
-        PacmanGui.cellWidth = int(math.ceil(PacmanGui.boardWidth / PacmanGui.cellCountX))
-        PacmanGui.cellHeight = int(math.ceil(PacmanGui.boardHeight / PacmanGui.cellCountY))
+        self.calculateBoardSpace(tagLocations)
 
         if not self.paused:
-            gameStatus = self.controller.updateAgents(tagLocations)
-            if gameStatus == GameConditions.WIN:
-                pass
-            elif gameStatus == GameConditions.LOSE:
-                pass
+            self.gameStatus = self.controller.updateAgents(tagLocations)
+            if self.gameStatus != GameConditions.PLAYING:
+                self.paused = True
 
-
-    @staticmethod
-    def calculateBoardSpace(tagLocations):
+    def calculateBoardSpace(self, tagLocations):
         """Calculates the minimum and maximum dimensions in x and y for the board, based on the four corner april tags. This will work as long as at least two opposite-corner april tags are recognized
         properly. This also depends on PacmanGui.cornerTagIds. This dict has to be correctly set to reflect which tags are in the corners.
 
@@ -230,6 +228,16 @@ class PacmanGui(QtGui.QWidget):
                     PacmanGui.maxX = int(math.ceil(location[0]))
                 if location[1] > PacmanGui.maxY:
                     PacmanGui.maxY = int(math.ceil(location[1]))
+
+        # calculate the height and width of the board according to tag corner positions
+        PacmanGui.boardWidth = int(math.ceil(PacmanGui.maxX - PacmanGui.minX))
+        PacmanGui.boardHeight = int(math.ceil(PacmanGui.maxY - PacmanGui.minY))
+
+        # calculate the height and width of the boxes to be drawn
+        PacmanGui.cellWidth = int(math.ceil(PacmanGui.boardWidth / PacmanGui.cellCountX))
+        PacmanGui.cellHeight = int(math.ceil(PacmanGui.boardHeight / PacmanGui.cellCountY))
+
+        self.guiInitialized = True
 
     ''' Not currently used
     def keyPressEvent(self, e):

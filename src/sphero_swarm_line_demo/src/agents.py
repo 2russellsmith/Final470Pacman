@@ -4,14 +4,11 @@ from game import *
 class Agent:
     """An agent is any sphero that has a april tag and is being tracked via the multi april tag detector"""
 
-    def __init__(self, index, isPacman=False):  # TODO is index the april tag ID?
-        """"Creates an Agent with the given index, initializing its location to an invalid location until it begins moving.
+    def __init__(self, isPacman=False):
+        """"Creates an Agent, initializing its location to an invalid location until it begins moving.
 
-        :param index: the index of the agent (april tag ID)
         :param isPacman: True if the agent is pacman, false otherwise.
         """
-        """Creates an Agent with the given index, initializing its location to an invalid location until it begins moving."""
-        self.index = index
         self.isPacman = isPacman
         self.location = (-1, -1)
         self.prevLocation = (-1, -1)
@@ -78,15 +75,15 @@ class Agent:
 
 
 class PacmanAgent(Agent):
-    def __init__(self, index):
-        Agent.__init__(self, index, True)
+    def __init__(self):
+        Agent.__init__(self, True)
 
 
 class GhostAgent(Agent):
     chaseMode = False
 
-    def __init__(self, index):
-        Agent.__init__(self, index)
+    def __init__(self):
+        Agent.__init__(self)
 
     def getGoal(self, gameState):
         """Returns the target node for the Ghost
@@ -121,7 +118,7 @@ class GhostAgent(Agent):
                     current = n
 
             if current.location == destination.location:
-                return self.getNextMove(current.location, assistantMatrix)
+                return self.extractMoveFromPath(current.location, assistantMatrix)
 
             openSet.remove(current)
             assistantMatrix[current.location][1] = True
@@ -139,23 +136,15 @@ class GhostAgent(Agent):
                         assistantMatrix[current.location][2] = current.location
         return []
 
-    def getNextMove(self, nodeLocation, assistantMatrix):  # TODO I have no idea what this does
+    def extractMoveFromPath(self, nodeLocation, assistantMatrix):
         """Gets the next move that the agent will take given the node location and assistant matrix
 
         :param nodeLocation:
         :param assistantMatrix:
         :return:
         """
-        """Gets the next move that the agent will take given the node location and assistant matrix"""
         prevLocation = None
         while assistantMatrix[nodeLocation][2]:
             prevLocation = nodeLocation
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation
-
-
-# TODO is this used?
-class AgentState:
-    def __init__(self, location):
-        self.location = location
-        self.color = (255, 255, 255)

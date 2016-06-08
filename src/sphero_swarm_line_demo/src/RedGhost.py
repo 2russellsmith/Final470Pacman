@@ -2,8 +2,8 @@ from agents import GhostAgent
 
 
 class RedGhost(GhostAgent):
-    def __init__(self, index):
-        GhostAgent.__init__(self, index)
+    def __init__(self):
+        GhostAgent.__init__(self)
         self.name = "RedGhost"
 
     def getGoal(self, gameState):
