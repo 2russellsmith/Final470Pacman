@@ -62,7 +62,9 @@ class PacmanGui(QtGui.QWidget):
         # How to get camera feed, draw on it and publish it to a feed that the camera program can display
         self.bridge = CvBridge()
         self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.cameraImageCallback, queue_size=1)
+        # raw image
         self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
+        # drawn image
         self.publisherDrawn = rospy.Publisher("/output/image", Image, queue_size=1)
 
         # who we tell if we want to update the color
@@ -130,15 +132,6 @@ class PacmanGui(QtGui.QWidget):
     # see http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
     def drawOverlay(self, image):
 
-        color = (0, 255, 255)
-        thickness = 1
-        lineType = 8
-        shift = 0
-        radius = 5
-        for row in range(0, 600):
-            for column in range(0, 800):
-                cv2.circle(image, (column * 800 / 19, row * 600 / 9), radius, color, thickness, lineType, shift)
-        return
         # still loading
         if not self.stopFlag or self.controller is None:
             return
@@ -153,6 +146,10 @@ class PacmanGui(QtGui.QWidget):
         radius = 5
         for row in range(0, PacmanGui.boardHeight):
             for column in range(0, PacmanGui.boardWidth):
+                # draw grid
+                pt1 = (self.cellWidth * column+self.minX, self.cellHeight * row+self.minY)
+                pt2 = (self.cellWidth * (column + 1)+self.minX, self.cellHeight * (row + 1)+self.minY)
+                cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
                 # draw pellets
                 if (column, row) in controllerData['pellet_locations']:
                     cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
