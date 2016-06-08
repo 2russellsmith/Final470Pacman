@@ -80,23 +80,23 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         for row in range(0, self.BOX_Y_COUNT):
             # for each column
             for column in range(0, self.BOX_X_COUNT):
-                pt1 = (self.BOX_WIDTH * column+self.minX, self.BOX_HEIGHT * row+self.minY)
-                pt2 = (self.BOX_WIDTH * (column + 1)+self.minX, self.BOX_HEIGHT * (row + 1)+self.minY)
+                pt1 = (self.BOX_WIDTH * column + self.minX, self.BOX_HEIGHT * row + self.minY)
+                pt2 = (self.BOX_WIDTH * (column + 1) + self.minX, self.BOX_HEIGHT * (row + 1) + self.minY)
                 color = (0, 255, 255)
                 thickness = 1
                 lineType = 8
                 shift = 0
                 # cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
                 if self.gameState.hasFood(row, column):
-                    x = pt1[0] + self.BOX_WIDTH/2
-                    y = pt1[1] + self.BOX_HEIGHT/2
+                    x = pt1[0] + self.BOX_WIDTH / 2
+                    y = pt1[1] + self.BOX_HEIGHT / 2
                     radius = 10
                     cv2.circle(image, (x, y), radius, (0, 255, 255), 1, lineType, shift)
                     ''' cv2.rectangle(image, (self.BOX_WIDTH * row, self.BOX_HEIGHT * column), (self.BOX_WIDTH * (row + 1), self.BOX_HEIGHT * (column + 1)),
                     (0, 0, 255), 1, 8, 0)'''
                     # http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html
-        # if self.redGhost is not None:
-            # cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
+                    # if self.redGhost is not None:
+                    # cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
 
     def initUI(self):
 

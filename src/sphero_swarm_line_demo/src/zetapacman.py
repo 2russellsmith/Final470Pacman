@@ -103,7 +103,7 @@ class GhostMap(RewardsMap):
                                     previousLocation=currentLocation,
                                     currentLocation=move,
                                     encounteredBranches=childEncounteredBranches,
-                                    remainingIterations=remainingIterations-1)
+                                    remainingIterations=remainingIterations - 1)
 
         return heatMap
 
@@ -151,8 +151,8 @@ class ZetaPacman(PacmanAgent):
         availableMoves = gameState.gameBoard.getNeighborCoordinates(row, col)
         return max(availableMoves, key=lambda x: finalMap[x[0]][x[1]])
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     ghost1 = PinkGhost(index=1)
     ghost1.prevLocation = (6, 7)
     ghost1.location = (6, 8)

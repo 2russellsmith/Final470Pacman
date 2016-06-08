@@ -137,7 +137,7 @@ class PacmanGui(QtGui.QWidget):
         radius = 5
         for row in range(0, 600):
             for column in range(0, 800):
-                cv2.circle(image, (column*800/19, row*600/9), radius, color, thickness, lineType, shift)
+                cv2.circle(image, (column * 800 / 19, row * 600 / 9), radius, color, thickness, lineType, shift)
         return
         # still loading
         if not self.stopFlag or self.controller is None:

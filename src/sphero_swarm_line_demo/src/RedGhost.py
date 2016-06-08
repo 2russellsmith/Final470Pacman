@@ -10,4 +10,3 @@ class RedGhost(GhostAgent):
         if GhostAgent.chaseMode:
             return gameState.gameBoard.getNode((0, 18))
         return gameState.gameBoard.getNode(gameState.getPacman().location)
-
