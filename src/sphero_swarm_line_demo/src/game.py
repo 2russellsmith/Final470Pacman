@@ -127,7 +127,7 @@ class GameBoard:
         :return: the neighboring locations
         """
         possibleMoves = [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]
-        return [(row, col) for (row, col) in possibleMoves if self._isInBoard((row, col)) and self.isTraversable(row, col)]
+        return [(row, col) for (row, col) in possibleMoves if self._isInBoard((row, col)) and self.isTraversable(row, col)]  # TODO Pycharm is flagging this as parameter col is unfulfilled
 
     # TODO are these two methods used? They look incorrect (setting a node, not a string)
     def getValueAt(self, row, col):
