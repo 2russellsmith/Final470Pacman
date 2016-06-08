@@ -31,7 +31,8 @@ void MultiAprilTagsTracker::imageCallback( const sensor_msgs::ImageConstPtr& msg
   cv_bridge::CvImagePtr cv_ptr;
   try {
 #ifdef MONO_COLOR
-    cv_ptr = cv_bridge::toCvCopy( msg, "mono8" ); 
+    //cv_ptr = cv_bridge::toCvCopy( msg, "mono8" );
+    cv_ptr = cv_bridge::toCvCopy( msg, "bgr8" );
 #else
     cv_ptr = cv_bridge::toCvCopy( msg, "bgr8" ); 
 #endif
@@ -99,7 +100,10 @@ MultiAprilTagsTracker::~MultiAprilTagsTracker() {
   
 std::vector<AprilTags::TagDetection> MultiAprilTagsTracker::extractTags( cv::Mat& image) {
 #ifdef MONO_COLOR
-   return mp_tag_detector->extractTags( image );
+   //return mp_tag_detector->extractTags( image );
+   cv::Mat gray_img;
+   cvtColor( image, gray_img, CV_BGR2GRAY );
+   return mp_tag_detector->extractTags( gray_img );
 #else
    cv::Mat gray_img;
    cvtColor( image, gray_img, CV_BGR2GRAY );
