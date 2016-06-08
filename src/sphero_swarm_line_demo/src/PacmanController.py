@@ -10,31 +10,32 @@ FOLLOW_SPEED = 75
 
 
 class PacmanController:
-    PACMAN_ID = 10
-    PACMAN_NAME = "OBR"
+    PACMAN_ID = 20
+    PACMAN_NAME = "Sphero-OPR"
     RED_GHOST_ID = 0
-    RED_GHOST_NAME = "RRG"
-    PINK_GHOST_ID = 20
-    PINK_GHOST_NAME = "YWY"
+    RED_GHOST_NAME = "Sphero-RYG"
+    # PINK_GHOST_ID = 20
+    # PINK_GHOST_NAME = "Sphero-YWY"
 
     def __init__(self, pacmanAgentType):
         self.stop = True
         self.paused = False
         # Create the specific implementation of pacman needed
         self.pacman = ZetaPacman() if pacmanAgentType == "Zeta Pacman" else NuPacman()
-        self.redGhost = RedGhost(PacmanController.RED_GHOST_ID)
-        self.pinkGhost = PinkGhost(PacmanController.PINK_GHOST_ID)
-        self.agents = [self.pacman, self.redGhost, self.pinkGhost]
+        self.redGhost = RedGhost()
+        # self.pinkGhost = PinkGhost()
+        # self.agents = [self.pacman, self.redGhost, self.pinkGhost]
+        self.agents = [self.pacman, self.redGhost]
         self.gameState = GameState(self.agents)
 
         self.sphero_dict = rospy.get_param('/sphero_swarm/connected')
         self.tagIdToSpheroName = {
             PacmanController.PACMAN_ID: PacmanController.PACMAN_NAME,
             PacmanController.RED_GHOST_ID: PacmanController.RED_GHOST_NAME,
-            PacmanController.PINK_GHOST_ID: PacmanController.PINK_GHOST_NAME
+            # PacmanController.PINK_GHOST_ID: PacmanController.PINK_GHOST_NAME
         }
 
-        rospy.init_node('PacmanController', anonymous=True)
+        # rospy.init_node('PacmanController', anonymous=True)
 
         # self.cmdVelPub is who we tell about to move sphero
         self.cmdVelPub = rospy.Publisher('cmd_vel', SpheroTwist, queue_size=1)
@@ -77,7 +78,10 @@ class PacmanController:
 
                 if agent is not None:
                     if tagId in self.tagIdToSpheroName:
-                        twist = self.getTwistFromDirection(agent.calculateNextMoveDirection(self.gameState))
+                        print ("PREVIOUS NEXT: %s" % str(agent.nextLocation))
+                        nextMove = agent.calculateNextMoveDirection(self.gameState)
+                        print("ID: %s MOVE: %s" % (tagId, nextMove))
+                        twist = self.getTwistFromDirection(nextMove)
                         twist.name = self.tagIdToSpheroName[tagId]
                         self.cmdVelPub.publish(twist)
 
@@ -94,8 +98,8 @@ class PacmanController:
             agent = self.pacman
         elif key == PacmanController.RED_GHOST_ID:
             agent = self.redGhost
-        elif key == PacmanController.PINK_GHOST_ID:
-            agent == self.pinkGhost
+        # elif key == PacmanController.PINK_GHOST_ID:
+        #     agent == self.pinkGhost
         return agent
 
     @staticmethod

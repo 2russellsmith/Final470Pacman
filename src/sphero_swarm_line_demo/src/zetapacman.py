@@ -136,8 +136,8 @@ class GhostPitMap(RewardsMap):
 
 
 class ZetaPacman(PacmanAgent):
-    def __init__(self, index=0):
-        PacmanAgent.__init__(self, index=index)
+    def __init__(self):
+        PacmanAgent.__init__(self)
 
     def getMove(self, gameState):
         finalMap = PelletMap(gameState)

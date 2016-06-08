@@ -85,7 +85,7 @@ MultiAprilTagsTracker::MultiAprilTagsTracker( AprilTags::TagCodes codes  ) : m_i
   m_subTwo = m_it.subscribe("/output/image", 1, &MultiAprilTagsTracker::imageDrawnCallback, this);
   mp_tag_detector = new AprilTags::TagDetector( m_tag_codes ); 
 
-  m_pos_pub = m_nh.advertise<multi_apriltags_tracker::april_tag_pos>( APRIL_TAG_POS_MSG_NAME, 1000 );
+  m_pos_pub = m_nh.advertise<multi_apriltags_tracker::april_tag_pos>( APRIL_TAG_POS_MSG_NAME, 1 );
 
 }
 

@@ -64,9 +64,11 @@ class Agent:
 
         :return: direction of next move
         """
-        if self.hasReachedDestination():
+        if self.hasReachedDestination() or self.nextLocation == (-1, -1):
+            print ("CALCULATING NEW MOVE")
             self.nextLocation = self.getMove(gameState)
 
+        print("PACMAN: %s NEXT LOCATION: %s" % (self.isPacman, self.nextLocation))
         return self.getDirectionOfMove(self.nextLocation)
 
     @staticmethod
@@ -100,12 +102,12 @@ class GhostAgent(Agent):
 
         # setup cost matrix
         assistantMatrix = {}
-        for row in range(len(gameState.gameBoard.getBoardHeight())):
-            for column in range(len(gameState.gameBoard.getBoardWidth())):
-                assistantMatrix[(row, column)] = (10000, False, None)
+        for row in range(gameState.gameBoard.getBoardHeight()):
+            for column in range(gameState.gameBoard.getBoardWidth()):
+                assistantMatrix[(row, column)] = [10000, False, None]
 
-        assistantMatrix[self.location] = 0, False, None
-        assistantMatrix[self.prevLocation] = 10000, True, None
+        assistantMatrix[self.location] = [0, False, None]
+        assistantMatrix[self.prevLocation] = [10000, True, None]
 
         openSet = [startNode]
 
@@ -118,7 +120,7 @@ class GhostAgent(Agent):
                     current = n
 
             if current.location == destination.location:
-                return self.extractMoveFromPath(current.location, assistantMatrix)
+                return self.extractMoveFromPath(self.location, assistantMatrix)
 
             openSet.remove(current)
             assistantMatrix[current.location][1] = True
@@ -134,6 +136,8 @@ class GhostAgent(Agent):
                     if childCost > currentCost + 1:
                         assistantMatrix[child.location][0] = currentCost + 1
                         assistantMatrix[current.location][2] = current.location
+
+        print ("NO PATH FOUND")
         return []
 
     def extractMoveFromPath(self, nodeLocation, assistantMatrix):
@@ -144,7 +148,10 @@ class GhostAgent(Agent):
         :return:
         """
         prevLocation = None
+        print("FINDING PATH FROM: %s" % str(nodeLocation))
+        print(assistantMatrix[nodeLocation])
         while assistantMatrix[nodeLocation][2]:
+            print("FOLLOWING: %s" % str(nodeLocation))
             prevLocation = nodeLocation
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation

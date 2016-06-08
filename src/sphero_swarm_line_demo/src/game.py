@@ -34,7 +34,7 @@ class GameConditions:
 
 
 class GameNode:
-    def __init__(self, isWall=False, hasFood=False):
+    def __init__(self, isWall=False, hasFood=False, location=(-1,-1)):
         """Initializes a Pacman grid cell with information about what it contains (food or a wall)
 
         :param isWall: True if this node is a wall
@@ -43,7 +43,7 @@ class GameNode:
         self.children = []
         self.isWall = isWall
         self.hasFood = hasFood
-        self.location = (-1, -1)
+        self.location = location
 
     def __str__(self):
         """Returns the textual representation of this node, as used in the layout.txt file.
@@ -69,15 +69,15 @@ class GameBoard:
 
         # setup the board
         self._board = []
-        for line in lines:
+        for rowIndex, line in enumerate(lines):
             row = []
-            for character in line:
+            for colIndex, character in enumerate(line):
                 if character == '.':
-                    row.append(GameNode(hasFood=True))
+                    row.append(GameNode(hasFood=True, location=(rowIndex, colIndex)))
                 elif character == ' ':
-                    row.append(GameNode())
+                    row.append(GameNode(location=(rowIndex, colIndex)))
                 elif character == '%':
-                    row.append(GameNode(isWall=True))
+                    row.append(GameNode(isWall=True, location=(rowIndex, colIndex)))
             self._board.append(row)
 
         # initialize node children
@@ -97,7 +97,9 @@ class GameBoard:
         :return: the node at a given location
         """
         """Gets the node at the given location"""
-        return self._board[location[0]][location[1]]
+        print("GETTING NODE!")
+        print(str(location))
+        return self._board[location[1]][location[0]]
 
     def getBoardHeight(self):
         """Gets the height of the board
@@ -222,7 +224,11 @@ class GameState:
 
     def processPacmanLocation(self):
         # test for death
-        ghostLocations = [ghost.location for ghost in self.getGhosts()] + [ghost.nextLocation for ghost in self.getGhosts()]
+        ghostLocations = [ghost.location for ghost in self.getGhosts() if ghost.location != (-1, -1)]\
+                         + [ghost.nextLocation for ghost in self.getGhosts() if ghost.nextLocation != (-1, -1)]
+        print(ghostLocations)
+        print(self.getPacman().location)
+        print(self.getPacman().nextLocation)
         if self.getPacman().location in ghostLocations or self.getPacman().nextLocation in ghostLocations:
             return GameConditions.LOSE
 
