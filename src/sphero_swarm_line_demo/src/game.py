@@ -1,4 +1,5 @@
 import os
+import warnings
 
 
 class Directions:
@@ -24,6 +25,12 @@ class Directions:
                EAST: WEST,
                WEST: EAST,
                STOP: STOP}
+
+class GameConditions:
+
+    WIN = 'Win'
+    LOSE = 'Lose'
+    PLAYING = 'Playing'
 
 
 class GameNode:
@@ -127,15 +134,7 @@ class GameBoard:
         :return: the neighboring locations
         """
         possibleMoves = [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]
-        return [(row, col) for (row, col) in possibleMoves if self._isInBoard((row, col)) and self.isTraversable(row, col)]  # TODO Pycharm is flagging this as parameter col is unfulfilled
-
-    # TODO are these two methods used? They look incorrect (setting a node, not a string)
-    def getValueAt(self, row, col):
-        return self._board[row][col]
-
-    def updateAt(self, row, col, newValue):
-
-        self._board[row][col] = newValue
+        return [(row, col) for (row, col) in possibleMoves if self._isInBoard(row, col) and self.isTraversable(row, col)]
 
     def isTraversable(self, row, col):
         """ Determines if the board is traversable at a location
@@ -150,13 +149,20 @@ class GameBoard:
         """:return: true if the board has food at the given row and column"""
         return self._board[row][col].hasFood
 
-    # TODO this doesn't work, since the board holds nodes, not strings
+    def eatFood(self, row, col):
+        if self.hasFood(row, col):
+            self._board[row][col].hasFood = False
+            return True
+        return False
+
     def processPacmanMove(self, row, col):
         if self.hasFood(row, col):
-            self._board[row][col] = " "
+            self._board[row][col].hasFood = False
 
 
 class GameState:
+    POINTS_FOR_PELLET = 10
+
     def __init__(self, agents):
         self.agents = agents
         self.gameBoard = GameBoard()
@@ -194,6 +200,7 @@ class GameState:
         """
         return [x for x in self.agents if not x.isPacman]
 
+    # deprecated
     def hasFood(self, row, column):
         """Determines if the board has food at the given location
 
@@ -203,9 +210,28 @@ class GameState:
         """
         return self.gameBoard.hasFood(row, column)
 
+    def hasFoodAtLocation(self, location):
+        return self.hasFood(location[1], location[0])
+
     def getFoodLocations(self):
         """Gets the locations of food on the board
 
         :return: the locations of food on the board
         """
         return self.gameBoard.getFoodLocations()
+
+    def processPacmanLocation(self):
+        # test for death
+        ghostLocations = [ghost.location for ghost in self.getGhosts()] + [ghost.nextLocation for ghost in self.getGhosts()]
+        if self.getPacman().location in ghostLocations or self.getPacman().nextLocation in ghostLocations:
+            return GameConditions.LOSE
+
+        # eat food
+        if self.gameBoard.eatFood(self.getPacman().location[1], self.getPacman().location[0]):
+            self.score += GameState.POINTS_FOR_PELLET
+
+        # test for victory
+        if len(self.getFoodLocations()) == 0:
+            return GameConditions.WIN
+
+        return GameConditions.PLAYING

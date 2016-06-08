@@ -7,6 +7,7 @@ from multi_apriltags_tracker.msg import april_tag_pos
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 from PacmanController import PacmanController
+from game import GameConditions
 
 key_instruct_label = """
     Control Your Sphero!
@@ -51,8 +52,9 @@ class PacmanGui(QtGui.QWidget):
         super(QtGui.QWidget, self).__init__()
         self.resize(600, 480)  # TODO this is probably too large
 
-        self.stopFlag = True
+        self.running = False
         self.controller = None
+        self.paused = False
 
         #############
         # LISTENERS #
@@ -89,6 +91,10 @@ class PacmanGui(QtGui.QWidget):
         self.controllerStartBtn = QtGui.QPushButton("Start")
         self.controllerStartBtn.clicked.connect(self.start)
 
+        # pause button
+        self.controllerPauseBtn = QtGui.QPushButton("Pause")
+        self.controllerPauseBtn.clicked.connect(self.pause)
+
         self.controllerStopBtn = QtGui.QPushButton("Stop")
         self.controllerStopBtn.clicked.connect(self.stop)
 
@@ -104,19 +110,34 @@ class PacmanGui(QtGui.QWidget):
         self.show()
 
     def start(self):
-        currentMethod = self.aprilTagDropDown.currentText()
 
+        if self.running:
+            return
+
+        # clear old game state
         self.stop()
 
-        # Controller takes care of creating the relevant pacman based on the
-        self.controller = PacmanController(currentMethod)
+        # setup a new controller
+        self.controller = PacmanController(self.aprilTagDropDown.currentText())
+        self.controller.startExecution()
 
-        if self.controller:
-            self.controller.startExecution()
+        # setup running/pause state
+        self.running = True
+        self.paused = False
+
+    def pause(self,):
+        self.paused = not self.paused
+        labelText = "Pause" if not self.paused else "Unpause"
+        self.controllerPauseBtn.setText(labelText)
+
+        self.controller.setPaused(self.paused)
 
     def stop(self):
         if self.controller:
             self.controller.stopExecution()
+
+        self.running = False
+        self.paused = False
 
     def cameraImageCallback(self, ros_data):
         """Called to update the camera
@@ -139,8 +160,9 @@ class PacmanGui(QtGui.QWidget):
         :param image: the image to draw to. this uses cv2 extensively. See http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
         """
         # still loading
-        if not self.stopFlag or self.controller is None:
+        if not self.running:
             return
+
         # get the GUI data
         controllerData = self.controller.getGUIData()
 
@@ -157,23 +179,23 @@ class PacmanGui(QtGui.QWidget):
                 bottomRightCorner = (PacmanGui.cellWidth * (column + 1) + PacmanGui.minX, PacmanGui.cellHeight * (row + 1) + PacmanGui.minY)
                 cv2.rectangle(image, topLeftCorner, bottomRightCorner, color, thickness, lineType, shift)
                 # draw pellets
-                if (column, row) in controllerData['pellet_locations']:
+                if (row, column) in controllerData['pellet_locations']:
                     cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
 
     def aprtCallback(self, msg):
-        """This is called continually with information about all of the april tags.
+        """
+        This is called continually with information about all of the april tags.
 
         :param msg: MSG contains an id, x,y and orientation data members
         """
-        # print('april tag call back' + str(msg))
+        if not self.running:
+            return
+
         # update the controller with the new tag locations
         discretizedLocations = [toDiscretized(x) for x in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.ids, discretizedLocations))}
         PacmanGui.calculateBoardSpace(tagLocations)
-        # still loading
-        if not self.stopFlag or self.controller is None:
-            return
-        self.controller.updateAgents(tagLocations)
+
         # calculate the height and width of the board according to tag corner positions
         PacmanGui.boardWidth = int(math.ceil(PacmanGui.maxX - PacmanGui.minX))
         PacmanGui.boardHeight = int(math.ceil(PacmanGui.maxY - PacmanGui.minY))
@@ -181,6 +203,14 @@ class PacmanGui(QtGui.QWidget):
         # calculate the height and width of the boxes to be drawn
         PacmanGui.cellWidth = int(math.ceil(PacmanGui.boardWidth / PacmanGui.cellCountX))
         PacmanGui.cellHeight = int(math.ceil(PacmanGui.boardHeight / PacmanGui.cellCountY))
+
+        if not self.paused:
+            gameStatus = self.controller.updateAgents(tagLocations)
+            if gameStatus == GameConditions.WIN:
+                pass
+            elif gameStatus == GameConditions.LOSE:
+                pass
+
 
     @staticmethod
     def calculateBoardSpace(tagLocations):

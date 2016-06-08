@@ -19,6 +19,7 @@ class PacmanController:
 
     def __init__(self, pacmanAgentType):
         self.stop = True
+        self.paused = False
         # Create the specific implementation of pacman needed
         self.pacman = ZetaPacman(PacmanController.PACMAN_ID) if pacmanAgentType == "Zeta Pacman" else NuPacman(PacmanController.PACMAN_ID)
         self.redGhost = RedGhost(PacmanController.RED_GHOST_ID)
@@ -39,10 +40,13 @@ class PacmanController:
         self.cmdVelPub = rospy.Publisher('cmd_vel', SpheroTwist, queue_size=1)
 
     def startExecution(self):
-        pass
+        self.stop = False
 
     def stopExecution(self):
-        pass
+        self.stop = True
+
+    def setPaused(self, paused):
+        self.paused = paused
 
     def getGUIData(self):
         """Returns the information from the game state that the GUI needs to draw"""
@@ -56,19 +60,28 @@ class PacmanController:
 
         :param tagLocations: the april tag information
         """
+
+        # set new agent locations
         for tagId, location in tagLocations.items():
             agent = self.getAgent(tagId)
             if agent is not None:
                 agent.setLocation(location)
 
-        for tagId, location in tagLocations.items():
-            agent = self.getAgent(tagId)
-            if agent is not None:
-                # how to tell sphero to move. all fields in twist must be explicitly set.
-                if tagId in self.tagIdToSpheroName:
-                    twist = self.getTwistFromDirection(agent.getMove(self.gameState))
-                    twist.name = self.tagIdToSpheroName[tagId]
-                    self.cmdVelPub.publish(twist)
+        # game status logic
+        gameStatus = self.gameState.processPacmanLocation()
+
+        # make next moves
+        if not self.stop and not self.paused and gameStatus == GameConditions.PLAYING:
+            for tagId, location in tagLocations.items():
+                agent = self.getAgent(tagId)
+
+                if agent is not None:
+                    if tagId in self.tagIdToSpheroName:
+                        twist = self.getTwistFromDirection(agent.calculateNextMoveDirection(self.gameState))
+                        twist.name = self.tagIdToSpheroName[tagId]
+                        self.cmdVelPub.publish(twist)
+
+        return gameStatus
 
     def getAgent(self, key):
         """Gets the agent from the given key. If the key doesn't correspond to a sphero (i.e. a corner tag), then None is returned

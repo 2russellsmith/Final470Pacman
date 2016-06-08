@@ -50,17 +50,27 @@ class Agent:
 
         :param location: the new location
         """
-        if self.hasReachedDestination(location):
-            self.prevLocation = self.location
+        oldLocation = self.location
         self.location = location
+        if self.hasReachedDestination():
+            self.prevLocation = oldLocation
 
-    def hasReachedDestination(self, location):
-        """Determines if the goal location matches the given location
+    def hasReachedDestination(self):
+        """Determines if the goal location matches the current location
 
-        :param location: the new location
         :return: True if the goal location has been reached, False otherwise
         """
-        return location == self.nextLocation
+        return self.location == self.nextLocation
+
+    def calculateNextMoveDirection(self, gameState):
+        """Given game state calculate next move if we have arrived at the current goal
+
+        :return: direction of next move
+        """
+        if self.hasReachedDestination():
+            self.nextLocation = self.getMove(gameState)
+
+        return self.getDirectionOfMove(self.nextLocation)
 
     @staticmethod
     def manhattan(location1, location2):
@@ -93,8 +103,8 @@ class GhostAgent(Agent):
 
         # setup cost matrix
         assistantMatrix = {}
-        for row in xrange(0, len(gameState.gameBoard.getBoardHeight())):
-            for column in xrange(0, len(gameState.gameBoard.getBoardWidth())):
+        for row in range(len(gameState.gameBoard.getBoardHeight())):
+            for column in range(len(gameState.gameBoard.getBoardWidth())):
                 assistantMatrix[(row, column)] = (10000, False, None)
 
         assistantMatrix[self.location] = 0, False, None
