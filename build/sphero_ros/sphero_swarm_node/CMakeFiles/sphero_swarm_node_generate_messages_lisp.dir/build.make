@@ -35,119 +35,119 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nu/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/zeta/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nu/catkin_ws/build
+CMAKE_BINARY_DIR = /home/zeta/catkin_ws/build
 
 # Utility rule file for sphero_swarm_node_generate_messages_lisp.
 
 # Include the progress variables for this target.
 include sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/progress.make
 
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp
 
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroSwarmCollision.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
 
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroTurn.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
-
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroAngularVelocity.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
-
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Twist.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Point.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Pose.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroOdometry.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
-
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroColor.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
-
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroImu.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
 
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroBackLed.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
-
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_8)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroTwist.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
-
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_9)
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroHeading.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
 
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_10)
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroDisableStabilization.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
 
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
-/home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_11)
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroTurn.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroBackLed.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Twist.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Point.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Pose.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroOdometry.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroTwist.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroAngularVelocity.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroColor.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg
+
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp: /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from sphero_swarm_node/SpheroInfo.srv"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv
 
 sphero_swarm_node_generate_messages_lisp: sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp
-sphero_swarm_node_generate_messages_lisp: /home/nu/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroSwarmCollision.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroImu.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroHeading.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroDisableStabilization.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTurn.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroBackLed.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroOdometry.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroTwist.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroAngularVelocity.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/msg/SpheroColor.lisp
+sphero_swarm_node_generate_messages_lisp: /home/zeta/catkin_ws/devel/share/common-lisp/ros/sphero_swarm_node/srv/SpheroInfo.lisp
 sphero_swarm_node_generate_messages_lisp: sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/build.make
 .PHONY : sphero_swarm_node_generate_messages_lisp
 
@@ -156,10 +156,10 @@ sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp
 .PHONY : sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/build
 
 sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/clean:
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && $(CMAKE_COMMAND) -P CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && $(CMAKE_COMMAND) -P CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/clean
 
 sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/depend:
-	cd /home/nu/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nu/catkin_ws/src /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node /home/nu/catkin_ws/build /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zeta/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zeta/catkin_ws/src /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node /home/zeta/catkin_ws/build /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_lisp.dir/depend
 

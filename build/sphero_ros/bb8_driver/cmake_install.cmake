@@ -1,8 +1,8 @@
-# Install script for directory: /home/nu/catkin_ws/src/sphero_ros/bb8_driver
+# Install script for directory: /home/zeta/catkin_ws/src/sphero_ros/bb8_driver
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/nu/catkin_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/zeta/catkin_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,25 +33,25 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nu/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/installspace/bb8_driver.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zeta/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/installspace/bb8_driver.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bb8_driver/cmake" TYPE FILE FILES
-    "/home/nu/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/installspace/bb8_driverConfig.cmake"
-    "/home/nu/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/installspace/bb8_driverConfig-version.cmake"
+    "/home/zeta/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/installspace/bb8_driverConfig.cmake"
+    "/home/zeta/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/installspace/bb8_driverConfig-version.cmake"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bb8_driver" TYPE FILE FILES "/home/nu/catkin_ws/src/sphero_ros/bb8_driver/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bb8_driver" TYPE FILE FILES "/home/zeta/catkin_ws/src/sphero_ros/bb8_driver/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  INCLUDE("/home/nu/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/safe_execute_install.cmake")
+  INCLUDE("/home/zeta/catkin_ws/build/sphero_ros/bb8_driver/catkin_generated/safe_execute_install.cmake")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bb8_driver" TYPE PROGRAM FILES "/home/nu/catkin_ws/src/sphero_ros/bb8_driver/scripts/test_bb8_driver.py")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bb8_driver" TYPE PROGRAM FILES "/home/zeta/catkin_ws/src/sphero_ros/bb8_driver/scripts/test_bb8_driver.py")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

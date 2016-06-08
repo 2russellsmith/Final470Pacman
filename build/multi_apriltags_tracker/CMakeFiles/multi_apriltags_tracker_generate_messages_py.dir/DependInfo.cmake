@@ -17,9 +17,9 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/nu/catkin_ws/devel/include"
+  "/home/zeta/catkin_ws/devel/include"
   "/usr/include/opencv"
-  "/home/nu/catkin_ws/src/multi_apriltags_tracker/include"
+  "/home/zeta/catkin_ws/src/multi_apriltags_tracker/include"
   "/opt/ros/jade/include"
   "/usr/include/eigen3"
   )

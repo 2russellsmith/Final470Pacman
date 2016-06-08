@@ -4,8 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_april_tags_tracker.cpp" "/home/nu/catkin_ws/build/multi_apriltags_tracker/CMakeFiles/multi_april_tags_tracker.dir/src/multi_april_tags_tracker.cpp.o"
-  "/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker_demo.cpp" "/home/nu/catkin_ws/build/multi_apriltags_tracker/CMakeFiles/multi_april_tags_tracker.dir/src/multi_apriltags_tracker_demo.cpp.o"
+  "/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_april_tags_tracker.cpp" "/home/zeta/catkin_ws/build/multi_apriltags_tracker/CMakeFiles/multi_april_tags_tracker.dir/src/multi_april_tags_tracker.cpp.o"
+  "/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker_demo.cpp" "/home/zeta/catkin_ws/build/multi_apriltags_tracker/CMakeFiles/multi_april_tags_tracker.dir/src/multi_apriltags_tracker_demo.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -23,9 +23,9 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/nu/catkin_ws/devel/include"
+  "/home/zeta/catkin_ws/devel/include"
   "/usr/include/opencv"
-  "/home/nu/catkin_ws/src/multi_apriltags_tracker/include"
+  "/home/zeta/catkin_ws/src/multi_apriltags_tracker/include"
   "/opt/ros/jade/include"
   "/usr/include/eigen3"
   )

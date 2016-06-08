@@ -1,8 +1,8 @@
-prefix=/home/nu/catkin_ws/devel
+prefix=/home/zeta/catkin_ws/devel
 
 Name: apriltags_intrude_detector
 Description: Description of apriltags_intrude_detector
 Version: 0.0.0
-Cflags: -I/home/nu/catkin_ws/devel/include
-Libs: -L/home/nu/catkin_ws/devel/lib 
+Cflags: -I/home/zeta/catkin_ws/devel/include
+Libs: -L/home/zeta/catkin_ws/devel/lib 
 Requires: roscpp message_runtime

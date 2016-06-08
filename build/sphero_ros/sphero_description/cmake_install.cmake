@@ -1,8 +1,8 @@
-# Install script for directory: /home/nu/catkin_ws/src/sphero_ros/sphero_description
+# Install script for directory: /home/zeta/catkin_ws/src/sphero_ros/sphero_description
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/nu/catkin_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/zeta/catkin_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,25 +33,25 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nu/catkin_ws/build/sphero_ros/sphero_description/catkin_generated/installspace/sphero_description.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zeta/catkin_ws/build/sphero_ros/sphero_description/catkin_generated/installspace/sphero_description.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description/cmake" TYPE FILE FILES
-    "/home/nu/catkin_ws/build/sphero_ros/sphero_description/catkin_generated/installspace/sphero_descriptionConfig.cmake"
-    "/home/nu/catkin_ws/build/sphero_ros/sphero_description/catkin_generated/installspace/sphero_descriptionConfig-version.cmake"
+    "/home/zeta/catkin_ws/build/sphero_ros/sphero_description/catkin_generated/installspace/sphero_descriptionConfig.cmake"
+    "/home/zeta/catkin_ws/build/sphero_ros/sphero_description/catkin_generated/installspace/sphero_descriptionConfig-version.cmake"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description" TYPE FILE FILES "/home/nu/catkin_ws/src/sphero_ros/sphero_description/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description" TYPE FILE FILES "/home/zeta/catkin_ws/src/sphero_ros/sphero_description/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description" TYPE DIRECTORY FILES "/home/nu/catkin_ws/src/sphero_ros/sphero_description/meshes")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/src/sphero_ros/sphero_description/meshes")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description" TYPE DIRECTORY FILES "/home/nu/catkin_ws/src/sphero_ros/sphero_description/urdf")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_description" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/src/sphero_ros/sphero_description/urdf")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

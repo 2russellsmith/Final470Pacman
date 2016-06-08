@@ -1,2 +1,2 @@
 ColorBlobTracker:apriltags_intrude_detector:multi_apriltags_tracker:sphero_ros/bb8_bringup:sphero_ros/bb8_driver:sphero_ros/bb8_node:sphero_ros/sphero_bringup:sphero_ros/sphero_dashboard:sphero_ros/sphero_description:sphero_ros/sphero_driver:sphero_ros/sphero_node:sphero_ros/sphero_swarm_bringup:sphero_ros/sphero_swarm_dashboard:sphero_ros/sphero_swarm_node:sphero_ros/sphero_swarm_teleop:sphero_ros/sphero_teleop:sphero_swarm_line_demo
--DCATKIN_DEVEL_PREFIX=/home/nu/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/nu/catkin_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/zeta/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/zeta/catkin_ws/install -G Unix Makefiles

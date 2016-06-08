@@ -126,3 +126,5 @@ alias camera='roslaunch multi_apriltags_tracker launch_multi_april_tags_tracker.
 alias swarmManualController='roslaunch sphero_swarm_teleop keyboard_teleop.launch'
 alias swarmRun='rosrun sphero_swarm_teleop sphero_swarm_random_move.py'
 alias run='rosrun sphero_swarm_line_demo sphero_swarm_line_gui.py'
+alias pacman='rosrun sphero_swarm_line_demo pacmanGUI.py'
+
