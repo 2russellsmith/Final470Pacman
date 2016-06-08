@@ -1,8 +1,8 @@
-prefix=/home/nu/catkin_ws/install
+prefix=/home/zeta/catkin_ws/install
 
 Name: sphero_swarm_node
 Description: Description of sphero_swarm_node
 Version: 0.0.5
-Cflags: -I/home/nu/catkin_ws/install/include
-Libs: -L/home/nu/catkin_ws/install/lib 
+Cflags: -I/home/zeta/catkin_ws/install/include
+Libs: -L/home/zeta/catkin_ws/install/lib 
 Requires: std_msgs geometry_msgs dynamic_reconfigure message_runtime

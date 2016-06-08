@@ -1,8 +1,8 @@
-prefix=/home/nu/catkin_ws/install
+prefix=/home/zeta/catkin_ws/install
 
 Name: sphero_swarm_line_demo
 Description: Description of sphero_swarm_line_demo
 Version: 0.0.1
 Cflags: 
-Libs: -L/home/nu/catkin_ws/install/lib 
+Libs: -L/home/zeta/catkin_ws/install/lib 
 Requires: 

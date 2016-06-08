@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "sphero_swarm_line_demo"
-PROJECT_SPACE_DIR = "/home/nu/catkin_ws/devel"
+PROJECT_SPACE_DIR = "/home/zeta/catkin_ws/devel"
 PROJECT_VERSION = "0.0.1"

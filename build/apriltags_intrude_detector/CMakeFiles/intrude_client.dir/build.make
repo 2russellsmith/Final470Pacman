@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nu/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/zeta/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nu/catkin_ws/build
+CMAKE_BINARY_DIR = /home/zeta/catkin_ws/build
 
 # Include any dependencies generated for this target.
 include apriltags_intrude_detector/CMakeFiles/intrude_client.dir/depend.make
@@ -50,18 +50,18 @@ include apriltags_intrude_detector/CMakeFiles/intrude_client.dir/progress.make
 include apriltags_intrude_detector/CMakeFiles/intrude_client.dir/flags.make
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/flags.make
-apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o: /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
+apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o: /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o -c /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o -c /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intrude_client.dir/src/intrude_client.cpp.i"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp > CMakeFiles/intrude_client.dir/src/intrude_client.cpp.i
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp > CMakeFiles/intrude_client.dir/src/intrude_client.cpp.i
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intrude_client.dir/src/intrude_client.cpp.s"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp -o CMakeFiles/intrude_client.dir/src/intrude_client.cpp.s
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client.cpp -o CMakeFiles/intrude_client.dir/src/intrude_client.cpp.s
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o.requires:
 .PHONY : apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o.requires
@@ -73,18 +73,18 @@ apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o.provides.build: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/flags.make
-apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o: /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
+apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o: /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o -c /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o -c /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.i"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp > CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.i
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp > CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.i
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.s"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nu/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp -o CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.s
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/zeta/catkin_ws/src/apriltags_intrude_detector/src/intrude_client_demo.cpp -o CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.s
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o.requires:
 .PHONY : apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o.requires
@@ -103,102 +103,102 @@ intrude_client_OBJECTS = \
 # External object files for target intrude_client
 intrude_client_EXTERNAL_OBJECTS =
 
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/build.make
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libmpfr.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libgmp.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/libCGAL.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcv_bridge.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libimage_transport.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libmessage_filters.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libclass_loader.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/libPocoFoundation.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_log4cxx.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_backend_interface.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/liblog4cxx.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libxmlrpcpp.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroslib.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp_serialization.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librostime.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcpp_common.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcv_bridge.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libimage_transport.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libmessage_filters.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libtinyxml.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libclass_loader.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/libPocoFoundation.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_log4cxx.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_backend_interface.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/liblog4cxx.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libxmlrpcpp.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroslib.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp_serialization.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librostime.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcpp_common.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client"
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/intrude_client.dir/link.txt --verbose=$(VERBOSE)
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client_demo.cpp.o
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/build.make
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libmpfr.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libgmp.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/libCGAL.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcv_bridge.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libimage_transport.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libmessage_filters.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libclass_loader.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/libPocoFoundation.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_log4cxx.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_backend_interface.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/liblog4cxx.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libxmlrpcpp.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroslib.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp_serialization.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librostime.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcpp_common.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcv_bridge.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_video.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ocl.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_legacy.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_gpu.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_contrib.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.2.4.8
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libimage_transport.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libmessage_filters.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libclass_loader.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/libPocoFoundation.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_log4cxx.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librosconsole_backend_interface.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/liblog4cxx.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libxmlrpcpp.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroslib.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libroscpp_serialization.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/librostime.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /opt/ros/jade/lib/libcpp_common.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client"
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/intrude_client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-apriltags_intrude_detector/CMakeFiles/intrude_client.dir/build: /home/nu/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client
+apriltags_intrude_detector/CMakeFiles/intrude_client.dir/build: /home/zeta/catkin_ws/devel/lib/apriltags_intrude_detector/intrude_client
 .PHONY : apriltags_intrude_detector/CMakeFiles/intrude_client.dir/build
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/requires: apriltags_intrude_detector/CMakeFiles/intrude_client.dir/src/intrude_client.cpp.o.requires
@@ -206,10 +206,10 @@ apriltags_intrude_detector/CMakeFiles/intrude_client.dir/requires: apriltags_int
 .PHONY : apriltags_intrude_detector/CMakeFiles/intrude_client.dir/requires
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/clean:
-	cd /home/nu/catkin_ws/build/apriltags_intrude_detector && $(CMAKE_COMMAND) -P CMakeFiles/intrude_client.dir/cmake_clean.cmake
+	cd /home/zeta/catkin_ws/build/apriltags_intrude_detector && $(CMAKE_COMMAND) -P CMakeFiles/intrude_client.dir/cmake_clean.cmake
 .PHONY : apriltags_intrude_detector/CMakeFiles/intrude_client.dir/clean
 
 apriltags_intrude_detector/CMakeFiles/intrude_client.dir/depend:
-	cd /home/nu/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nu/catkin_ws/src /home/nu/catkin_ws/src/apriltags_intrude_detector /home/nu/catkin_ws/build /home/nu/catkin_ws/build/apriltags_intrude_detector /home/nu/catkin_ws/build/apriltags_intrude_detector/CMakeFiles/intrude_client.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zeta/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zeta/catkin_ws/src /home/zeta/catkin_ws/src/apriltags_intrude_detector /home/zeta/catkin_ws/build /home/zeta/catkin_ws/build/apriltags_intrude_detector /home/zeta/catkin_ws/build/apriltags_intrude_detector/CMakeFiles/intrude_client.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : apriltags_intrude_detector/CMakeFiles/intrude_client.dir/depend
 

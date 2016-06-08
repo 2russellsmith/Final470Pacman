@@ -35,131 +35,131 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nu/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/zeta/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nu/catkin_ws/build
+CMAKE_BINARY_DIR = /home/zeta/catkin_ws/build
 
 # Utility rule file for sphero_swarm_node_generate_messages_cpp.
 
 # Include the progress variables for this target.
 include sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/progress.make
 
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h
-sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h
+sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h
 
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroSwarmCollision.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroSwarmCollision.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
 
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroTurn.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
-
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroAngularVelocity.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
-
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Twist.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Point.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Pose.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroOdometry.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
-
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroColor.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
-
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroImu.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroImu.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
 
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroBackLed.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
-
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_8)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroTwist.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
-
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_9)
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroHeading.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroHeading.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
 
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_10)
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroDisableStabilization.msg"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroDisableStabilization.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
 
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
-/home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /opt/ros/jade/share/gencpp/cmake/../srv.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nu/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_11)
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroTurn.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTurn.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroBackLed.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroBackLed.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Twist.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Point.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Quaternion.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/std_msgs/cmake/../msg/Header.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Pose.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/TwistWithCovariance.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/PoseWithCovariance.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroOdometry.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroOdometry.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /opt/ros/jade/share/geometry_msgs/cmake/../msg/Vector3.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroTwist.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroTwist.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroAngularVelocity.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroAngularVelocity.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroColor.msg"
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg/SpheroColor.msg -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /opt/ros/jade/share/gencpp/cmake/../msg.h.template
+/home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h: /opt/ros/jade/share/gencpp/cmake/../srv.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/zeta/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from sphero_swarm_node/SpheroInfo.srv"
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv -Isphero_swarm_node:/home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/nu/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/jade/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/srv/SpheroInfo.srv -Isphero_swarm_node:/home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node/msg -Istd_msgs:/opt/ros/jade/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/jade/share/geometry_msgs/cmake/../msg -p sphero_swarm_node -o /home/zeta/catkin_ws/devel/include/sphero_swarm_node -e /opt/ros/jade/share/gencpp/cmake/..
 
 sphero_swarm_node_generate_messages_cpp: sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h
-sphero_swarm_node_generate_messages_cpp: /home/nu/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroSwarmCollision.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroImu.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroHeading.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroDisableStabilization.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTurn.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroBackLed.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroOdometry.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroTwist.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroAngularVelocity.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroColor.h
+sphero_swarm_node_generate_messages_cpp: /home/zeta/catkin_ws/devel/include/sphero_swarm_node/SpheroInfo.h
 sphero_swarm_node_generate_messages_cpp: sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/build.make
 .PHONY : sphero_swarm_node_generate_messages_cpp
 
@@ -168,10 +168,10 @@ sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.
 .PHONY : sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/build
 
 sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/clean:
-	cd /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node && $(CMAKE_COMMAND) -P CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node && $(CMAKE_COMMAND) -P CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/clean
 
 sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/depend:
-	cd /home/nu/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nu/catkin_ws/src /home/nu/catkin_ws/src/sphero_ros/sphero_swarm_node /home/nu/catkin_ws/build /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node /home/nu/catkin_ws/build/sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zeta/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zeta/catkin_ws/src /home/zeta/catkin_ws/src/sphero_ros/sphero_swarm_node /home/zeta/catkin_ws/build /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node /home/zeta/catkin_ws/build/sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sphero_ros/sphero_swarm_node/CMakeFiles/sphero_swarm_node_generate_messages_cpp.dir/depend
 

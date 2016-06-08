@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/nu/catkin_ws/src/multi_apriltags_tracker/include/multi_apriltags_tracker/multi_april_tags_tracker.h
+/home/zeta/catkin_ws/src/multi_apriltags_tracker/include/multi_apriltags_tracker/multi_april_tags_tracker.h
 utility
 -
 vector
@@ -28,7 +28,7 @@ AprilTags/Tag36h9.h
 AprilTags/Tag36h11.h
 -
 
-/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_april_tags_tracker.cpp
+/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_april_tags_tracker.cpp
 iostream
 -
 fstream
@@ -46,15 +46,15 @@ sensor_msgs/image_encodings.h
 geometry_msgs/Pose2D.h
 -
 multi_apriltags_tracker/multi_april_tags_tracker.h
-/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker/multi_april_tags_tracker.h
+/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker/multi_april_tags_tracker.h
 multi_apriltags_tracker/april_tag_pos.h
-/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker/april_tag_pos.h
+/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker/april_tag_pos.h
 
-/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker_demo.cpp
+/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker_demo.cpp
 ros/ros.h
 -
 multi_apriltags_tracker/multi_april_tags_tracker.h
-/home/nu/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker/multi_april_tags_tracker.h
+/home/zeta/catkin_ws/src/multi_apriltags_tracker/src/multi_apriltags_tracker/multi_april_tags_tracker.h
 
 /opt/ros/jade/include/XmlRpcDecl.h
 ros/macros.h
