@@ -1,3 +1,5 @@
+import os
+
 class Directions:
     NORTH = 'North'
     SOUTH = 'South'
@@ -41,7 +43,7 @@ class GameBoard:
         self.initializeBoard()
 
     def initializeBoard(self):
-        with open('layout.txt', 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__),  'layout.txt'), 'r') as f:
             lines = f.read().split('\n')
 
         # setup the board

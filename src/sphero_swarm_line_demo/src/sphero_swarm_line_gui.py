@@ -12,20 +12,20 @@ from PinkGhost import PinkGhost
 from RedGhost import RedGhost
 
 STEP_LENGTH = 100
+PACMAN_ID = 0
+RED_GHOST_ID = 1
+PINK_GHOST_ID = 2
 FOLLOW_SPEED = 75
-RADIUS = 150
-BOARD_WIDTH = 0
-BOARD_HEIGHT = 0
-BOX_X_COUNT = 19
-BOX_Y_COUNT = 9
-BOX_WIDTH = 0
-BOX_HEIGHT = 0
 
 
 class SpheroSwarmLineForm(QtGui.QWidget):
-    PACMAN_ID = 0
-    RED_GHOST_ID = 1
-    PINK_GHOST_ID = 2
+    RADIUS = 150
+    BOARD_WIDTH = 0
+    BOARD_HEIGHT = 0
+    BOX_X_COUNT = 19
+    BOX_Y_COUNT = 9
+    BOX_WIDTH = 0
+    BOX_HEIGHT = 0
     pacman = PacmanAgent(PACMAN_ID)
     redGhost = RedGhost(RED_GHOST_ID)
     pinkGhost = PinkGhost(PINK_GHOST_ID)
@@ -68,16 +68,15 @@ class SpheroSwarmLineForm(QtGui.QWidget):
             self.drawGrid(cv_image)
 
             self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
-            print 'drawn'
         except CvBridgeError as e:
             print(e)
 
     def drawGrid(self, image):
         # draw the grid
-        for i in range(0, BOX_Y_COUNT-1):
-            for j in range(0, BOX_X_COUNT-1):
-                pt1 = (BOX_WIDTH * i, BOX_HEIGHT * j)
-                pt2 = (BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1))
+        for i in range(0, self.BOX_Y_COUNT - 1):
+            for j in range(0, self.BOX_X_COUNT - 1):
+                pt1 = (self.BOX_WIDTH * i, self.BOX_HEIGHT * j)
+                pt2 = (self.BOX_WIDTH * (i + 1), self.BOX_HEIGHT * (j + 1))
                 color = (0, 0, 255)
                 thickness = 1
                 lineType = 8
@@ -88,7 +87,7 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                     y = pt2[1] - pt2[1]
                     radius = 5
                     cv2.circle(image, (x, y), radius, color, thickness, lineType, shift)
-                    ''' cv2.rectangle(image, (BOX_WIDTH * i, BOX_HEIGHT * j), (BOX_WIDTH * (i + 1), BOX_HEIGHT * (j + 1)),
+                    ''' cv2.rectangle(image, (self.BOX_WIDTH * i, self.BOX_HEIGHT * j), (self.BOX_WIDTH * (i + 1), self.BOX_HEIGHT * (j + 1)),
                     (0, 0, 255), 1, 8, 0)'''
                     # http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html
 
@@ -201,7 +200,8 @@ class SpheroSwarmLineForm(QtGui.QWidget):
 
     # main body of algorithm should go here. MSG contains an id, x,y and orientation data members
     def aprtCallback(self, msg):
-        print('april tag call back' + str(msg))
+        # print('april tag call back' + str(msg))
+        # print self.initialized
         if not self.initialized:  # still initializing
             return
 
@@ -216,10 +216,10 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         minY = -1
         maxX = -1
         maxY = -1
-
+        boardSet = False
         for spheroId in msg.id:
             agent = self.getAgent(spheroId)
-            if agent is not None:
+            if agent is not None and boardSet is True:
                 agent.setLocation(self.toDiscretized(self.location[spheroId]))
 
                 toHere = self.location[spheroId]
@@ -251,53 +251,57 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                     maxX = location[0]
                 if (location[1] < maxY):
                     maxY = location[1]
-
+        boardSet = True
         # calculate the height and width of the board according to tag corner positions
-        BOARD_WIDTH = maxX - minX
-        BOARD_HEIGHT = maxY - minY
+        # print "Board Width: %s\nBoard Height: %s" % (self.BOARD_WIDTH, self.BOARD_HEIGHT)
+        self.BOARD_WIDTH = maxX - minX
+        self.BOARD_HEIGHT = maxY - minY
         # calculate the height and width of the boxes to be drawn
-        BOX_WIDTH = BOARD_WIDTH / BOX_X_COUNT
-        BOX_HEIGHT = BOARD_HEIGHT / BOX_Y_COUNT
+        self.BOX_WIDTH = int(math.ceil(self.BOARD_WIDTH / self.BOX_X_COUNT))
+        self.BOX_HEIGHT = int(math.ceil(self.BOARD_HEIGHT / self.BOX_Y_COUNT))
+        print "min: %s\nmax: %s\n" % ((minX, minY), (maxX, maxY))
+        print "Board Width: %s\nBoard Height: %s\nBox Width: %s\nBox Height: %s" % (self.BOARD_WIDTH, self.BOARD_HEIGHT, self.BOX_WIDTH, self.BOARD_HEIGHT)
 
-        def getAgent(self, key):
-            agent = None
-            if key == self.PACMAN_ID:
-                agent = self.pacman
-            elif key == self.RED_GHOST_ID:
-                agent = self.redGhost
-            elif key == self.PINK_GHOST_ID:
-                agent == self.pinkGhost
-            return agent
+    def getAgent(self, key):
+        agent = None
+        if key == PACMAN_ID:
+            agent = self.pacman
+        elif key == RED_GHOST_ID:
+            agent = self.redGhost
+        elif key == PINK_GHOST_ID:
+            agent == self.pinkGhost
+        return agent
 
-        def toDiscretized(self, location):
-            x = math.ceil(location[0] / BOX_WIDTH)
-            y = math.ceil(location[1] / BOX_HEIGHT)
-            discretizedLocation = (x, y)
-            return discretizedLocation
+    def toDiscretized(self, location):
+        x = math.ceil(location[0] / self.BOX_WIDTH)
+        y = math.ceil(location[1] / self.BOX_HEIGHT)
+        discretizedLocation = (x, y)
+        return discretizedLocation
 
-        def fromDiscretized(self, location):
-            x = location[0] * BOX_WIDTH + (BOX_WIDTH / 2)
-            y = location[1] * BOX_HEIGHT + (BOX_HEIGHT / 2)
-            normalizedLocation = (x, y)
-            return normalizedLocation
+    def fromDiscretized(self, location):
+        x = location[0] * self.BOX_WIDTH + (self.BOX_WIDTH / 2)
+        y = location[1] * self.BOX_HEIGHT + (self.BOX_HEIGHT / 2)
+        normalizedLocation = (x, y)
+        return normalizedLocation
 
-        def getTwistFromDirection(self, direction):
-            twist = SpheroTwist()
-            twist.linear.x = 0
-            twist.linear.y = 0
-            twist.linear.z = 0
-            twist.angular.x = 0
-            twist.angular.y = 0
-            twist.angular.z = 0
-            if direction == Directions.NORTH:
-                twist.linear.y = FOLLOW_SPEED
-            elif direction == Directions.EAST:
-                twist.linear.x = FOLLOW_SPEED
-            elif direction == Directions.SOUTH:
-                twist.linear.y = -FOLLOW_SPEED
-            elif direction == Directions.WEST:
-                twist.linear.x = -FOLLOW_SPEED
-            return twist
+    def getTwistFromDirection(self, direction):
+        twist = SpheroTwist()
+        twist.linear.x = 0
+        twist.linear.y = 0
+        twist.linear.z = 0
+        twist.angular.x = 0
+        twist.angular.y = 0
+        twist.angular.z = 0
+        if direction == Directions.NORTH:
+            twist.linear.y = FOLLOW_SPEED
+        elif direction == Directions.EAST:
+            twist.linear.x = FOLLOW_SPEED
+        elif direction == Directions.SOUTH:
+            twist.linear.y = -FOLLOW_SPEED
+        elif direction == Directions.WEST:
+            twist.linear.x = -FOLLOW_SPEED
+        return twist
+
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
