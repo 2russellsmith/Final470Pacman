@@ -7,7 +7,7 @@ from sys import path as sys_path
 
 from pkgutil import extend_path
 
-__extended_path = "/home/zeta/catkin_ws/src/sphero_ros/bb8_driver/src".split(";")
+__extended_path = "/home/nu/catkin_ws/src/sphero_ros/bb8_driver/src".split(";")
 for p in reversed(__extended_path):
     sys_path.insert(0, p)
     del p

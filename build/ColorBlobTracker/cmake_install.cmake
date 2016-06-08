@@ -1,8 +1,8 @@
-# Install script for directory: /home/zeta/catkin_ws/src/ColorBlobTracker
+# Install script for directory: /home/nu/catkin_ws/src/ColorBlobTracker
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/zeta/catkin_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/nu/catkin_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zeta/catkin_ws/build/ColorBlobTracker/catkin_generated/installspace/colorblob_tracker.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nu/catkin_ws/build/ColorBlobTracker/catkin_generated/installspace/colorblob_tracker.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/colorblob_tracker/cmake" TYPE FILE FILES
-    "/home/zeta/catkin_ws/build/ColorBlobTracker/catkin_generated/installspace/colorblob_trackerConfig.cmake"
-    "/home/zeta/catkin_ws/build/ColorBlobTracker/catkin_generated/installspace/colorblob_trackerConfig-version.cmake"
+    "/home/nu/catkin_ws/build/ColorBlobTracker/catkin_generated/installspace/colorblob_trackerConfig.cmake"
+    "/home/nu/catkin_ws/build/ColorBlobTracker/catkin_generated/installspace/colorblob_trackerConfig-version.cmake"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/colorblob_tracker" TYPE FILE FILES "/home/zeta/catkin_ws/src/ColorBlobTracker/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/colorblob_tracker" TYPE FILE FILES "/home/nu/catkin_ws/src/ColorBlobTracker/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

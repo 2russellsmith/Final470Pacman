@@ -1,8 +1,8 @@
-# Install script for directory: /home/zeta/catkin_ws/src/apriltags_intrude_detector
+# Install script for directory: /home/nu/catkin_ws/src/apriltags_intrude_detector
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/zeta/catkin_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/nu/catkin_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,51 +34,51 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector/srv" TYPE FILE FILES
-    "/home/zeta/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_intrude.srv"
-    "/home/zeta/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_info.srv"
+    "/home/nu/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_intrude.srv"
+    "/home/nu/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_info.srv"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector/cmake" TYPE FILE FILES "/home/zeta/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detector-msg-paths.cmake")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector/cmake" TYPE FILE FILES "/home/nu/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detector-msg-paths.cmake")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/devel/include/apriltags_intrude_detector")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/nu/catkin_ws/devel/include/apriltags_intrude_detector")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/devel/share/roseus/ros/apriltags_intrude_detector")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/nu/catkin_ws/devel/share/roseus/ros/apriltags_intrude_detector")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/devel/share/common-lisp/ros/apriltags_intrude_detector")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/nu/catkin_ws/devel/share/common-lisp/ros/apriltags_intrude_detector")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/zeta/catkin_ws/devel/lib/python2.7/dist-packages/apriltags_intrude_detector")
+  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/nu/catkin_ws/devel/lib/python2.7/dist-packages/apriltags_intrude_detector")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/devel/lib/python2.7/dist-packages/apriltags_intrude_detector")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/nu/catkin_ws/devel/lib/python2.7/dist-packages/apriltags_intrude_detector")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zeta/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detector.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nu/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detector.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector/cmake" TYPE FILE FILES "/home/zeta/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detector-msg-extras.cmake")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector/cmake" TYPE FILE FILES "/home/nu/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detector-msg-extras.cmake")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector/cmake" TYPE FILE FILES
-    "/home/zeta/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detectorConfig.cmake"
-    "/home/zeta/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detectorConfig-version.cmake"
+    "/home/nu/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detectorConfig.cmake"
+    "/home/nu/catkin_ws/build/apriltags_intrude_detector/catkin_generated/installspace/apriltags_intrude_detectorConfig-version.cmake"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector" TYPE FILE FILES "/home/zeta/catkin_ws/src/apriltags_intrude_detector/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/apriltags_intrude_detector" TYPE FILE FILES "/home/nu/catkin_ws/src/apriltags_intrude_detector/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

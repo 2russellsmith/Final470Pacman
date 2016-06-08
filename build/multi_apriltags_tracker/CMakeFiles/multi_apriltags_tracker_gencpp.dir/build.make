@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zeta/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/nu/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zeta/catkin_ws/build
+CMAKE_BINARY_DIR = /home/nu/catkin_ws/build
 
 # Utility rule file for multi_apriltags_tracker_gencpp.
 
@@ -56,10 +56,10 @@ multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/build: mul
 .PHONY : multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/build
 
 multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/clean:
-	cd /home/zeta/catkin_ws/build/multi_apriltags_tracker && $(CMAKE_COMMAND) -P CMakeFiles/multi_apriltags_tracker_gencpp.dir/cmake_clean.cmake
+	cd /home/nu/catkin_ws/build/multi_apriltags_tracker && $(CMAKE_COMMAND) -P CMakeFiles/multi_apriltags_tracker_gencpp.dir/cmake_clean.cmake
 .PHONY : multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/clean
 
 multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/depend:
-	cd /home/zeta/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zeta/catkin_ws/src /home/zeta/catkin_ws/src/multi_apriltags_tracker /home/zeta/catkin_ws/build /home/zeta/catkin_ws/build/multi_apriltags_tracker /home/zeta/catkin_ws/build/multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nu/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nu/catkin_ws/src /home/nu/catkin_ws/src/multi_apriltags_tracker /home/nu/catkin_ws/build /home/nu/catkin_ws/build/multi_apriltags_tracker /home/nu/catkin_ws/build/multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : multi_apriltags_tracker/CMakeFiles/multi_apriltags_tracker_gencpp.dir/depend
 

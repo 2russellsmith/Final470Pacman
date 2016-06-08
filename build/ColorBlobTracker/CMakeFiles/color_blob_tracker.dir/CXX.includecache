@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/zeta/catkin_ws/src/ColorBlobTracker/include/color_blob_tracker/color_blob_tracker.h
+/home/nu/catkin_ws/src/ColorBlobTracker/include/color_blob_tracker/color_blob_tracker.h
 opencv2/opencv.hpp
 -
 ros/ros.h
@@ -14,7 +14,7 @@ ros/ros.h
 image_transport/image_transport.h
 -
 
-/home/zeta/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker.cpp
+/home/nu/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker.cpp
 iostream
 -
 opencv2/highgui/highgui.hpp
@@ -26,13 +26,13 @@ sensor_msgs/image_encodings.h
 geometry_msgs/Pose2D.h
 -
 color_blob_tracker/color_blob_tracker.h
-/home/zeta/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker/color_blob_tracker.h
+/home/nu/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker/color_blob_tracker.h
 
-/home/zeta/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker_demo.cpp
+/home/nu/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker_demo.cpp
 ros/ros.h
 -
 color_blob_tracker/color_blob_tracker.h
-/home/zeta/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker/color_blob_tracker.h
+/home/nu/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker/color_blob_tracker.h
 
 /opt/ros/jade/include/XmlRpcDecl.h
 ros/macros.h

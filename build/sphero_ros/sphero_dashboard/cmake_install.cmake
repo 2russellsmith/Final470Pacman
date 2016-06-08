@@ -1,8 +1,8 @@
-# Install script for directory: /home/zeta/catkin_ws/src/sphero_ros/sphero_dashboard
+# Install script for directory: /home/nu/catkin_ws/src/sphero_ros/sphero_dashboard
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/zeta/catkin_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/nu/catkin_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,25 +33,25 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zeta/catkin_ws/build/sphero_ros/sphero_dashboard/catkin_generated/installspace/sphero_dashboard.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nu/catkin_ws/build/sphero_ros/sphero_dashboard/catkin_generated/installspace/sphero_dashboard.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_dashboard/cmake" TYPE FILE FILES
-    "/home/zeta/catkin_ws/build/sphero_ros/sphero_dashboard/catkin_generated/installspace/sphero_dashboardConfig.cmake"
-    "/home/zeta/catkin_ws/build/sphero_ros/sphero_dashboard/catkin_generated/installspace/sphero_dashboardConfig-version.cmake"
+    "/home/nu/catkin_ws/build/sphero_ros/sphero_dashboard/catkin_generated/installspace/sphero_dashboardConfig.cmake"
+    "/home/nu/catkin_ws/build/sphero_ros/sphero_dashboard/catkin_generated/installspace/sphero_dashboardConfig-version.cmake"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_dashboard" TYPE FILE FILES "/home/zeta/catkin_ws/src/sphero_ros/sphero_dashboard/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_dashboard" TYPE FILE FILES "/home/nu/catkin_ws/src/sphero_ros/sphero_dashboard/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_dashboard" TYPE PROGRAM FILES "/home/zeta/catkin_ws/src/sphero_ros/sphero_dashboard/src/sphero_dashboard.py")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_dashboard" TYPE PROGRAM FILES "/home/nu/catkin_ws/src/sphero_ros/sphero_dashboard/src/sphero_dashboard.py")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_dashboard" TYPE DIRECTORY FILES "/home/zeta/catkin_ws/src/sphero_ros/sphero_dashboard/launch")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_dashboard" TYPE DIRECTORY FILES "/home/nu/catkin_ws/src/sphero_ros/sphero_dashboard/launch")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

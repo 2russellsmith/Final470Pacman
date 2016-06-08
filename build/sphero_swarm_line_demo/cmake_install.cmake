@@ -1,8 +1,8 @@
-# Install script for directory: /home/zeta/catkin_ws/src/sphero_swarm_line_demo
+# Install script for directory: /home/nu/catkin_ws/src/sphero_swarm_line_demo
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/zeta/catkin_ws/install")
+  SET(CMAKE_INSTALL_PREFIX "/home/nu/catkin_ws/install")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,21 +33,25 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/zeta/catkin_ws/build/sphero_swarm_line_demo/catkin_generated/installspace/sphero_swarm_line_demo.pc")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nu/catkin_ws/build/sphero_swarm_line_demo/catkin_generated/installspace/sphero_swarm_line_demo.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_swarm_line_demo/cmake" TYPE FILE FILES
-    "/home/zeta/catkin_ws/build/sphero_swarm_line_demo/catkin_generated/installspace/sphero_swarm_line_demoConfig.cmake"
-    "/home/zeta/catkin_ws/build/sphero_swarm_line_demo/catkin_generated/installspace/sphero_swarm_line_demoConfig-version.cmake"
+    "/home/nu/catkin_ws/build/sphero_swarm_line_demo/catkin_generated/installspace/sphero_swarm_line_demoConfig.cmake"
+    "/home/nu/catkin_ws/build/sphero_swarm_line_demo/catkin_generated/installspace/sphero_swarm_line_demoConfig-version.cmake"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_swarm_line_demo" TYPE FILE FILES "/home/zeta/catkin_ws/src/sphero_swarm_line_demo/package.xml")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sphero_swarm_line_demo" TYPE FILE FILES "/home/nu/catkin_ws/src/sphero_swarm_line_demo/package.xml")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_swarm_line_demo" TYPE PROGRAM FILES "/home/zeta/catkin_ws/src/sphero_swarm_line_demo/src/sphero_swarm_line_gui.py")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_swarm_line_demo" TYPE PROGRAM FILES "/home/nu/catkin_ws/src/sphero_swarm_line_demo/src/sphero_swarm_line_gui.py")
+ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+
+IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/sphero_swarm_line_demo" TYPE PROGRAM FILES "/home/nu/catkin_ws/src/sphero_swarm_line_demo/src/pacmanGUI.py")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

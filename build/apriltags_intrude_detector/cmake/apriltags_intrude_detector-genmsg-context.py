@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/zeta/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_intrude.srv;/home/zeta/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_info.srv"
+services_str = "/home/nu/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_intrude.srv;/home/nu/catkin_ws/src/apriltags_intrude_detector/srv/apriltags_info.srv"
 pkg_name = "apriltags_intrude_detector"
 dependencies_str = "geometry_msgs"
 langs = "gencpp;geneus;genlisp;genpy"

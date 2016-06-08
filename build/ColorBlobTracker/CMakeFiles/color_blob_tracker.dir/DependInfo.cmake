@@ -4,8 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/zeta/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker.cpp" "/home/zeta/catkin_ws/build/ColorBlobTracker/CMakeFiles/color_blob_tracker.dir/src/color_blob_tracker.cpp.o"
-  "/home/zeta/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker_demo.cpp" "/home/zeta/catkin_ws/build/ColorBlobTracker/CMakeFiles/color_blob_tracker.dir/src/color_blob_tracker_demo.cpp.o"
+  "/home/nu/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker.cpp" "/home/nu/catkin_ws/build/ColorBlobTracker/CMakeFiles/color_blob_tracker.dir/src/color_blob_tracker.cpp.o"
+  "/home/nu/catkin_ws/src/ColorBlobTracker/src/color_blob_tracker_demo.cpp" "/home/nu/catkin_ws/build/ColorBlobTracker/CMakeFiles/color_blob_tracker.dir/src/color_blob_tracker_demo.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -23,7 +23,7 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/opencv"
-  "/home/zeta/catkin_ws/src/ColorBlobTracker/include"
+  "/home/nu/catkin_ws/src/ColorBlobTracker/include"
   "/opt/ros/jade/include"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

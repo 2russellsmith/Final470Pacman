@@ -17,5 +17,9 @@ install(PROGRAMS src/sphero_swarm_line_gui.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+install(PROGRAMS src/pacmanGUI.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 
 

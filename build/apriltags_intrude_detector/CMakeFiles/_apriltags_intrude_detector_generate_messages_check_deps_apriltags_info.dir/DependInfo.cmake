@@ -18,12 +18,12 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/zeta/catkin_ws/devel/include"
+  "/home/nu/catkin_ws/devel/include"
   "/usr/include/eigen3"
   "/usr/include/opencv"
   "/usr/include/x86_64-linux-gnu"
   "apriltags_intrude_detector"
-  "/home/zeta/catkin_ws/src/apriltags_intrude_detector/include"
+  "/home/nu/catkin_ws/src/apriltags_intrude_detector/include"
   "/opt/ros/jade/include"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

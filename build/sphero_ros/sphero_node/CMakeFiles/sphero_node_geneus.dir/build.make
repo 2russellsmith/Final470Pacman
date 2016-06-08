@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zeta/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/nu/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zeta/catkin_ws/build
+CMAKE_BINARY_DIR = /home/nu/catkin_ws/build
 
 # Utility rule file for sphero_node_geneus.
 
@@ -56,10 +56,10 @@ sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/build: sphero_node_gene
 .PHONY : sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/build
 
 sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/clean:
-	cd /home/zeta/catkin_ws/build/sphero_ros/sphero_node && $(CMAKE_COMMAND) -P CMakeFiles/sphero_node_geneus.dir/cmake_clean.cmake
+	cd /home/nu/catkin_ws/build/sphero_ros/sphero_node && $(CMAKE_COMMAND) -P CMakeFiles/sphero_node_geneus.dir/cmake_clean.cmake
 .PHONY : sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/clean
 
 sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/depend:
-	cd /home/zeta/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zeta/catkin_ws/src /home/zeta/catkin_ws/src/sphero_ros/sphero_node /home/zeta/catkin_ws/build /home/zeta/catkin_ws/build/sphero_ros/sphero_node /home/zeta/catkin_ws/build/sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nu/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nu/catkin_ws/src /home/nu/catkin_ws/src/sphero_ros/sphero_node /home/nu/catkin_ws/build /home/nu/catkin_ws/build/sphero_ros/sphero_node /home/nu/catkin_ws/build/sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sphero_ros/sphero_node/CMakeFiles/sphero_node_geneus.dir/depend
 

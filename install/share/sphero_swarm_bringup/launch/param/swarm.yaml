@@ -1,4 +1,3 @@
 sphero_swarm:
-  team: {'Sphero-GRO':'68:86:E7:07:25:8A', 
-         'Sphero-OBR':'68:86:E7:07:2D:E1',
+  team: {'Sphero-GRO':'68:86:E7:07:25:8A',
          'Sphero-RRG':'68:86:E7:07:59:14'}

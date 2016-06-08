@@ -1,8 +1,8 @@
-prefix=/home/zeta/catkin_ws/install
+prefix=/home/nu/catkin_ws/install
 
 Name: bb8_bringup
 Description: Description of bb8_bringup
 Version: 0.1.0
 Cflags: 
-Libs: -L/home/zeta/catkin_ws/install/lib 
+Libs: -L/home/nu/catkin_ws/install/lib 
 Requires: 

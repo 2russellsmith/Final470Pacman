@@ -1,8 +1,8 @@
-prefix=/home/zeta/catkin_ws/install
+prefix=/home/nu/catkin_ws/install
 
 Name: colorblob_tracker
 Description: Description of colorblob_tracker
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/zeta/catkin_ws/install/lib 
+Libs: -L/home/nu/catkin_ws/install/lib 
 Requires: 
