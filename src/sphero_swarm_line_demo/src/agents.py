@@ -2,7 +2,9 @@ from game import *
 
 
 class Agent:
+    """An agent is any sphero that has a april tag and is being tracked via the multi april tag detector"""
     def __init__(self, index, isPacman=False):
+        """Creates an Agent with the given index, initializing its location to an invalid location until it begins moving."""
         self.index = index
         self.isPacman = isPacman
         self.location = (-1, -1)
@@ -10,9 +12,11 @@ class Agent:
         self.nextLocation = (-1, -1)
 
     def getMove(self, gameState):
+        """Gets the next location that the agent will move to based on the information in the gameState"""
         pass
 
     def getDirectionOfMove(self, location):
+        """Gets the direction that the given location would be from the agent's current location."""
         if location[0] > self.location[0]:
             return Directions.EAST
         elif location[0] < self.location[0]:
@@ -25,6 +29,8 @@ class Agent:
             return Directions.STOP
 
     def setLocation(self, location):
+        """Sets the current location for this agent. In addition, if the agent has reached it's destination, the previous location is updated.
+        This ensures that extra calculations do not happen when the agent hasn't moved a full grid space yet."""
         if self.hasReachedDestination(location):
             self.prevLocation = self.location
         self.location = location
@@ -51,11 +57,10 @@ class GhostAgent(Agent):
     def __init__(self, index):
         Agent.__init__(self, index)
 
-    # returns the target node for the Ghost
     def getGoal(self, gameState):
+        """returns the target node for the Ghost"""
         pass
 
-    # returns the sequence of (row,column) grid locations on the path to the destination
     def getMove(self, gameState):
         destination = self.getGoal(gameState)
         startNode = gameState.gameBoard.getNode(self.location)
@@ -99,6 +104,7 @@ class GhostAgent(Agent):
         return []
 
     def getNextMove(self, nodeLocation, assistantMatrix):
+        """Gets the next move that the agent will take given the node location and assistant matrix"""
         prevLocation = None
         while assistantMatrix[nodeLocation][2]:
             prevLocation = nodeLocation

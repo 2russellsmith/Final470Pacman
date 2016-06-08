@@ -105,10 +105,9 @@ class PacmanGui(QtGui.QWidget):
     def start(self):
         currentMethod = self.aprilTagDropDown.currentText()
 
-        if self.controller:
-            self.stop()
+        self.stop()
 
-        # Add an if statement for each item in the drop down to create your controller for that method
+        # Controller takes care of creating the relevant pacman based on the
         self.controller = PacmanController(currentMethod)
 
         if self.controller:
@@ -131,7 +130,6 @@ class PacmanGui(QtGui.QWidget):
 
     # see http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
     def drawOverlay(self, image):
-
         # still loading
         if not self.stopFlag or self.controller is None:
             return
@@ -147,23 +145,16 @@ class PacmanGui(QtGui.QWidget):
         for row in range(0, PacmanGui.boardHeight):
             for column in range(0, PacmanGui.boardWidth):
                 # draw grid
-                pt1 = (self.cellWidth * column+self.minX, self.cellHeight * row+self.minY)
-                pt2 = (self.cellWidth * (column + 1)+self.minX, self.cellHeight * (row + 1)+self.minY)
-                cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
+                topLeftCorner = (PacmanGui.cellWidth * column + PacmanGui.minX, PacmanGui.cellHeight * row + PacmanGui.minY)
+                bottomRightCorner = (PacmanGui.cellWidth * (column + 1) + PacmanGui.minX, PacmanGui.cellHeight * (row + 1) + PacmanGui.minY)
+                cv2.rectangle(image, topLeftCorner, bottomRightCorner, color, thickness, lineType, shift)
                 # draw pellets
                 if (column, row) in controllerData['pellet_locations']:
                     cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
 
-                    # draw boxes
-                    # topLeftCorner = (PacmanGui.cellWidth * column + PacmanGui.minX, PacmanGui.cellHeight * row + PacmanGui.minY)
-                    # bottomRightCorner = (PacmanGui.cellWidth * (column + 1) + PacmanGui.minX, PacmanGui.cellHeight * (row + 1) + PacmanGui.minY)
-                    # cv2.rectangle(image, topLeftCorner, bottomRightCorner, color, thickness, lineType, shift)
-
     # main body of algorithm should go here. MSG contains an id, x,y and orientation data members
     def aprtCallback(self, msg):
         # print('april tag call back' + str(msg))
-
-
         # update the controller with the new tag locations
         discretizedLocations = [toDiscretized(x) for x in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.ids, discretizedLocations))}
@@ -194,6 +185,7 @@ class PacmanGui(QtGui.QWidget):
                 if location[1] > PacmanGui.maxY:
                     PacmanGui.maxY = int(math.ceil(location[1]))
 
+    ''' Not currently used
     def keyPressEvent(self, e):
         print "key pressed"
         selected_items = self.spheroListWidget.selectedItems()
@@ -233,6 +225,7 @@ class PacmanGui(QtGui.QWidget):
         if twist.linear.x != 0 or twist.linear.y != 0:
             twist.name = str(selected_items[0].text())
             self.cmdVelPub.publish(twist)
+    '''
 
 
 if __name__ == '__main__':

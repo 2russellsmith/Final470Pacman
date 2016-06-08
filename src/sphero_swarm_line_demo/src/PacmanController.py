@@ -19,6 +19,7 @@ class PacmanController:
 
     def __init__(self, pacmanAgentType):
         self.stop = True
+        # Create the specific implementation of pacman needed
         self.pacman = ZetaPacman(PacmanController.PACMAN_ID) if pacmanAgentType == "Zeta Pacman" else NuPacman(PacmanController.PACMAN_ID)
         self.redGhost = RedGhost(PacmanController.RED_GHOST_ID)
         self.pinkGhost = PinkGhost(PacmanController.PINK_GHOST_ID)
@@ -43,13 +44,18 @@ class PacmanController:
     def stopExecution(self):
         pass
 
-    def getGUIData(self):  # todo this needs to be implemented with real values
+    def getGUIData(self):
+        """Returns the information from the game state that the GUI needs to draw"""
         return {
             "score": self.gameState.score,
-            "pellet_locations": self.gameState.getFoodLocations()
+            "pellet_locations": self.gameState.getFoodLocations(),
         }
 
     def updateAgents(self, tagLocations):
+        """Updates the locations of each agent, and then calculates the moves that they will take. Locations for all agents must be set before getting any agent's next move.
+
+        :param tagLocations: the april tag information
+        """
         for tagId, location in tagLocations.items():
             agent = self.getAgent(tagId)
             if agent is not None:
@@ -65,6 +71,11 @@ class PacmanController:
                     self.cmdVelPub.publish(twist)
 
     def getAgent(self, key):
+        """Gets the agent from the given key. If the key doesn't correspond to a sphero (i.e. a corner tag), then None is returned
+
+        :param key: the april tag ID of the agent
+        :return: the agent corresponding to the key. None if they key is not associated with a sphero.
+        """
         agent = None
         if key == PacmanController.PACMAN_ID:
             agent = self.pacman
@@ -74,7 +85,13 @@ class PacmanController:
             agent == self.pinkGhost
         return agent
 
-    def getTwistFromDirection(self, direction):
+    @staticmethod
+    def getTwistFromDirection(direction):
+        """"Creates a twist that is set up to go in the specified direction
+
+        :param direction: the direction to go
+        :return: A fully initialized SpheroTwist (minus the name) that can be passed to a sphero to go in the direction specified.
+        """
         twist = SpheroTwist()
         twist.linear.x = 0
         twist.linear.y = 0
