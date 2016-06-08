@@ -23,11 +23,14 @@ public:
   virtual ~MultiAprilTagsTracker();
 
   void imageCallback( const sensor_msgs::ImageConstPtr& msg);
+  void imageDrawnCallback( const sensor_msgs::ImageConstPtr& msg);
+  std::vector<AprilTags::TagDetection> tags;
   std::vector<AprilTags::TagDetection> extractTags( cv::Mat& image);
  
   ros::NodeHandle                 m_nh;
   image_transport::ImageTransport m_it;
   image_transport::Subscriber     m_sub;
+  image_transport::Subscriber     m_subTwo;
 
   ros::Publisher                  m_pos_pub;
   ros::Publisher                  m_t_pos_pub;

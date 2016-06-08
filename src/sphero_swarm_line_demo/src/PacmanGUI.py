@@ -63,6 +63,7 @@ class PacmanGui(QtGui.QWidget):
         self.bridge = CvBridge()
         self.subscriber = rospy.Subscriber("/camera/image_raw", Image, self.cameraImageCallback, queue_size=1)
         self.publisher = rospy.Publisher("/output/image_raw", Image, queue_size=1)
+        self.publisherDrawn = rospy.Publisher("/output/image", Image, queue_size=1)
 
         # who we tell if we want to update the color
         self.colorPub = rospy.Publisher('set_color', SpheroColor, queue_size=1)
@@ -118,15 +119,29 @@ class PacmanGui(QtGui.QWidget):
     def cameraImageCallback(self, ros_data):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
+            self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
 
             self.drawOverlay(cv_image)
 
-            self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
+            self.publisherDrawn.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
         except CvBridgeError as e:
             print(e)
 
     # see http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
     def drawOverlay(self, image):
+
+        color = (0, 255, 255)
+        thickness = 1
+        lineType = 8
+        shift = 0
+        radius = 5
+        for row in range(0, 600):
+            for column in range(0, 800):
+                cv2.circle(image, (column*800/19, row*600/9), radius, color, thickness, lineType, shift)
+        return
+        # still loading
+        if not self.stopFlag or self.controller is None:
+            return
         # get the GUI data
         controllerData = self.controller.getGUIData()
 
@@ -151,14 +166,14 @@ class PacmanGui(QtGui.QWidget):
     def aprtCallback(self, msg):
         # print('april tag call back' + str(msg))
 
-        # still loading
-        if not self.stopFlag or self.controller is None:
-            return
 
         # update the controller with the new tag locations
         discretizedLocations = [toDiscretized(x) for x in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.ids, discretizedLocations))}
         PacmanGui.calculateBoardSpace(tagLocations)
+        # still loading
+        if not self.stopFlag or self.controller is None:
+            return
         self.controller.updateAgents(tagLocations)
         # calculate the height and width of the board according to tag corner positions
         PacmanGui.boardWidth = int(math.ceil(PacmanGui.maxX - PacmanGui.minX))

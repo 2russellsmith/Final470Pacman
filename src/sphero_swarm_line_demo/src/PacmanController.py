@@ -2,7 +2,7 @@ from game import *
 from PinkGhost import PinkGhost
 from RedGhost import RedGhost
 from zetapacman import ZetaPacman
-from nuPacman import NuPacman
+from NuPacman import NuPacman
 import rospy
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 

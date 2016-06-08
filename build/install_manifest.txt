@@ -60,7 +60,7 @@
 /home/zeta/catkin_ws/install/share/sphero_swarm_line_demo/cmake/sphero_swarm_line_demoConfig-version.cmake
 /home/zeta/catkin_ws/install/share/sphero_swarm_line_demo/package.xml
 /home/zeta/catkin_ws/install/lib/sphero_swarm_line_demo/sphero_swarm_line_gui.py
-/home/zeta/catkin_ws/install/lib/sphero_swarm_line_demo/pacmanGUI.py
+/home/zeta/catkin_ws/install/lib/sphero_swarm_line_demo/PacmanGUI.py
 /home/zeta/catkin_ws/install/lib/pkgconfig/sphero_swarm_teleop.pc
 /home/zeta/catkin_ws/install/share/sphero_swarm_teleop/cmake/sphero_swarm_teleopConfig.cmake
 /home/zeta/catkin_ws/install/share/sphero_swarm_teleop/cmake/sphero_swarm_teleopConfig-version.cmake
