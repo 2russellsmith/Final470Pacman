@@ -106,7 +106,8 @@ class GhostAgent(Agent):
             for column in range(gameState.gameBoard.getBoardWidth()):
                 assistantMatrix[(row, column)] = [10000, False, None]
 
-        assistantMatrix[self.location] = [0, False, None]
+        # cost, visited, parent
+        assistantMatrix[startNode.location] = [0, False, None]
         assistantMatrix[self.prevLocation] = [10000, True, None]
 
         openSet = [startNode]
@@ -117,10 +118,11 @@ class GhostAgent(Agent):
                 if assistantMatrix[n.location][0] + self.manhattan(n.location, destination.location) < \
                                 assistantMatrix[current.location][0] + self.manhattan(current.location,
                                                                                       destination.location):
+
                     current = n
 
             if current.location == destination.location:
-                return self.extractMoveFromPath(self.location, assistantMatrix)
+                return self.extractMoveFromPath(current.location, assistantMatrix)
 
             openSet.remove(current)
             assistantMatrix[current.location][1] = True
@@ -132,12 +134,10 @@ class GhostAgent(Agent):
 
                     childCost = assistantMatrix[child.location][0]
                     currentCost = assistantMatrix[current.location][0]
-
                     if childCost > currentCost + 1:
                         assistantMatrix[child.location][0] = currentCost + 1
-                        assistantMatrix[current.location][2] = current.location
+                        assistantMatrix[child.location][2] = current.location
 
-        print ("NO PATH FOUND")
         return []
 
     def extractMoveFromPath(self, nodeLocation, assistantMatrix):
