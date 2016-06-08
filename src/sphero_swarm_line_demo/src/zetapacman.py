@@ -164,5 +164,6 @@ if __name__ == '__main__':
     z = ZetaPacman()
     z.location = (6, 6)
     g = GameState([ghost1, ghost2, z])
+    print g.gameBoard.getFoodLocations()
 
     print(z.getMove(g))

@@ -1,11 +1,11 @@
 from agents import PacmanAgent
 
 
-class nuPacman(PacmanAgent):
+class NuPacman(PacmanAgent):
     safeDistance = 4
 
-    def __init__(self, index):
-        PacmanAgent.__init__(self, index)
+    def __init__(self, index, name=""):
+        PacmanAgent.__init__(self, index, name=name)
 
     def getMove(self, gameState):
         board = gameState.gameBoard

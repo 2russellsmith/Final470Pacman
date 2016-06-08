@@ -8,7 +8,7 @@ class Agent:
         self.location = (-1, -1)
         self.prevLocation = (-1, -1)
         self.nextLocation = (-1, -1)
-        self.name = ""
+
     def getMove(self, gameState):
         pass
 
@@ -25,17 +25,21 @@ class Agent:
             return Directions.STOP
 
     def setLocation(self, location):
-        self.prevLocation = self.location
+        if self.hasReachedDestination(location):
+            self.prevLocation = self.location
         self.location = location
 
-    def manhattan(self, location1, location2):
+    def hasReachedDestination(self, location):
+        return location == self.nextLocation
+
+    @staticmethod
+    def manhattan(location1, location2):
         return abs(location1[0] - location2[0]) + abs(location1[1] - location2[1])
 
 
 class PacmanAgent(Agent):
     def __init__(self, index):
         Agent.__init__(self, index, True)
-        self.name = "Pacman"
 
     def getMove(self, gameState):
         pass
@@ -63,10 +67,9 @@ class GhostAgent(Agent):
                 assistantMatrix[(row, column)] = (10000, False, None)
 
         assistantMatrix[self.location] = 0, False, None
-        assistantMatrix[(self.prevLocation)] = 10000, True, None
+        assistantMatrix[self.prevLocation] = 10000, True, None
 
-        openSet = []
-        openSet.append(startNode)
+        openSet = [startNode]
 
         while openSet:
             current = openSet[0]

@@ -19,7 +19,6 @@ FOLLOW_SPEED = 75
 
 
 class SpheroSwarmLineForm(QtGui.QWidget):
-    RADIUS = 150
     BOARD_WIDTH = 0
     BOARD_HEIGHT = 0
     BOX_X_COUNT = 19

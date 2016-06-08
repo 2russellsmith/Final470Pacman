@@ -1,5 +1,6 @@
 import os
 
+
 class Directions:
     NORTH = 'North'
     SOUTH = 'South'
@@ -27,7 +28,7 @@ class GameNode:
         self.children = []
         self.isWall = isWall
         self.hasFood = hasFood
-        self.location = (-1,-1)
+        self.location = (-1, -1)
 
     def __str__(self):
         if self.hasFood:
@@ -43,7 +44,7 @@ class GameBoard:
         self.initializeBoard()
 
     def initializeBoard(self):
-        with open(os.path.join(os.path.dirname(__file__),  'layout.txt'), 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__), 'layout.txt'), 'r') as f:
             lines = f.read().split('\n')
 
         # setup the board
@@ -78,12 +79,15 @@ class GameBoard:
     def getBoardWidth(self):
         return len(self._board[0])
 
-    def isInBoard(self, location):
+    def getFoodLocations(self):
+        return [(row, column) for row in range(self.getBoardHeight()) for column in range(self.getBoardWidth()) if self.hasFood(row, column)]
+
+    def _isInBoard(self, location):
         return 0 < location[0] < self.getBoardHeight() and 0 < location[1] < self.getBoardWidth()
 
     def getNeighborCoordinates(self, row, col):
         possibleMoves = [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]
-        return [(row, col) for (row, col) in possibleMoves if self.isInBoard((row, col)) and self.isTraversable(row, col)]
+        return [(row, col) for (row, col) in possibleMoves if self._isInBoard((row, col)) and self.isTraversable(row, col)]
 
     def getValueAt(self, row, col):
         return self._board[row][col]
@@ -124,3 +128,6 @@ class GameState:
 
     def hasFood(self, row, column):
         return self.gameBoard.hasFood(row, column)
+
+    def getFoodLocations(self):
+        return self.gameBoard.getFoodLocations()
