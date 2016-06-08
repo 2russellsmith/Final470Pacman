@@ -133,7 +133,7 @@ class GhostAgent(Agent):
                         assistantMatrix[current.location][2] = current.location
         return []
 
-    def getNextMove(self, nodeLocation, assistantMatrix): # TODO I have no idea what this does
+    def getNextMove(self, nodeLocation, assistantMatrix):  # TODO I have no idea what this does
         """Gets the next move that the agent will take given the node location and assistant matrix
 
         :param nodeLocation:
@@ -147,7 +147,8 @@ class GhostAgent(Agent):
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation
 
-#TODO is this used?
+
+# TODO is this used?
 class AgentState:
     def __init__(self, location):
         self.location = location
