@@ -12,9 +12,9 @@ from PinkGhost import PinkGhost
 from RedGhost import RedGhost
 
 STEP_LENGTH = 100
-PACMAN_ID = 0
-RED_GHOST_ID = 1
-PINK_GHOST_ID = 2
+PACMAN_ID = 50
+RED_GHOST_ID = 0
+PINK_GHOST_ID = 20
 FOLLOW_SPEED = 75
 
 
@@ -26,6 +26,10 @@ class SpheroSwarmLineForm(QtGui.QWidget):
     BOX_Y_COUNT = 9
     BOX_WIDTH = 0
     BOX_HEIGHT = 0
+    minX = 1000
+    minY = 1000
+    maxX = 0
+    maxY = 0
     pacman = PacmanAgent(PACMAN_ID)
     redGhost = RedGhost(RED_GHOST_ID)
     pinkGhost = PinkGhost(PINK_GHOST_ID)
@@ -73,23 +77,28 @@ class SpheroSwarmLineForm(QtGui.QWidget):
 
     def drawGrid(self, image):
         # draw the grid
-        for i in range(0, self.BOX_Y_COUNT - 1):
-            for j in range(0, self.BOX_X_COUNT - 1):
-                pt1 = (self.BOX_WIDTH * i, self.BOX_HEIGHT * j)
-                pt2 = (self.BOX_WIDTH * (i + 1), self.BOX_HEIGHT * (j + 1))
+        # for each row
+        for row in range(0, self.BOX_Y_COUNT):
+            # for each column
+            for column in range(0, self.BOX_X_COUNT):
+                pt1 = (self.BOX_WIDTH * column+self.minX, self.BOX_HEIGHT * row+self.minY)
+                pt2 = (self.BOX_WIDTH * (column + 1)+self.minX, self.BOX_HEIGHT * (row + 1)+self.minY)
                 color = (0, 0, 255)
                 thickness = 1
                 lineType = 8
                 shift = 0
                 cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
-                if self.gameState.hasFood(i, j):
-                    x = pt2[0] - pt1[0]
-                    y = pt2[1] - pt2[1]
-                    radius = 5
-                    cv2.circle(image, (x, y), radius, color, thickness, lineType, shift)
-                    ''' cv2.rectangle(image, (self.BOX_WIDTH * i, self.BOX_HEIGHT * j), (self.BOX_WIDTH * (i + 1), self.BOX_HEIGHT * (j + 1)),
+                if self.gameState.hasFood(row, column):
+                    print "food: %s,%s" % (row, column)
+                    x = pt1[0] + self.BOX_WIDTH/2
+                    y = pt1[1] + self.BOX_HEIGHT/2
+                    radius = 10
+                    cv2.circle(image, (x, y), radius, color, -1, lineType, shift)
+                    ''' cv2.rectangle(image, (self.BOX_WIDTH * row, self.BOX_HEIGHT * column), (self.BOX_WIDTH * (row + 1), self.BOX_HEIGHT * (column + 1)),
                     (0, 0, 255), 1, 8, 0)'''
                     # http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html
+        if self.redGhost is not None:
+            cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
 
     def initUI(self):
 
@@ -212,10 +221,6 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         for i in range(0, len(msg.id)):
             self.location[msg.id[i]] = (msg.pose[i].x, msg.pose[i].y)
 
-        minX = -1
-        minY = -1
-        maxX = -1
-        maxY = -1
         boardSet = False
         for spheroId in msg.id:
             agent = self.getAgent(spheroId)
@@ -238,29 +243,24 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
             else:
                 location = self.location[spheroId]
-                if minX == -1:
-                    minX = location[0]
-                    minY = location[1]
-                    maxX = location[0]
-                    maxY = location[1]
-                if (location[0] < minX):
-                    minX = location[0]
-                if (location[1] < minY):
-                    minY = location[1]
-                if (location[0] > maxX):
-                    maxX = location[0]
-                if (location[1] < maxY):
-                    maxY = location[1]
+                if location[0] < self.minX:
+                    self.minX = int(math.ceil(location[0]))
+                if location[1] < self.minY:
+                    self.minY = int(math.ceil(location[1]))
+                if location[0] > self.maxX:
+                    self.maxX = int(math.ceil(location[0]))
+                if location[1] > self.maxY:
+                    self.maxY = int(math.ceil(location[1]))
         boardSet = True
         # calculate the height and width of the board according to tag corner positions
         # print "Board Width: %s\nBoard Height: %s" % (self.BOARD_WIDTH, self.BOARD_HEIGHT)
-        self.BOARD_WIDTH = maxX - minX
-        self.BOARD_HEIGHT = maxY - minY
+        self.BOARD_WIDTH = self.maxX - self.minX
+        self.BOARD_HEIGHT = self.maxY - self.minY
         # calculate the height and width of the boxes to be drawn
         self.BOX_WIDTH = int(math.ceil(self.BOARD_WIDTH / self.BOX_X_COUNT))
         self.BOX_HEIGHT = int(math.ceil(self.BOARD_HEIGHT / self.BOX_Y_COUNT))
-        print "min: %s\nmax: %s\n" % ((minX, minY), (maxX, maxY))
-        print "Board Width: %s\nBoard Height: %s\nBox Width: %s\nBox Height: %s" % (self.BOARD_WIDTH, self.BOARD_HEIGHT, self.BOX_WIDTH, self.BOARD_HEIGHT)
+        # print "min: %s\nmax: %s\n" % ((self.minX, self.minY), (self.maxX, self.maxY))
+        # print "Board Width: %s\nBoard Height: %s\nBox Width: %s\nBox Height: %s" % (self.BOARD_WIDTH, self.BOARD_HEIGHT, self.BOX_WIDTH, self.BOX_HEIGHT)
 
     def getAgent(self, key):
         agent = None
