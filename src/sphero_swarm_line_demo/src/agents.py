@@ -3,7 +3,13 @@ from game import *
 
 class Agent:
     """An agent is any sphero that has a april tag and is being tracked via the multi april tag detector"""
-    def __init__(self, index, isPacman=False):
+
+    def __init__(self, index, isPacman=False):  # TODO is index the april tag ID?
+        """"Creates an Agent with the given index, initializing its location to an invalid location until it begins moving.
+
+        :param index: the index of the agent (april tag ID)
+        :param isPacman: True if the agent is pacman, false otherwise.
+        """
         """Creates an Agent with the given index, initializing its location to an invalid location until it begins moving."""
         self.index = index
         self.isPacman = isPacman
@@ -12,10 +18,21 @@ class Agent:
         self.nextLocation = (-1, -1)
 
     def getMove(self, gameState):
-        """Gets the next location that the agent will move to based on the information in the gameState"""
+        """Gets the next location that the agent will move to based on the information in the gameState
+
+        :param gameState: the information about the game
+        :type gameState: GameState
+        :return: the location that the agent will move to, given the game information.
+        """
         pass
 
     def getDirectionOfMove(self, location):
+        """Gets the direction that the given location would be from the agent's current location. If this is not exactly one square away, the behaviour will be unexpected. E.g. If the move is to
+        the top right, it will move right. This method will prefer moving in the x direction if given bad information. If the location is the current location Direction.STOP is returned instead.
+
+        :param location: the location that the agent will move to. This should be exactly one square away.
+        :returns Direction: The direction to move in.
+        """
         """Gets the direction that the given location would be from the agent's current location."""
         if location[0] > self.location[0]:
             return Directions.EAST
@@ -30,12 +47,20 @@ class Agent:
 
     def setLocation(self, location):
         """Sets the current location for this agent. In addition, if the agent has reached it's destination, the previous location is updated.
-        This ensures that extra calculations do not happen when the agent hasn't moved a full grid space yet."""
+        This ensures that extra calculations do not happen when the agent hasn't moved a full grid space yet.
+
+        :param location: the new location
+        """
         if self.hasReachedDestination(location):
             self.prevLocation = self.location
         self.location = location
 
     def hasReachedDestination(self, location):
+        """Determines if the goal location matches the given location
+
+        :param location: the new location
+        :return: True if the goal location has been reached, False otherwise
+        """
         return location == self.nextLocation
 
     @staticmethod
@@ -58,7 +83,12 @@ class GhostAgent(Agent):
         Agent.__init__(self, index)
 
     def getGoal(self, gameState):
-        """returns the target node for the Ghost"""
+        """Returns the target node for the Ghost
+
+        :param gameState: information about the game
+        :type gameState: GameState
+        :return: the target node for the ghost
+        """
         pass
 
     def getMove(self, gameState):
@@ -103,7 +133,13 @@ class GhostAgent(Agent):
                         assistantMatrix[current.location][2] = current.location
         return []
 
-    def getNextMove(self, nodeLocation, assistantMatrix):
+    def getNextMove(self, nodeLocation, assistantMatrix): #TODO I have no idea what this does
+        """Gets the next move that the agent will take given the node location and assistant matrix
+
+        :param nodeLocation:
+        :param assistantMatrix:
+        :return:
+        """
         """Gets the next move that the agent will take given the node location and assistant matrix"""
         prevLocation = None
         while assistantMatrix[nodeLocation][2]:
@@ -111,7 +147,7 @@ class GhostAgent(Agent):
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation
 
-
+#TODO is this used?
 class AgentState:
     def __init__(self, location):
         self.location = location
