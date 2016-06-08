@@ -12,7 +12,7 @@ from PinkGhost import PinkGhost
 from RedGhost import RedGhost
 
 STEP_LENGTH = 100
-PACMAN_ID = 50
+PACMAN_ID = 10
 RED_GHOST_ID = 0
 PINK_GHOST_ID = 20
 FOLLOW_SPEED = 75
@@ -89,7 +89,6 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 shift = 0
                 # cv2.rectangle(image, pt1, pt2, color, thickness, lineType, shift)
                 if self.gameState.hasFood(row, column):
-                    print "food: %s,%s" % (row, column)
                     x = pt1[0] + self.BOX_WIDTH/2
                     y = pt1[1] + self.BOX_HEIGHT/2
                     radius = 10
@@ -237,7 +236,9 @@ class SpheroSwarmLineForm(QtGui.QWidget):
                 fromHere = self.location[nextSphero]
                 if fromHere[0] == -1:
                     continue
-                twist = self.getTwistFromDirection(agent.getMove(self.gameState))
+                move = agent.getMove(self.gameState)
+                print "%s's Move: %s" % (agent.name, move)
+                twist = self.getTwistFromDirection(agent.getDirectionOfMove(move))
 
                 twist.name = self.numToSphero[nextSphero]
                 self.cmdVelPub.publish(twist)  # how to tell sphero to move. all fields in twist must be explicitly set.
@@ -254,8 +255,8 @@ class SpheroSwarmLineForm(QtGui.QWidget):
         boardSet = True
         # calculate the height and width of the board according to tag corner positions
         # print "Board Width: %s\nBoard Height: %s" % (self.BOARD_WIDTH, self.BOARD_HEIGHT)
-        self.BOARD_WIDTH = self.maxX - self.minX
-        self.BOARD_HEIGHT = self.maxY - self.minY
+        self.BOARD_WIDTH = int(math.ceil(self.maxX - self.minX))
+        self.BOARD_HEIGHT = int(math.ceil(self.maxY - self.minY))
         # calculate the height and width of the boxes to be drawn
         self.BOX_WIDTH = int(math.ceil(self.BOARD_WIDTH / self.BOX_X_COUNT))
         self.BOX_HEIGHT = int(math.ceil(self.BOARD_HEIGHT / self.BOX_Y_COUNT))

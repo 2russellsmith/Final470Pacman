@@ -4,6 +4,7 @@ from agents import GhostAgent
 class RedGhost(GhostAgent):
     def __init__(self, index):
         GhostAgent.__init__(self, index)
+        self.name = "RedGhost"
 
     def getGoal(self, gameState):
         if GhostAgent.chaseMode:

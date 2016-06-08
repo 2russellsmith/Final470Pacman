@@ -8,7 +8,7 @@ class Agent:
         self.location = (-1, -1)
         self.prevLocation = (-1, -1)
         self.nextLocation = (-1, -1)
-
+        self.name = ""
     def getMove(self, gameState):
         pass
 
@@ -28,10 +28,14 @@ class Agent:
         self.prevLocation = self.location
         self.location = location
 
+    def manhattan(self, location1, location2):
+        return abs(location1[0] - location2[0]) + abs(location1[1] - location2[1])
+
 
 class PacmanAgent(Agent):
     def __init__(self, index):
         Agent.__init__(self, index, True)
+        self.name = "Pacman"
 
     def getMove(self, gameState):
         pass
@@ -90,9 +94,6 @@ class GhostAgent(Agent):
                         assistantMatrix[child.location][0] = currentCost + 1
                         assistantMatrix[current.location][2] = current.location
         return []
-
-    def manhattan(self, location1, location2):
-        return abs(location1[0] - location2[0]) + abs(location1[1] - location2[1])
 
     def getNextMove(self, nodeLocation, assistantMatrix):
         prevLocation = None
