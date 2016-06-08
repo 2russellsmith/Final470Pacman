@@ -33,7 +33,6 @@ class Agent:
         :param location: the location that the agent will move to. This should be exactly one square away.
         :returns Direction: The direction to move in.
         """
-        """Gets the direction that the given location would be from the agent's current location."""
         if location[0] > self.location[0]:
             return Directions.EAST
         elif location[0] < self.location[0]:
@@ -71,9 +70,6 @@ class Agent:
 class PacmanAgent(Agent):
     def __init__(self, index):
         Agent.__init__(self, index, True)
-
-    def getMove(self, gameState):
-        pass
 
 
 class GhostAgent(Agent):

@@ -47,8 +47,9 @@ class PacmanGui(QtGui.QWidget):
     cornerTagIds = [1, 2, 3, 4]  # TODO this is, like, hard-core dope-like broke.
 
     def __init__(self):
+        """Initializes the GUI for pacman. This adds drop-down elements to select which pacman implementation to use."""
         super(QtGui.QWidget, self).__init__()
-        self.resize(600, 480)
+        self.resize(600, 480)  # TODO this is probably too large
 
         self.stopFlag = True
         self.controller = None
@@ -118,6 +119,10 @@ class PacmanGui(QtGui.QWidget):
             self.controller.stopExecution()
 
     def cameraImageCallback(self, ros_data):
+        """Called to update the camera
+
+        :param ros_data: the data from ROS
+        """
         try:
             cv_image = self.bridge.imgmsg_to_cv2(ros_data, "bgr8")
             self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
@@ -128,8 +133,11 @@ class PacmanGui(QtGui.QWidget):
         except CvBridgeError as e:
             print(e)
 
-    # see http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
     def drawOverlay(self, image):
+        """Draws information to the camera screen. This draws a grid to the screen to help gauging correct setup. This also draws the food pellets that pacman eats.
+
+        :param image: the image to draw to. this uses cv2 extensively. See http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html for cv2 methods
+        """
         # still loading
         if not self.stopFlag or self.controller is None:
             return
@@ -152,8 +160,11 @@ class PacmanGui(QtGui.QWidget):
                 if (column, row) in controllerData['pellet_locations']:
                     cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
 
-    # main body of algorithm should go here. MSG contains an id, x,y and orientation data members
     def aprtCallback(self, msg):
+        """This is called continually with information about all of the april tags.
+
+        :param msg: MSG contains an id, x,y and orientation data members
+        """
         # print('april tag call back' + str(msg))
         # update the controller with the new tag locations
         discretizedLocations = [toDiscretized(x) for x in msg.pose]
@@ -173,6 +184,11 @@ class PacmanGui(QtGui.QWidget):
 
     @staticmethod
     def calculateBoardSpace(tagLocations):
+        """Calculates the minimum and maximum dimensions in x and y for the board, based on the four corner april tags. This will work as long as at least two opposite-corner april tags are recognized
+        properly. This also depends on PacmanGui.cornerTagIds. This dict has to be correctly set to reflect which tags are in the corners.
+
+        :param tagLocations: all of april tag locations
+        """
         for cornerId in PacmanGui.cornerTagIds:
             if cornerId in tagLocations:
                 location = tagLocations[cornerId]
