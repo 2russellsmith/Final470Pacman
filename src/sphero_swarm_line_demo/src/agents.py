@@ -30,6 +30,7 @@ class Agent:
         :param location: the location that the agent will move to. This should be exactly one square away.
         :returns Direction: The direction to move in.
         """
+        print("GET DIRECTION: %s -> %s" % (self.location, location))
         if location.getX() > self.location.getX():
             return Directions.EAST
         elif location.getX() < self.location.getX():
@@ -57,6 +58,7 @@ class Agent:
 
         :return: True if the goal location has been reached, False otherwise
         """
+
         return self.location == self.nextLocation
 
     def calculateNextMoveDirection(self, gameState):
@@ -67,7 +69,6 @@ class Agent:
         if self.hasReachedDestination() or self.nextLocation is None:
             self.nextLocation = self.getMove(gameState)
 
-        print("PACMAN: %s NEXT LOCATION: %s" % (self.isPacman, self.nextLocation))
         return self.getDirectionOfMove(self.nextLocation)
 
     @staticmethod
@@ -103,19 +104,21 @@ class GhostAgent(Agent):
         assistantMatrix = {}
         for row in range(gameState.gameBoard.getBoardHeight()):
             for column in range(gameState.gameBoard.getBoardWidth()):
-                assistantMatrix[(row, column)] = [10000, False, None]
+                assistantMatrix[Location(row=row, col=column).toTuple()] = [10000, False, None]
 
         # cost, visited, parent
-        assistantMatrix[startNode.location] = [0, False, None]
-        assistantMatrix[self.prevLocation] = [10000, True, None]
+        assistantMatrix[startNode.location.toTuple()] = [0, False, None]
+
+        if self.prevLocation:
+            assistantMatrix[self.prevLocation.toTuple()] = [10000, True, None]
 
         openSet = [startNode]
 
         while openSet:
             current = openSet[0]
             for n in openSet:
-                if assistantMatrix[n.location][0] + self.manhattan(n.location, destination.location) < \
-                                assistantMatrix[current.location][0] + self.manhattan(current.location,
+                if assistantMatrix[n.location.toTuple()][0] + self.manhattan(n.location, destination.location) < \
+                                assistantMatrix[current.location.toTuple()][0] + self.manhattan(current.location,
                                                                                       destination.location):
                     current = n
 
@@ -123,20 +126,20 @@ class GhostAgent(Agent):
                 return self.extractMoveFromPath(current.location, assistantMatrix)
 
             openSet.remove(current)
-            assistantMatrix[current.location][1] = True
+            assistantMatrix[current.location.toTuple()][1] = True
 
             for child in current.children:
-                if not assistantMatrix[child.location][1]:
+                if not assistantMatrix[child.location.toTuple()][1]:
                     if child not in openSet:
                         openSet.append(child)
 
-                    childCost = assistantMatrix[child.location][0]
-                    currentCost = assistantMatrix[current.location][0]
+                    childCost = assistantMatrix[child.location.toTuple()][0]
+                    currentCost = assistantMatrix[current.location.toTuple()][0]
                     if childCost > currentCost + 1:
-                        assistantMatrix[child.location][0] = currentCost + 1
-                        assistantMatrix[child.location][2] = current.location
+                        assistantMatrix[child.location.toTuple()][0] = currentCost + 1
+                        assistantMatrix[child.location.toTuple()][2] = current.location
 
-        return self.location
+        raise Exception("NO GHOST PATH FOUND")
 
     def extractMoveFromPath(self, nodeLocation, assistantMatrix):
         """Gets the next move that the agent will take given the node location and assistant matrix
@@ -146,9 +149,9 @@ class GhostAgent(Agent):
         :return:
         """
         prevLocation = None
-        while assistantMatrix[nodeLocation][2]:
+        while assistantMatrix[nodeLocation.toTuple()][2]:
             prevLocation = nodeLocation
-            nodeLocation = assistantMatrix[nodeLocation][2]
+            nodeLocation = assistantMatrix[nodeLocation.toTuple()][2]
         return prevLocation
 
 

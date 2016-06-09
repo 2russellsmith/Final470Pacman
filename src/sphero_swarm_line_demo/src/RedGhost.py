@@ -1,5 +1,5 @@
 from agents import GhostAgent
-
+from game import Location
 
 class RedGhost(GhostAgent):
     def __init__(self):
@@ -8,5 +8,5 @@ class RedGhost(GhostAgent):
 
     def getGoal(self, gameState):
         if GhostAgent.chaseMode:
-            return gameState.gameBoard.getNode((0, 18))
+            return gameState.gameBoard.getNode(Location(row=0, col=18))
         return gameState.gameBoard.getNode(gameState.getPacman().location)

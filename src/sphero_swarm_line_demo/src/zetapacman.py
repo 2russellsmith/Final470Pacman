@@ -65,7 +65,8 @@ class PelletMap(RewardsMap):
         for rowIndex in range(len(gameState.gameBoard._board)):
             row = []
             for columnIndex in range(len(gameState.gameBoard._board[rowIndex])):
-                if gameState.gameBoard.hasFood(rowIndex, columnIndex):
+                location = Location(row=rowIndex, col=columnIndex)
+                if gameState.gameBoard.hasFood(location):
                     row.append(PelletMap.pelletReward)
                 else:
                     row.append(0)
@@ -122,20 +123,20 @@ class GhostPitMap(RewardsMap):
 
     def __init__(self, gameState):
         # TODO Could parse map file and use locations with empty spaces
-        self.pitLocations = [Location(x=3, y=8),
-                             Location(x=3, y=9),
-                             Location(x=3, y=10),
-                             Location(x=4, y=7),
-                             Location(x=4, y=8),
-                             Location(x=4, y=9),
-                             Location(x=4, y=10),
-                             Location(x=4, y=11)]
+        self.pitLocations = [Location(row=3, col=8),
+                             Location(row=3, col=9),
+                             Location(row=3, col=10),
+                             Location(row=4, col=7),
+                             Location(row=4, col=8),
+                             Location(row=4, col=9),
+                             Location(row=4, col=10),
+                             Location(row=4, col=11)]
         RewardsMap.__init__(self, gameState)
 
     def buildMap(self, gameState):
         rewardsMap = []
-        for rowIndex in range(len(gameState.gameBoard._board)):
-            rewardsMap.append([0] * len(gameState.gameBoard._board[rowIndex]))
+        for rowIndex in range(gameState.gameBoard.getBoardHeight()):
+            rewardsMap.append([0] * gameState.gameBoard.getBoardWidth())
 
         for location in self.pitLocations:
             rewardsMap[location.getRow()][location.getCol()] = GhostPitMap.ghostPitPenalty
@@ -157,7 +158,7 @@ class ZetaPacman(PacmanAgent):
         finalMap += GhostPitMap(gameState)
 
         availableMoves = gameState.gameBoard.getNeighborCoordinates(self.location)
-        return max(availableMoves, key=lambda x: finalMap[x[0]][x[1]])
+        return max(availableMoves, key=lambda x: finalMap[x.getRow()][x.getCol()])
 
 
 if __name__ == '__main__':

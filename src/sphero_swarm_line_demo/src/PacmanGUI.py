@@ -155,7 +155,7 @@ class PacmanGui(QtGui.QWidget):
         shift = 0
         radius = 5
         for pelletLocation in controllerData['pellet_locations']:
-            cameraLocation = pelletLocation.fromDiscretized()
+            cameraLocation = pelletLocation.createNonDiscretized()
             cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, color, thickness, lineType, shift)
 
         cv2.putText(image, "Score: %s" % controllerData["score"], (100, 25), cv2.FONT_HERSHEY_COMPLEX, .5, (0, 0, 0))

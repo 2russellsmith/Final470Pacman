@@ -1,5 +1,4 @@
 import os, math
-from PacmanGUI import PacmanGui
 
 
 class Directions:
@@ -34,12 +33,12 @@ class GameConditions:
 
 
 class Location:
-    def __init__(self, x=-1, y=-1, row=-1, col=-1):
-        if x != -1 and y != -1:
+    def __init__(self, x=None, y=None, row=None, col=None):
+        if x is not None and y is not None:
             self._x = x
             self._y = y
 
-        elif row != -1 and col != -1:
+        elif row is not None and col is not None:
             self._x = col
             self._y = row
 
@@ -47,6 +46,9 @@ class Location:
             raise Exception("You freaking suck at life")
 
     def __eq__(self, other):
+        if other is None:
+            return False
+
         return self.getX() == other.getX() and self.getY() == other.getY()
 
     def __ne__(self, other):
@@ -56,7 +58,10 @@ class Location:
         return "(x=%s, y=%s)" % (self.getX(), self.getY())
 
     def __hash__(self):
-        return self.getX().__hash__() * self.getY().__hash__()
+        return hash((self.getX(), self.getY()))
+
+    def toTuple(self):
+        return self.getX(), self.getY()
 
     def getX(self):
         return self._x
@@ -90,7 +95,7 @@ class Location:
     def createNonDiscretized(self):
         x = (self._x + .5) * GameBoard.cellWidth + GameBoard.minX
         y = (self._y + .5) * GameBoard.cellHeight + GameBoard.minY
-        return Location(x=x, y=y)
+        return Location(x=int(x), y=int(y))
 
 
 class GameNode:
@@ -205,12 +210,13 @@ class GameBoard:
         """
         row = location.getRow()
         col = location.getCol()
+
         possibleMoves = [Location(row=row - 1, col=col),
                          Location(row=row + 1, col=col),
                          Location(row=row, col=col - 1),
                          Location(row=row, col=col + 1)]
 
-        return [Location(row=row, col=col) for location in possibleMoves if self._isInBoard(location) and self.isTraversable(location)]
+        return [Location(row=location.getRow(), col=location.getCol()) for location in possibleMoves if self._isInBoard(location) and self.isTraversable(location)]
 
     def isTraversable(self, location):
         """ Determines if the board is traversable at a location
@@ -342,3 +348,11 @@ class GameState:
             return GameConditions.WIN
 
         return GameConditions.PLAYING
+
+if __name__ == '__main__':
+
+    dictionary = {
+        Location(x=1, y=6): "first",
+        Location(x=6, y=1): "second"
+    }
+    print(dictionary[Location(x=6, y=1)])

@@ -13,7 +13,7 @@ class PacmanController:
     PACMAN_ID = 20
     PACMAN_NAME = "Sphero-BGP"
     RED_GHOST_ID = 0
-    RED_GHOST_NAME = "Sphero-RYG"
+    RED_GHOST_NAME = "Sphero-OPR"
 
     # PINK_GHOST_ID = 20
     # PINK_GHOST_NAME = "Sphero-YWY"
@@ -49,6 +49,9 @@ class PacmanController:
 
     def setPaused(self, paused):
         self.paused = paused
+
+    def calculateBoardSpace(self, cornerTags):
+        GameBoard.calculateBoardSpace(cornerTags)
 
     def getGUIData(self):
         """Returns the information from the game state that the GUI needs to draw"""
