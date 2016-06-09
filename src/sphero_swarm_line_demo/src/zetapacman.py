@@ -1,6 +1,6 @@
 from agents import PacmanAgent
 from PinkGhost import PinkGhost
-from game import GameState
+from game import GameState, Location
 
 
 class RewardsMap(object):
@@ -86,14 +86,14 @@ class GhostMap(RewardsMap):
         if remainingIterations == 0:
             return heatMap
 
-        row, col = currentLocation
-        print "Current Location: %s" % str(currentLocation)
-        availableMoves = gameBoard.getNeighborCoordinates(row=row, col=col)
+        availableMoves = gameBoard.getNeighborCoordinates(currentLocation)
 
         if previousLocation in availableMoves:
             availableMoves.remove(previousLocation)
 
         distanceTraveled = GhostMap.totalIterations - remainingIterations
+        row = currentLocation.getRow()
+        col = currentLocation.getCol()
         heatMap[row][col] = GhostMap.ghostPenalty / (encounteredBranches * distanceTraveled + 1)
 
         childEncounteredBranches = encounteredBranches + len(availableMoves) - 1
@@ -122,7 +122,14 @@ class GhostPitMap(RewardsMap):
 
     def __init__(self, gameState):
         # TODO Could parse map file and use locations with empty spaces
-        self.pitLocations = [(3, 8), (3, 9), (3, 10), (4, 7), (4, 8), (4, 9), (4, 10), (4, 11)]
+        self.pitLocations = [Location(x=3, y=8),
+                             Location(x=3, y=9),
+                             Location(x=3, y=10),
+                             Location(x=4, y=7),
+                             Location(x=4, y=8),
+                             Location(x=4, y=9),
+                             Location(x=4, y=10),
+                             Location(x=4, y=11)]
         RewardsMap.__init__(self, gameState)
 
     def buildMap(self, gameState):
@@ -130,8 +137,8 @@ class GhostPitMap(RewardsMap):
         for rowIndex in range(len(gameState.gameBoard._board)):
             rewardsMap.append([0] * len(gameState.gameBoard._board[rowIndex]))
 
-        for row, col in self.pitLocations:
-            rewardsMap[row][col] = GhostPitMap.ghostPitPenalty
+        for location in self.pitLocations:
+            rewardsMap[location.getRow()][location.getCol()] = GhostPitMap.ghostPitPenalty
 
         return rewardsMap
 
@@ -143,30 +150,28 @@ class ZetaPacman(PacmanAgent):
     def getMove(self, gameState):
         finalMap = PelletMap(gameState)
 
-        # for ghost in gameState.getGhosts():
-        #     g = GhostMap(gameState, ghost)
-        #     finalMap += g
-        #
-        # finalMap += GhostPitMap(gameState)
-        col, row = self.location
-        if row == -1 or col == -1:
-            print "Invalid location"
-        availableMoves = gameState.gameBoard.getNeighborCoordinates(row, col)
+        for ghost in gameState.getGhosts():
+            g = GhostMap(gameState, ghost)
+            finalMap += g
+
+        finalMap += GhostPitMap(gameState)
+
+        availableMoves = gameState.gameBoard.getNeighborCoordinates(self.location)
         return max(availableMoves, key=lambda x: finalMap[x[0]][x[1]])
 
 
 if __name__ == '__main__':
     ghost1 = PinkGhost()
-    ghost1.prevLocation = (6, 7)
-    ghost1.location = (6, 8)
+    ghost1.prevLocation = Location(x=6, y=7)
+    ghost1.location = Location(x=6, y=8)
 
     ghost2 = PinkGhost()
-    ghost2.prevLocation = (6, 2)
-    ghost2.location = (6, 3)
+    ghost2.prevLocation = Location(x=6, y=2)
+    ghost2.location = Location(x=6, y=3)
 
     z = ZetaPacman()
-    z.location = (-1, -1)
+    z.location = None
     g = GameState([ghost1, ghost2, z])
-    #print g.gameBoard.getFoodLocations()
+    # print g.gameBoard.getFoodLocations()
 
     print(z.getMove(g))

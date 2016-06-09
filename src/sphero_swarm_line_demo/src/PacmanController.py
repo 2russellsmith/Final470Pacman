@@ -14,6 +14,7 @@ class PacmanController:
     PACMAN_NAME = "Sphero-BGP"
     RED_GHOST_ID = 0
     RED_GHOST_NAME = "Sphero-RYG"
+
     # PINK_GHOST_ID = 20
     # PINK_GHOST_NAME = "Sphero-YWY"
 
@@ -65,7 +66,7 @@ class PacmanController:
         # set new agent locations
         for tagId, location in tagLocations.items():
             agent = self.getAgent(tagId)
-            if agent is not None and location != (-1, -1):
+            if agent is not None and location is not None:
                 agent.setLocation(location)
 
         # game status logic

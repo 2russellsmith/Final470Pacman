@@ -1,5 +1,6 @@
-import os
-import warnings
+import os, math
+from PacmanGUI import PacmanGui
+
 
 class Directions:
     """
@@ -27,7 +28,6 @@ class Directions:
 
 
 class GameConditions:
-
     WIN = 'Win'
     LOSE = 'Lose'
     PLAYING = 'Playing'
@@ -38,46 +38,63 @@ class Location:
         if x != -1 and y != -1:
             self._x = x
             self._y = y
-            self._row = y
-            self._col = x
 
         elif row != -1 and col != -1:
             self._x = col
             self._y = row
-            self._row = row
-            self._col = col
 
         else:
             raise Exception("You freaking suck at life")
+
+    def __eq__(self, other):
+        return self.getX() == other.getX() and self.getY() == other.getY()
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __str__(self):
+        return "(x=%s, y=%s)" % (self.getX(), self.getY())
+
+    def __hash__(self):
+        return self.getX().__hash__() * self.getY().__hash__()
 
     def getX(self):
         return self._x
 
     def setX(self, x):
         self._x = x
-        self._col = x
 
     def getY(self):
         return self._y
 
     def setY(self, y):
         self._y = y
-        self._row = y
 
     def getRow(self):
-        return self._row
+        return self.getY()
 
     def setRow(self, row):
         self.setX(row)
 
     def getCol(self):
-        return self._col
+        return self.getX()
 
     def setCol(self, col):
         self.setY(col)
 
+    def createDiscretized(self):
+        x = int((self._x - GameBoard.minX) / GameBoard.cellWidth)
+        y = int((self._y - GameBoard.minY) / GameBoard.cellHeight)
+        return Location(x=x, y=y)
+
+    def createNonDiscretized(self):
+        x = (self._x + .5) * GameBoard.cellWidth + GameBoard.minX
+        y = (self._y + .5) * GameBoard.cellHeight + GameBoard.minY
+        return Location(x=x, y=y)
+
+
 class GameNode:
-    def __init__(self, isWall=False, hasFood=False, location=(-1,-1)):
+    def __init__(self, isWall=False, hasFood=False, location=None):
         """Initializes a Pacman grid cell with information about what it contains (food or a wall)
 
         :param isWall: True if this node is a wall
@@ -101,6 +118,17 @@ class GameNode:
 
 
 class GameBoard:
+    boardWidth = 0
+    boardHeight = 0
+    cellCountX = 19
+    cellCountY = 9
+    cellWidth = 0
+    cellHeight = 0
+    minX = 1000
+    minY = 1000
+    maxX = 0
+    maxY = 0
+
     def __init__(self):
         self._board = None
         self.initializeBoard()
@@ -116,21 +144,21 @@ class GameBoard:
             row = []
             for colIndex, character in enumerate(line):
                 if character == '.':
-                    row.append(GameNode(hasFood=True, location=(colIndex, rowIndex)))
+                    row.append(GameNode(hasFood=True, location=Location(col=colIndex, row=rowIndex)))
                 elif character == ' ':
-                    row.append(GameNode(location=(colIndex, rowIndex)))
+                    row.append(GameNode(location=Location(col=colIndex, row=rowIndex)))
                 elif character == '%':
-                    row.append(GameNode(isWall=True, location=(colIndex, rowIndex)))
+                    row.append(GameNode(isWall=True, location=Location(col=colIndex, row=rowIndex)))
             self._board.append(row)
 
         # initialize node children
         for rowIndex, line in enumerate(self._board):
             for colIndex, node in enumerate(line):
-                neighborLocations = self.getNeighborCoordinates(rowIndex, colIndex)
+                neighborLocations = self.getNeighborCoordinates(Location(row=rowIndex, col=colIndex))
 
                 children = []
-                for row, col in neighborLocations:
-                    children.append(self._board[row][col])
+                for location in neighborLocations:
+                    children.append(self.getNode(location))
                 node.children = children
 
     def getNode(self, location):
@@ -140,9 +168,7 @@ class GameBoard:
         :return: the node at a given location
         """
         """Gets the node at the given location"""
-        print("GETTING NODE!")
-        print(str(location))
-        return self._board[location[1]][location[0]]
+        return self._board[location.getRow()][location.getCol()]
 
     def getBoardHeight(self):
         """Gets the height of the board
@@ -160,49 +186,87 @@ class GameBoard:
 
         :return: the locations of food in the board
         """
-        return [(row, column) for row in range(self.getBoardHeight()) for column in range(self.getBoardWidth()) if self.hasFood(row, column)]
+        return [Location(row=row, col=column) for row in range(self.getBoardHeight()) for column in range(self.getBoardWidth()) if self.hasFood(Location(row=row, col=column))]
 
-    def _isInBoard(self, row, col):
+    def _isInBoard(self, location):
         """Determines if the given location is inside the board
 
         :param row: the row of the location
         :param col: the column of the location
         :return: True if the given location is inside the board
         """
-        return 0 < row < self.getBoardHeight() and 0 < col < self.getBoardWidth()
+        return 0 < location.getRow() < self.getBoardHeight() and 0 < location.getCol() < self.getBoardWidth()
 
-    def getNeighborCoordinates(self, row, col):
+    def getNeighborCoordinates(self, location):
         """Gets the locations that neighbor the given location that are traversable
 
-        :param row: the row of the given location
-        :param col: the column of the given location
+        :param location: the base location
         :return: the neighboring locations
         """
-        possibleMoves = [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]
-        return [(row, col) for (row, col) in possibleMoves if self._isInBoard(row, col) and self.isTraversable(row, col)]
+        row = location.getRow()
+        col = location.getCol()
+        possibleMoves = [Location(row=row - 1, col=col),
+                         Location(row=row + 1, col=col),
+                         Location(row=row, col=col - 1),
+                         Location(row=row, col=col + 1)]
 
-    def isTraversable(self, row, col):
+        return [Location(row=row, col=col) for location in possibleMoves if self._isInBoard(location) and self.isTraversable(location)]
+
+    def isTraversable(self, location):
         """ Determines if the board is traversable at a location
 
-        :param row: the row to check
-        :param col: the column to check
+        :param location: because I care
         :return: True if the board is traversable at the given location
         """
-        return not self._board[row][col].isWall
+        return not self._board[location.getRow()][location.getCol()].isWall
 
-    def hasFood(self, row, col):
+    def hasFood(self, location):
         """:return: true if the board has food at the given row and column"""
+
+        row = location.getRow()
+        col = location.getCol()
         return self._board[row][col].hasFood
 
-    def eatFood(self, row, col):
-        if self.hasFood(row, col):
+    def eatFood(self, location):
+        row = location.getRow()
+        col = location.getCol()
+
+        if self.hasFood(location):
             self._board[row][col].hasFood = False
             return True
         return False
 
-    def processPacmanMove(self, row, col):
-        if self.hasFood(row, col):
+    def processPacmanMove(self, location):
+        row = location.getRow()
+        col = location.getCol()
+
+        if self.hasFood(location):
             self._board[row][col].hasFood = False
+
+    @staticmethod
+    def calculateBoardSpace(tagLocations):
+        """Calculates the minimum and maximum dimensions in x and y for the board, based on the four corner april tags. This will work as long as at least two opposite-corner april tags are recognized
+        properly. This also depends on PacmanGui.cornerTagIds. This dict has to be correctly set to reflect which tags are in the corners.
+    
+        :param tagLocations: all of april tag locations
+        """
+        for location in tagLocations:
+            if location.getX() < GameBoard.minX:
+                GameBoard.minX = int(math.ceil(location.getX()))
+            if location.getY() < GameBoard.minY:
+                GameBoard.minY = int(math.ceil(location.getY()))
+            if location.getX() > GameBoard.maxX:
+                GameBoard.maxX = int(math.ceil(location.getX()))
+            if location.getY() > GameBoard.maxY:
+                GameBoard.maxY = int(math.ceil(location.getY()))
+
+        # calculate the height and width of the board according to tag corner positions
+        GameBoard.boardWidth = abs(int(math.ceil(GameBoard.maxX - GameBoard.minX)))
+        GameBoard.boardHeight = abs(int(math.ceil(GameBoard.maxY - GameBoard.minY)))
+
+        # calculate the height and width of the boxes to be drawn
+        GameBoard.cellWidth = int(math.ceil(GameBoard.boardWidth / GameBoard.cellCountX))
+        GameBoard.cellHeight = int(math.ceil(GameBoard.boardHeight / GameBoard.cellCountY))
 
 
 class GameState:
@@ -246,17 +310,14 @@ class GameState:
         return [x for x in self.agents if not x.isPacman]
 
     # deprecated
-    def hasFood(self, row, column):
+    def hasFood(self, location):
         """Determines if the board has food at the given location
 
         :param row: the row to check
         :param column: the column to check
         :return: True if the board has food at the location, false otherwise
         """
-        return self.gameBoard.hasFood(row, column)
-
-    def hasFoodAtLocation(self, location):
-        return self.hasFood(location[1], location[0])
+        return self.gameBoard.hasFood(location)
 
     def getFoodLocations(self):
         """Gets the locations of food on the board
@@ -267,16 +328,13 @@ class GameState:
 
     def processPacmanLocation(self):
         # test for death
-        ghostLocations = [ghost.location for ghost in self.getGhosts() if ghost.location != (-1, -1)]\
-                         + [ghost.nextLocation for ghost in self.getGhosts() if ghost.nextLocation != (-1, -1)]
-        print("Ghost locations: %s" % str(ghostLocations))
-        print("Pacman current location: %s" % str(self.getPacman().location))
-        print("Pacman next location: %s" % str(self.getPacman().nextLocation))
+        ghostLocations = [ghost.location for ghost in self.getGhosts() if ghost.location is not None] \
+                         + [ghost.nextLocation for ghost in self.getGhosts() if ghost.nextLocation is not None]
         if self.getPacman().location in ghostLocations or self.getPacman().nextLocation in ghostLocations:
             return GameConditions.LOSE
 
         # eat food
-        if self.gameBoard.eatFood(self.getPacman().location[1], self.getPacman().location[0]):
+        if self.gameBoard.eatFood(self.getPacman().location):
             self.score += GameState.POINTS_FOR_PELLET
 
         # test for victory

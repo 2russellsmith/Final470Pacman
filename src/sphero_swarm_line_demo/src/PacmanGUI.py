@@ -1,13 +1,13 @@
 #!/usr/bin/python
 
-import sys, rospy, math, cv2
+import sys, rospy, cv2
 from PyQt4 import QtGui, QtCore
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 from multi_apriltags_tracker.msg import april_tag_pos
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 from PacmanController import PacmanController
-from game import GameConditions
+from game import GameConditions, Location, GameBoard
 
 key_instruct_label = """
     Control Your Sphero!
@@ -19,32 +19,10 @@ key_instruct_label = """
     """
 
 
-def toDiscretized(location):
-    x = int((location.x - PacmanGui.minX) / PacmanGui.cellWidth)
-    y = int((location.y - PacmanGui.minY) / PacmanGui.cellHeight)
-    return x, y
-
-
-def fromDiscretized(location):
-    x = (location[0] + .5) * PacmanGui.cellWidth + PacmanGui.minX
-    y = (location[1] + .5) * PacmanGui.cellHeight + PacmanGui.minY
-    return int(x), int(y)
-
-
-STEP_LENGTH = 100
+# STEP_LENGTH = 100
 
 
 class PacmanGui(QtGui.QWidget):
-    boardWidth = 0
-    boardHeight = 0
-    cellCountX = 19
-    cellCountY = 9
-    cellWidth = 0
-    cellHeight = 0
-    minX = 1000
-    minY = 1000
-    maxX = 0
-    maxY = 0
     cornerTagIds = [90, 92, 93, 98]
 
     def __init__(self):
@@ -176,22 +154,16 @@ class PacmanGui(QtGui.QWidget):
         lineType = 8
         shift = 0
         radius = 5
-        for row in range(0, PacmanGui.cellCountY):
-            for column in range(0, PacmanGui.cellCountX):
-                # draw grid
-                # topLeftCorner = (PacmanGui.cellWidth * column + PacmanGui.minX, PacmanGui.cellHeight * row + PacmanGui.minY)
-                # bottomRightCorner = (PacmanGui.cellWidth * (column + 1) + PacmanGui.minX, PacmanGui.cellHeight * (row + 1) + PacmanGui.minY)
-                # cv2.rectangle(image, topLeftCorner, bottomRightCorner, color, thickness, lineType, shift)
-                # draw pellets
-                if (row, column) in controllerData['pellet_locations']:
-                    cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
+        for pelletLocation in controllerData['pellet_locations']:
+            cameraLocation = pelletLocation.fromDiscretized()
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, color, thickness, lineType, shift)
 
-        cv2.putText(image, "Score: %s" % controllerData["score"], (100, 50), cv2.FONT_HERSHEY_COMPLEX, .5, color)
+        cv2.putText(image, "Score: %s" % controllerData["score"], (100, 25), cv2.FONT_HERSHEY_COMPLEX, .5, (0, 0, 0))
 
         if self.gameStatus == GameConditions.WIN:
-            cv2.putText(image, "Pacman Wins! Because Awesome", (200, 100), cv2.FONT_HERSHEY_COMPLEX, 1, color)
+            cv2.putText(image, "Pacman Wins! Because Awesome", (200, 100), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
         elif self.gameStatus == GameConditions.LOSE:
-            cv2.putText(image, "Pacman Loses! Assert ~Awesome", (200, 100), cv2.FONT_HERSHEY_COMPLEX, 1, color)
+            cv2.putText(image, "Pacman Loses! Assert ~Awesome", (200, 100), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
 
     def aprtCallback(self, msg):
         """
@@ -202,44 +174,19 @@ class PacmanGui(QtGui.QWidget):
         if not self.running:
             return
 
-        cornerTags = [location for index, location in enumerate(msg.pose) if msg.id[index] in PacmanGui.cornerTagIds]
-        self.calculateBoardSpace(cornerTags)
+        cornerTags = [Location(x=location.x, y=location.y) for index, location in enumerate(msg.pose) if msg.id[index] in PacmanGui.cornerTagIds]
+        self.controller.calculateBoardSpace(cornerTags)
+        self.guiInitialized = True
+        # self.calculateBoardSpace(cornerTags)
 
         # update the controller with the new tag locations
-        discretizedLocations = [toDiscretized(x) for x in msg.pose]
+        discretizedLocations = [Location(x=location.x, y=location.y).createDiscretized() for location in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.id, discretizedLocations))}
-        # self.calculateBoardSpace(tagLocations)
 
         if not self.paused:
             self.gameStatus = self.controller.updateAgents(tagLocations)
             if self.gameStatus != GameConditions.PLAYING:
                 self.paused = True
-
-    def calculateBoardSpace(self, tagLocations):
-        """Calculates the minimum and maximum dimensions in x and y for the board, based on the four corner april tags. This will work as long as at least two opposite-corner april tags are recognized
-        properly. This also depends on PacmanGui.cornerTagIds. This dict has to be correctly set to reflect which tags are in the corners.
-
-        :param tagLocations: all of april tag locations
-        """
-        for location in tagLocations:
-            if location.x < PacmanGui.minX:
-                PacmanGui.minX = int(math.ceil(location.x))
-            if location.y < PacmanGui.minY:
-                PacmanGui.minY = int(math.ceil(location.y))
-            if location.x > PacmanGui.maxX:
-                PacmanGui.maxX = int(math.ceil(location.x))
-            if location.y > PacmanGui.maxY:
-                PacmanGui.maxY = int(math.ceil(location.y))
-
-        # calculate the height and width of the board according to tag corner positions
-        PacmanGui.boardWidth = abs(int(math.ceil(PacmanGui.maxX - PacmanGui.minX)))
-        PacmanGui.boardHeight = abs(int(math.ceil(PacmanGui.maxY - PacmanGui.minY)))
-
-        # calculate the height and width of the boxes to be drawn
-        PacmanGui.cellWidth = int(math.ceil(PacmanGui.boardWidth / PacmanGui.cellCountX))
-        PacmanGui.cellHeight = int(math.ceil(PacmanGui.boardHeight / PacmanGui.cellCountY))
-
-        self.guiInitialized = True
 
     ''' Not currently used
     def keyPressEvent(self, e):

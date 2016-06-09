@@ -10,9 +10,9 @@ class Agent:
         :param isPacman: True if the agent is pacman, false otherwise.
         """
         self.isPacman = isPacman
-        self.location = (-1, -1)
-        self.prevLocation = (-1, -1)
-        self.nextLocation = (-1, -1)
+        self.location = None
+        self.prevLocation = None
+        self.nextLocation = None
 
     def getMove(self, gameState):
         """Gets the next location that the agent will move to based on the information in the gameState
@@ -30,13 +30,13 @@ class Agent:
         :param location: the location that the agent will move to. This should be exactly one square away.
         :returns Direction: The direction to move in.
         """
-        if location[0] > self.location[0]:
+        if location.getX() > self.location.getX():
             return Directions.EAST
-        elif location[0] < self.location[0]:
+        elif location.getX() < self.location.getX():
             return Directions.WEST
-        elif location[1] > self.location[1]:
+        elif location.getY() > self.location.getY():
             return Directions.NORTH
-        elif location[1] < self.location[1]:
+        elif location.getY() < self.location.getY():
             return Directions.SOUTH
         else:
             return Directions.STOP
@@ -64,7 +64,7 @@ class Agent:
 
         :return: direction of next move
         """
-        if self.hasReachedDestination() or self.nextLocation == (-1, -1):
+        if self.hasReachedDestination() or self.nextLocation is None:
             self.nextLocation = self.getMove(gameState)
 
         print("PACMAN: %s NEXT LOCATION: %s" % (self.isPacman, self.nextLocation))
@@ -72,7 +72,7 @@ class Agent:
 
     @staticmethod
     def manhattan(location1, location2):
-        return abs(location1[0] - location2[0]) + abs(location1[1] - location2[1])
+        return abs(location1.getX() - location2.getX()) + abs(location1.getY() - location2.getY())
 
 
 class PacmanAgent(Agent):
@@ -117,7 +117,6 @@ class GhostAgent(Agent):
                 if assistantMatrix[n.location][0] + self.manhattan(n.location, destination.location) < \
                                 assistantMatrix[current.location][0] + self.manhattan(current.location,
                                                                                       destination.location):
-
                     current = n
 
             if current.location == destination.location:
@@ -151,7 +150,6 @@ class GhostAgent(Agent):
             prevLocation = nodeLocation
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation
-
 
 
 if __name__ == '__main__':
