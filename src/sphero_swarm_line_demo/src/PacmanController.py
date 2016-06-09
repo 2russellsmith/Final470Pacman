@@ -10,10 +10,10 @@ FOLLOW_SPEED = 30
 
 
 class PacmanController:
-    PACMAN_ID = 18
+    PACMAN_ID = 7
     PACMAN_NAME = "Sphero-GRO"
     RED_GHOST_ID = 2
-    RED_GHOST_NAME = "Sphero-OBR"
+    RED_GHOST_NAME = "Sphero-RRG"
 
     # PINK_GHOST_ID = 20
     # PINK_GHOST_NAME = "Sphero-YWY"
@@ -60,7 +60,7 @@ class PacmanController:
         return {
             "score": self.gameState.score,
             "pellet_locations": self.gameState.getFoodLocations(),
-            "ghost_locations": (self.gameState.getGhosts()[0].location, self.gameState.getGhosts()[1].location),
+            "ghost_locations": (self.gameState.getGhosts()[0].location,self.gameState.getGhosts()[0].location), # self.gameState.getGhosts()[1].location),
             "pacman_location": self.gameState.getPacman().location,
             "corners_locations": self.corners
         }

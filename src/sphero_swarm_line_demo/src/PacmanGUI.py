@@ -23,7 +23,7 @@ key_instruct_label = """
 
 
 class PacmanGui(QtGui.QWidget):
-    cornerTagIds = [0,1,43,32]
+    cornerTagIds = [5,84,45,26]
 
     def __init__(self):
         """Initializes the GUI for pacman. This adds drop-down elements to select which pacman implementation to use."""
@@ -157,22 +157,24 @@ class PacmanGui(QtGui.QWidget):
 
         for pelletLocation in controllerData['pellet_locations']:
             cameraLocation = pelletLocation.createNonDiscretized()
-            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, color, thickness, lineType, shift)
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, color, -1, lineType, shift)
 
         # draw ghosts
         for ghostLocation in controllerData['ghost_locations']:
             cameraLocation = ghostLocation.createNonDiscretized()
-            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, (0, 255, 0), thickness, lineType, shift)
+            print "ghost %s" % cameraLocation
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), 20, (0, 255, 0), -1, lineType, shift)
 
         # draw pacman
         cameraLocation = controllerData['pacman_location']
+        cameraLocation = cameraLocation.createNonDiscretized()
         if cameraLocation is not None:
-            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, (0, 255, 0), thickness, lineType, shift)
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), 20, (0, 0, 255), -1, lineType, shift)
 
         # draw corners
-        for corners in controllerData['corners_locations']:
-            cameraLocation = corners.createNonDiscretized()
-            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, (0, 255, 0), thickness, lineType, shift)
+        for corner in controllerData['corners_locations']:
+            cameraLocation = corner
+            cv2.rectangle(image, (int(cameraLocation.getCol()-20), int(cameraLocation.getRow()-20)), (int(cameraLocation.getCol()+20), int(cameraLocation.getRow()+20)), (0, 255, 255), thickness, lineType, shift)
 
         cv2.putText(image, "Score: %s" % controllerData["score"], (100, 25), cv2.FONT_HERSHEY_COMPLEX, .5, (0, 0, 0))
 
