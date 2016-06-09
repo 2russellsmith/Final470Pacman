@@ -23,7 +23,8 @@ key_instruct_label = """
 
 
 class PacmanGui(QtGui.QWidget):
-    cornerTagIds = [90, 92, 93, 98]
+    #cornerTagIds = [90, 92, 93, 98]
+    cornerTagIds = [26, 5, 82, 98]
 
     def __init__(self):
         """Initializes the GUI for pacman. This adds drop-down elements to select which pacman implementation to use."""
@@ -158,12 +159,12 @@ class PacmanGui(QtGui.QWidget):
             cameraLocation = pelletLocation.createNonDiscretized()
             cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, color, thickness, lineType, shift)
 
-        cv2.putText(image, "Score: %s" % controllerData["score"], (100, 25), cv2.FONT_HERSHEY_COMPLEX, .5, (0, 0, 0))
+        cv2.putText(image, "Score: %s" % controllerData["score"], (100, 25), cv2.FONT_HERSHEY_COMPLEX, .5, (255, 255, 255))
 
         if self.gameStatus == GameConditions.WIN:
-            cv2.putText(image, "Pacman Wins! Because Awesome", (200, 100), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+            cv2.putText(image, "Pacman Wins!", (100, 300), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 255, 255))
         elif self.gameStatus == GameConditions.LOSE:
-            cv2.putText(image, "Pacman Loses! Assert ~Awesome", (200, 100), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+            cv2.putText(image, "Pacman Loses!", (100, 300), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 255, 255))
 
     def aprtCallback(self, msg):
         """
@@ -188,7 +189,6 @@ class PacmanGui(QtGui.QWidget):
             if self.gameStatus != GameConditions.PLAYING:
                 self.paused = True
 
-    ''' Not currently used
     def keyPressEvent(self, e):
         print "key pressed"
         selected_items = self.spheroListWidget.selectedItems()
@@ -228,7 +228,7 @@ class PacmanGui(QtGui.QWidget):
         if twist.linear.x != 0 or twist.linear.y != 0:
             twist.name = str(selected_items[0].text())
             self.cmdVelPub.publish(twist)
-    '''
+
 
 
 if __name__ == '__main__':

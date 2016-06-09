@@ -9,12 +9,11 @@ class NuPacman(PacmanAgent):
     def getMove(self, gameState):
         board = gameState.gameBoard
         redMove = gameState.agents[1].getMove(gameState)
-        pinkMove = gameState.agents[2].getMove(gameState)
+        #pinkMove = gameState.agents[2].getMove(gameState)
         move = self.location
         for location in board.getNeighborCoordinates(self.location):
             if board.hasFood(location) and \
-                            self.manhattan(redMove, location) > self.safeDistance and \
-                            self.manhattan(pinkMove, location) > self.safeDistance:
+                            self.manhattan(redMove, location) > self.safeDistance:
                 move = location
                 break
         return move

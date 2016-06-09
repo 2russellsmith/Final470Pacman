@@ -11,9 +11,9 @@ FOLLOW_SPEED = 30
 
 class PacmanController:
     PACMAN_ID = 20
-    PACMAN_NAME = "Sphero-GRO"
-    RED_GHOST_ID = 0
-    RED_GHOST_NAME = "Sphero-OBR"
+    PACMAN_NAME = "Sphero-YRW"
+    RED_GHOST_ID = 1
+    RED_GHOST_NAME = "Sphero-GRO"
 
     # PINK_GHOST_ID = 20
     # PINK_GHOST_NAME = "Sphero-YWY"
@@ -70,6 +70,7 @@ class PacmanController:
         for tagId, location in tagLocations.items():
             agent = self.getAgent(tagId)
             if agent is not None and location is not None:
+                print("PACMAN: %s CURRENT LOCATION: %s NEXT LOCATION: %s" % (agent.isPacman, agent.location, agent.nextLocation))
                 agent.setLocation(location)
 
         # game status logic
@@ -119,11 +120,11 @@ class PacmanController:
         twist.angular.y = 0
         twist.angular.z = 0
         if direction == Directions.NORTH:
-            twist.linear.y = FOLLOW_SPEED
+            twist.linear.y = -FOLLOW_SPEED
         elif direction == Directions.EAST:
             twist.linear.x = FOLLOW_SPEED
         elif direction == Directions.SOUTH:
-            twist.linear.y = -FOLLOW_SPEED
+            twist.linear.y = FOLLOW_SPEED
         elif direction == Directions.WEST:
             twist.linear.x = -FOLLOW_SPEED
         return twist
