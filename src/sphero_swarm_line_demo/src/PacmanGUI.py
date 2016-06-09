@@ -45,7 +45,7 @@ class PacmanGui(QtGui.QWidget):
     minY = 1000
     maxX = 0
     maxY = 0
-    cornerTagIds = [90, 92, 93, 98]  # TODO this is, like, hard-core dope-like broke.
+    cornerTagIds = [90, 92, 93, 98]
 
     def __init__(self):
         """Initializes the GUI for pacman. This adds drop-down elements to select which pacman implementation to use."""
@@ -129,7 +129,7 @@ class PacmanGui(QtGui.QWidget):
         self.running = True
         self.paused = False
 
-    def pause(self,):
+    def pause(self, ):
         self.paused = not self.paused
         labelText = "Pause" if not self.paused else "Unpause"
         self.controllerPauseBtn.setText(labelText)
@@ -179,9 +179,9 @@ class PacmanGui(QtGui.QWidget):
         for row in range(0, PacmanGui.cellCountY):
             for column in range(0, PacmanGui.cellCountX):
                 # draw grid
-                #topLeftCorner = (PacmanGui.cellWidth * column + PacmanGui.minX, PacmanGui.cellHeight * row + PacmanGui.minY)
-                #bottomRightCorner = (PacmanGui.cellWidth * (column + 1) + PacmanGui.minX, PacmanGui.cellHeight * (row + 1) + PacmanGui.minY)
-                #cv2.rectangle(image, topLeftCorner, bottomRightCorner, color, thickness, lineType, shift)
+                # topLeftCorner = (PacmanGui.cellWidth * column + PacmanGui.minX, PacmanGui.cellHeight * row + PacmanGui.minY)
+                # bottomRightCorner = (PacmanGui.cellWidth * (column + 1) + PacmanGui.minX, PacmanGui.cellHeight * (row + 1) + PacmanGui.minY)
+                # cv2.rectangle(image, topLeftCorner, bottomRightCorner, color, thickness, lineType, shift)
                 # draw pellets
                 if (row, column) in controllerData['pellet_locations']:
                     cv2.circle(image, fromDiscretized((column, row)), radius, color, thickness, lineType, shift)
@@ -208,16 +208,12 @@ class PacmanGui(QtGui.QWidget):
         # update the controller with the new tag locations
         discretizedLocations = [toDiscretized(x) for x in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.id, discretizedLocations))}
-        print(tagLocations)
-        print("\n\n\n\n")
-        #self.calculateBoardSpace(tagLocations)
-
+        # self.calculateBoardSpace(tagLocations)
 
         if not self.paused:
             self.gameStatus = self.controller.updateAgents(tagLocations)
             if self.gameStatus != GameConditions.PLAYING:
                 self.paused = True
-
 
     def calculateBoardSpace(self, tagLocations):
         """Calculates the minimum and maximum dimensions in x and y for the board, based on the four corner april tags. This will work as long as at least two opposite-corner april tags are recognized

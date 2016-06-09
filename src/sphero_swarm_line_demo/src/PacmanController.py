@@ -6,12 +6,12 @@ from NuPacman import NuPacman
 import rospy
 from sphero_swarm_node.msg import SpheroTwist, SpheroColor
 
-FOLLOW_SPEED = 75
+FOLLOW_SPEED = 30
 
 
 class PacmanController:
     PACMAN_ID = 20
-    PACMAN_NAME = "Sphero-OPR"
+    PACMAN_NAME = "Sphero-BGP"
     RED_GHOST_ID = 0
     RED_GHOST_NAME = "Sphero-RYG"
     # PINK_GHOST_ID = 20
@@ -65,7 +65,7 @@ class PacmanController:
         # set new agent locations
         for tagId, location in tagLocations.items():
             agent = self.getAgent(tagId)
-            if agent is not None:
+            if agent is not None and location != (-1, -1):
                 agent.setLocation(location)
 
         # game status logic
@@ -78,9 +78,7 @@ class PacmanController:
 
                 if agent is not None:
                     if tagId in self.tagIdToSpheroName:
-                        print ("PREVIOUS NEXT: %s" % str(agent.nextLocation))
                         nextMove = agent.calculateNextMoveDirection(self.gameState)
-                        print("ID: %s MOVE: %s" % (tagId, nextMove))
                         twist = self.getTwistFromDirection(nextMove)
                         twist.name = self.tagIdToSpheroName[tagId]
                         self.cmdVelPub.publish(twist)

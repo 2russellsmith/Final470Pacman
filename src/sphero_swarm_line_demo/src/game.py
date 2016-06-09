@@ -1,7 +1,6 @@
 import os
 import warnings
 
-
 class Directions:
     """
     The different directions possible in Pacman, along with helper utilities
@@ -26,12 +25,56 @@ class Directions:
                WEST: EAST,
                STOP: STOP}
 
+
 class GameConditions:
 
     WIN = 'Win'
     LOSE = 'Lose'
     PLAYING = 'Playing'
 
+
+class Location:
+    def __init__(self, x=-1, y=-1, row=-1, col=-1):
+        if x != -1 and y != -1:
+            self._x = x
+            self._y = y
+            self._row = y
+            self._col = x
+
+        elif row != -1 and col != -1:
+            self._x = col
+            self._y = row
+            self._row = row
+            self._col = col
+
+        else:
+            raise Exception("You freaking suck at life")
+
+    def getX(self):
+        return self._x
+
+    def setX(self, x):
+        self._x = x
+        self._col = x
+
+    def getY(self):
+        return self._y
+
+    def setY(self, y):
+        self._y = y
+        self._row = y
+
+    def getRow(self):
+        return self._row
+
+    def setRow(self, row):
+        self.setX(row)
+
+    def getCol(self):
+        return self._col
+
+    def setCol(self, col):
+        self.setY(col)
 
 class GameNode:
     def __init__(self, isWall=False, hasFood=False, location=(-1,-1)):
@@ -73,11 +116,11 @@ class GameBoard:
             row = []
             for colIndex, character in enumerate(line):
                 if character == '.':
-                    row.append(GameNode(hasFood=True, location=(rowIndex, colIndex)))
+                    row.append(GameNode(hasFood=True, location=(colIndex, rowIndex)))
                 elif character == ' ':
-                    row.append(GameNode(location=(rowIndex, colIndex)))
+                    row.append(GameNode(location=(colIndex, rowIndex)))
                 elif character == '%':
-                    row.append(GameNode(isWall=True, location=(rowIndex, colIndex)))
+                    row.append(GameNode(isWall=True, location=(colIndex, rowIndex)))
             self._board.append(row)
 
         # initialize node children
@@ -226,9 +269,9 @@ class GameState:
         # test for death
         ghostLocations = [ghost.location for ghost in self.getGhosts() if ghost.location != (-1, -1)]\
                          + [ghost.nextLocation for ghost in self.getGhosts() if ghost.nextLocation != (-1, -1)]
-        print(ghostLocations)
-        print(self.getPacman().location)
-        print(self.getPacman().nextLocation)
+        print("Ghost locations: %s" % str(ghostLocations))
+        print("Pacman current location: %s" % str(self.getPacman().location))
+        print("Pacman next location: %s" % str(self.getPacman().nextLocation))
         if self.getPacman().location in ghostLocations or self.getPacman().nextLocation in ghostLocations:
             return GameConditions.LOSE
 

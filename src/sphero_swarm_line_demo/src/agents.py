@@ -65,7 +65,6 @@ class Agent:
         :return: direction of next move
         """
         if self.hasReachedDestination() or self.nextLocation == (-1, -1):
-            print ("CALCULATING NEW MOVE")
             self.nextLocation = self.getMove(gameState)
 
         print("PACMAN: %s NEXT LOCATION: %s" % (self.isPacman, self.nextLocation))
@@ -138,7 +137,7 @@ class GhostAgent(Agent):
                         assistantMatrix[child.location][0] = currentCost + 1
                         assistantMatrix[child.location][2] = current.location
 
-        return []
+        return self.location
 
     def extractMoveFromPath(self, nodeLocation, assistantMatrix):
         """Gets the next move that the agent will take given the node location and assistant matrix
@@ -148,10 +147,24 @@ class GhostAgent(Agent):
         :return:
         """
         prevLocation = None
-        print("FINDING PATH FROM: %s" % str(nodeLocation))
-        print(assistantMatrix[nodeLocation])
         while assistantMatrix[nodeLocation][2]:
-            print("FOLLOWING: %s" % str(nodeLocation))
             prevLocation = nodeLocation
             nodeLocation = assistantMatrix[nodeLocation][2]
         return prevLocation
+
+
+
+if __name__ == '__main__':
+    from RedGhost import RedGhost
+    from zetapacman import ZetaPacman
+
+    ghost1 = RedGhost()
+    ghost1.prevLocation = (5, 1)
+    ghost1.location = (5, 0)
+
+    z = ZetaPacman()
+    z.location = (16, 4)
+    g = GameState([ghost1, z])
+    print "resulting move" + str(ghost1.getMove(g))
+
+    print("hi")

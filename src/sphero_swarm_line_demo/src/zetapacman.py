@@ -87,6 +87,7 @@ class GhostMap(RewardsMap):
             return heatMap
 
         row, col = currentLocation
+        print "Current Location: %s" % str(currentLocation)
         availableMoves = gameBoard.getNeighborCoordinates(row=row, col=col)
 
         if previousLocation in availableMoves:
@@ -142,28 +143,30 @@ class ZetaPacman(PacmanAgent):
     def getMove(self, gameState):
         finalMap = PelletMap(gameState)
 
-        for ghost in gameState.getGhosts():
-            g = GhostMap(gameState, ghost)
-            finalMap += g
-
-        finalMap += GhostPitMap(gameState)
-        row, col = self.location
+        # for ghost in gameState.getGhosts():
+        #     g = GhostMap(gameState, ghost)
+        #     finalMap += g
+        #
+        # finalMap += GhostPitMap(gameState)
+        col, row = self.location
+        if row == -1 or col == -1:
+            print "Invalid location"
         availableMoves = gameState.gameBoard.getNeighborCoordinates(row, col)
         return max(availableMoves, key=lambda x: finalMap[x[0]][x[1]])
 
 
 if __name__ == '__main__':
-    ghost1 = PinkGhost(index=1)
+    ghost1 = PinkGhost()
     ghost1.prevLocation = (6, 7)
     ghost1.location = (6, 8)
 
-    ghost2 = PinkGhost(index=1)
+    ghost2 = PinkGhost()
     ghost2.prevLocation = (6, 2)
     ghost2.location = (6, 3)
 
     z = ZetaPacman()
-    z.location = (6, 6)
+    z.location = (-1, -1)
     g = GameState([ghost1, ghost2, z])
-    print g.gameBoard.getFoodLocations()
+    #print g.gameBoard.getFoodLocations()
 
     print(z.getMove(g))
