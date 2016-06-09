@@ -1,3 +1,0 @@
-<launch>
-  <node pkg="sphero_swarm_dashboard" type="sphero_swarm_dashboard.py" name="sphero_swarm_dashboard" output="screen"/>
-</launch>

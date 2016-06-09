@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "sphero_swarm_bringup")
-set(sphero_swarm_bringup_MAINTAINER "Daqing Yi <daqing.yi@byu.edu>")
-set(sphero_swarm_bringup_DEPRECATED "")
-set(sphero_swarm_bringup_VERSION "0.1.0")
-set(sphero_swarm_bringup_BUILD_DEPENDS )
-set(sphero_swarm_bringup_RUN_DEPENDS "urdf" "robot_state_publisher" "sphero_swarm_node" "sphero_description")
-set(sphero_swarm_bringup_BUILDTOOL_DEPENDS "catkin")

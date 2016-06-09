@@ -1,8 +1,0 @@
-prefix=/home/zeta/catkin_ws/devel
-
-Name: sphero_teleop
-Description: Description of sphero_teleop
-Version: 0.0.1
-Cflags: 
-Libs: -L/home/zeta/catkin_ws/devel/lib 
-Requires: 

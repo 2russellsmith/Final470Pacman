@@ -1,8 +1,0 @@
-prefix=/home/zeta/catkin_ws/devel
-
-Name: sphero_dashboard
-Description: Description of sphero_dashboard
-Version: 0.1.0
-Cflags: 
-Libs: -L/home/zeta/catkin_ws/devel/lib 
-Requires: 

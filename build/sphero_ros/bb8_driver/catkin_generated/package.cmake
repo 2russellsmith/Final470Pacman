@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "bb8_driver")
-set(bb8_driver_MAINTAINER "Melonee Wise <melonee@meloneewise.com>")
-set(bb8_driver_DEPRECATED "")
-set(bb8_driver_VERSION "0.1.0")
-set(bb8_driver_BUILD_DEPENDS )
-set(bb8_driver_RUN_DEPENDS "bluepy")
-set(bb8_driver_BUILDTOOL_DEPENDS "catkin" "bluepy")
