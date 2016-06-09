@@ -62,7 +62,8 @@ class PacmanController:
             "pellet_locations": self.gameState.getFoodLocations(),
             "ghost_locations": (self.gameState.getGhosts()[0].location,self.gameState.getGhosts()[0].location), # self.gameState.getGhosts()[1].location),
             "pacman_location": self.gameState.getPacman().location,
-            "corners_locations": self.corners
+            "corners_locations": self.corners,
+            "wall_locations":
         }
 
     def updateAgents(self, tagLocations):

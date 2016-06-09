@@ -196,7 +196,7 @@ class PacmanGui(QtGui.QWidget):
         self.controller.calculateBoardSpace(cornerTags)
         self.guiInitialized = True
         # self.calculateBoardSpace(cornerTags)
-
+        cornerTags = [Location(x=location.x, y=location.y) for index, location in enumerate(msg.pose) if self.]
         # update the controller with the new tag locations
         discretizedLocations = [Location(x=location.x, y=location.y).createDiscretized() for location in msg.pose]
         tagLocations = {x[0]: x[1] for x in list(zip(msg.id, discretizedLocations))}
