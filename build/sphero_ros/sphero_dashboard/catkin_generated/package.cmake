@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "sphero_dashboard")
-set(sphero_dashboard_MAINTAINER "Daqing Yi <daqing.yi@byu.edu>")
-set(sphero_dashboard_DEPRECATED "")
-set(sphero_dashboard_VERSION "0.1.0")
-set(sphero_dashboard_BUILD_DEPENDS "std_msgs")
-set(sphero_dashboard_RUN_DEPENDS "geometry_msgs" "sensor_msgs" "nav_msgs" "std_msgs" "rospy")
-set(sphero_dashboard_BUILDTOOL_DEPENDS "catkin")

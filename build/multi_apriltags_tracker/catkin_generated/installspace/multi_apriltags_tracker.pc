@@ -1,8 +1,0 @@
-prefix=/home/zeta/catkin_ws/install
-
-Name: multi_apriltags_tracker
-Description: Description of multi_apriltags_tracker
-Version: 0.0.0
-Cflags: -I/home/zeta/catkin_ws/install/include
-Libs: -L/home/zeta/catkin_ws/install/lib 
-Requires: message_runtime
