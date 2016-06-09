@@ -10,15 +10,16 @@ FOLLOW_SPEED = 30
 
 
 class PacmanController:
-    PACMAN_ID = 20
+    PACMAN_ID = 18
     PACMAN_NAME = "Sphero-GRO"
-    RED_GHOST_ID = 0
+    RED_GHOST_ID = 2
     RED_GHOST_NAME = "Sphero-OBR"
 
     # PINK_GHOST_ID = 20
     # PINK_GHOST_NAME = "Sphero-YWY"
 
     def __init__(self, pacmanAgentType):
+        self.corners = []
         self.stop = True
         self.paused = False
         # Create the specific implementation of pacman needed
@@ -52,12 +53,16 @@ class PacmanController:
 
     def calculateBoardSpace(self, cornerTags):
         GameBoard.calculateBoardSpace(cornerTags)
+        self.corners = cornerTags
 
     def getGUIData(self):
         """Returns the information from the game state that the GUI needs to draw"""
         return {
             "score": self.gameState.score,
             "pellet_locations": self.gameState.getFoodLocations(),
+            "ghost_locations": (self.gameState.getGhosts()[0].location, self.gameState.getGhosts()[1].location),
+            "pacman_location": self.gameState.getPacman().location,
+            "corners_locations": self.corners
         }
 
     def updateAgents(self, tagLocations):

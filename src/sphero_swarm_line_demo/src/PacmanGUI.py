@@ -23,7 +23,7 @@ key_instruct_label = """
 
 
 class PacmanGui(QtGui.QWidget):
-    cornerTagIds = [90, 92, 93, 98]
+    cornerTagIds = [0,1,43,32]
 
     def __init__(self):
         """Initializes the GUI for pacman. This adds drop-down elements to select which pacman implementation to use."""
@@ -154,9 +154,25 @@ class PacmanGui(QtGui.QWidget):
         lineType = 8
         shift = 0
         radius = 5
+
         for pelletLocation in controllerData['pellet_locations']:
             cameraLocation = pelletLocation.createNonDiscretized()
             cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, color, thickness, lineType, shift)
+
+        # draw ghosts
+        for ghostLocation in controllerData['ghost_locations']:
+            cameraLocation = ghostLocation.createNonDiscretized()
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, (0, 255, 0), thickness, lineType, shift)
+
+        # draw pacman
+        cameraLocation = controllerData['pacman_location']
+        if cameraLocation is not None:
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, (0, 255, 0), thickness, lineType, shift)
+
+        # draw corners
+        for corners in controllerData['corners_locations']:
+            cameraLocation = corners.createNonDiscretized()
+            cv2.circle(image, (cameraLocation.getCol(), cameraLocation.getRow()), radius, (0, 255, 0), thickness, lineType, shift)
 
         cv2.putText(image, "Score: %s" % controllerData["score"], (100, 25), cv2.FONT_HERSHEY_COMPLEX, .5, (0, 0, 0))
 
