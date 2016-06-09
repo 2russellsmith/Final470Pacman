@@ -11,9 +11,9 @@ FOLLOW_SPEED = 30
 
 class PacmanController:
     PACMAN_ID = 20
-    PACMAN_NAME = "Sphero-BGP"
+    PACMAN_NAME = "Sphero-GRO"
     RED_GHOST_ID = 0
-    RED_GHOST_NAME = "Sphero-OPR"
+    RED_GHOST_NAME = "Sphero-OBR"
 
     # PINK_GHOST_ID = 20
     # PINK_GHOST_NAME = "Sphero-YWY"

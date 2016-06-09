@@ -40,6 +40,7 @@ class Agent:
         elif location.getY() < self.location.getY():
             return Directions.SOUTH
         else:
+            print("NO DIRECTION")
             return Directions.STOP
 
     def setLocation(self, location):
@@ -58,6 +59,9 @@ class Agent:
 
         :return: True if the goal location has been reached, False otherwise
         """
+        print ("%s == %s: %s" % (self.location,
+                                 self.nextLocation,
+                                 (self.location == self.nextLocation)))
 
         return self.location == self.nextLocation
 
@@ -69,6 +73,7 @@ class Agent:
         if self.hasReachedDestination() or self.nextLocation is None:
             self.nextLocation = self.getMove(gameState)
 
+        print("PACMAN: %s NEXT LOCATION: %s" % (self.isPacman, self.nextLocation))
         return self.getDirectionOfMove(self.nextLocation)
 
     @staticmethod
@@ -100,6 +105,9 @@ class GhostAgent(Agent):
         destination = self.getGoal(gameState)
         startNode = gameState.gameBoard.getNode(self.location)
 
+        # print("START: %s" % str(startNode.location))
+        # print("DESTINATION: %s" % str(destination.location))
+
         # setup cost matrix
         assistantMatrix = {}
         for row in range(gameState.gameBoard.getBoardHeight()):
@@ -107,15 +115,19 @@ class GhostAgent(Agent):
                 assistantMatrix[Location(row=row, col=column).toTuple()] = [10000, False, None]
 
         # cost, visited, parent
+        # if startNode.location.toTuple() in assistantMatrix:
+        #     print("START KEY EXISTS")
+
         assistantMatrix[startNode.location.toTuple()] = [0, False, None]
 
-        if self.prevLocation:
+        if self.prevLocation and self.prevLocation != self.location:
             assistantMatrix[self.prevLocation.toTuple()] = [10000, True, None]
 
         openSet = [startNode]
 
         while openSet:
             current = openSet[0]
+            #print "current location: %s" % (str(current.location))
             for n in openSet:
                 if assistantMatrix[n.location.toTuple()][0] + self.manhattan(n.location, destination.location) < \
                                 assistantMatrix[current.location.toTuple()][0] + self.manhattan(current.location,
@@ -128,9 +140,14 @@ class GhostAgent(Agent):
             openSet.remove(current)
             assistantMatrix[current.location.toTuple()][1] = True
 
+            print("PARENT %s" % str(current.location))
+            print("CHILDREN - %s" % (" ".join([str(x.location) for x in current.children])))
             for child in current.children:
+                #print("CHECKING CHILD")
                 if not assistantMatrix[child.location.toTuple()][1]:
+                    #print("CHILD NOT VISITED")
                     if child not in openSet:
+                        #print("CHILD NOT ALREADY IN SET")
                         openSet.append(child)
 
                     childCost = assistantMatrix[child.location.toTuple()][0]
@@ -138,6 +155,9 @@ class GhostAgent(Agent):
                     if childCost > currentCost + 1:
                         assistantMatrix[child.location.toTuple()][0] = currentCost + 1
                         assistantMatrix[child.location.toTuple()][2] = current.location
+            #print(len(openSet))
+
+        #print(assistantMatrix)
 
         raise Exception("NO GHOST PATH FOUND")
 

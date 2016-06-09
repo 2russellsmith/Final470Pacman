@@ -200,7 +200,7 @@ class GameBoard:
         :param col: the column of the location
         :return: True if the given location is inside the board
         """
-        return 0 < location.getRow() < self.getBoardHeight() and 0 < location.getCol() < self.getBoardWidth()
+        return 0 <= location.getRow() < self.getBoardHeight() and 0 <= location.getCol() < self.getBoardWidth()
 
     def getNeighborCoordinates(self, location):
         """Gets the locations that neighbor the given location that are traversable
